@@ -1,0 +1,1024 @@
+/* ==========================================
+   BloomFlow - Premium Payment Page Stylesheet
+   ========================================== */
+
+:root {
+    --primary: #b56d7f;
+    --primary-light: #e5989b;
+    --primary-hover: #944d61;
+    --primary-gradient: linear-gradient(135deg, #e5989b 0%, #b56d7f 100%);
+    --bg-main: #fffaf8;
+    --text-main: #2d3748;
+    --text-muted: #626c7e;
+    --border-color: #f0e6e4;
+    --card-shadow: 0 10px 30px rgba(181, 109, 127, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    padding-top: 110px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================
+   NAVBAR
+   ========================== */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(255, 250, 248, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);
+}
+
+.navbar {
+    width: 90%;
+    margin: auto;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo,
+.sri-brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.logo:hover,
+.sri-brand-logo:hover {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.sri-logo-emblem {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 3px 6px rgba(181, 109, 127, 0.3));
+}
+
+.sri-logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+}
+
+.sri-logo-prefix {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #b86b24;
+    background: linear-gradient(135deg, #d48b48 0%, #b86b24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.sri-logo-main {
+    font-size: 21px;
+    font-weight: 700;
+    color: #432835;
+    letter-spacing: -0.3px;
+}
+
+.sri-logo-accent {
+    color: #b56d7f;
+    font-weight: 700;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.navbar ul li a {
+    color: #444;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* ==========================
+   PAYMENT MAIN LAYOUT
+   ========================== */
+.payment-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 1.25fr 0.75fr;
+    gap: 40px;
+    flex: 1;
+}
+
+/* Left panel credit details */
+.card-details-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.card-details-panel h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1a202c;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+/* ==========================
+   INTERACTIVE CREDIT CARD 3D FLIP
+   ========================== */
+.credit-card-wrapper {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.flip-card {
+    width: 400px;
+    height: 240px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(181, 109, 127, 0.2);
+}
+
+.flip-card.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 16px;
+    padding: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Front card design styling (Deep Crimson Pink) */
+.card-front {
+    background: linear-gradient(135deg, #e5989b 0%, #b56d7f 50%, #944d61 100%);
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-chip {
+    font-size: 32px;
+    color: #f7d070;
+}
+
+.card-network {
+    font-size: 22px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1px;
+}
+
+.card-number-display {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    margin: 25px 0 15px;
+    word-spacing: 5px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    font-family: monospace;
+}
+
+.card-footer-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer-row .label {
+    font-size: 9px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    display: block;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+}
+
+.card-footer-row .val {
+    font-size: 14px;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+/* Back card design styling (Matte Metallic Crimson) */
+.card-back {
+    background: linear-gradient(135deg, #944d61 0%, #7d3c4e 100%);
+    transform: rotateY(180deg);
+    padding: 20px 0;
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+.card-magnetic-strip {
+    background: #2a2a2a;
+    height: 45px;
+    width: 100%;
+}
+
+.signature-strip-row {
+    display: flex;
+    align-items: center;
+    width: 85%;
+    margin: 0 auto;
+    gap: 15px;
+}
+
+.signature-strip {
+    background: rgba(255,255,255,0.9);
+    height: 40px;
+    flex: 1;
+    border-radius: 4px;
+}
+
+.cvv-val {
+    color: #1a202c;
+    background: white;
+    font-size: 16px;
+    font-weight: 700;
+    width: 45px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.card-info-row {
+    margin-top: auto;
+    font-size: 9px;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.form-group-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 18px;
+    border: 1.5px solid rgba(181, 109, 127, 0.15);
+    border-radius: 10px;
+    font-size: 14.5px;
+    outline: none;
+    background: #fafafa;
+    color: var(--text-main);
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--primary);
+    background: white;
+    box-shadow: 0 0 0 4px rgba(181, 109, 127, 0.1);
+}
+
+.pay-btn {
+    height: 52px;
+    background: var(--primary-gradient);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(181, 109, 127, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pay-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(181, 109, 127, 0.35);
+    filter: brightness(1.05);
+}
+
+.pay-btn:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Spinner */
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3.5px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Right: Summary details panel --- */
+.payment-summary-panel {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.payment-summary-panel h3 {
+    font-size: 19px;
+    font-weight: 700;
+    color: #1a202c;
+    border-bottom: 1.5px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.summary-details-box {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13.5px;
+    color: var(--text-muted);
+}
+
+.summary-row span:last-child {
+    font-weight: 600;
+    color: var(--text-main);
+    text-align: right;
+    max-width: 170px;
+}
+
+.summary-divider {
+    border: none;
+    border-bottom: 1px dashed var(--border-color);
+    margin: 8px 0;
+}
+
+.font-bold {
+    font-weight: 600;
+}
+
+.font-total {
+    border-top: 1.5px solid var(--border-color);
+    padding-top: 15px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #1a202c;
+}
+
+.font-total span:last-child {
+    font-size: 20px;
+    color: var(--primary);
+    font-weight: 800;
+}
+
+.payment-security-notice {
+    display: flex;
+    gap: 12px;
+    background: #faf7f5;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+.payment-security-notice i {
+    font-size: 24px;
+    color: #2f855a;
+    margin-top: 2px;
+}
+
+.payment-security-notice h4 {
+    font-size: 13.5px;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.payment-security-notice p {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ==========================
+   FOOTER
+   ========================== */
+footer {
+    background: #ffffff;
+    padding: 30px 0 20px;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    margin-top: auto;
+}
+
+footer h2 {
+    color: var(--primary);
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+footer p {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.copy {
+    font-size: 11px !important;
+    color: #999 !important;
+    margin-top: 10px;
+}
+
+/* ==========================
+   RESPONSIVE DESIGN
+   ========================== */
+@media (max-width: 992px) {
+    .payment-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .payment-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+    
+    .card-details-panel, .payment-summary-panel {
+        padding: 20px;
+    }
+    
+    .flip-card {
+        width: 100%;
+        max-width: 320px;
+        height: 190px;
+    }
+    
+    .card-face {
+        padding: 20px;
+    }
+    
+    .card-number-display {
+        font-size: 17px;
+        letter-spacing: 2px;
+    }
+    
+    .form-group-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================
+   GOOGLE PAY & UPI GATEWAY STYLES
+   ========================================================= */
+
+/* Method Selector Tabs */
+.payment-tabs {
+    display: flex;
+    gap: 10px;
+    background: #fbf5f5;
+    padding: 6px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #f1e4e6;
+}
+
+.pay-tab-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #6b6366;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pay-tab-btn i {
+    font-size: 16px;
+}
+
+.pay-tab-btn:hover {
+    color: #b56d7f;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.pay-tab-btn.active {
+    background: #ffffff;
+    color: #944d61;
+    box-shadow: 0 4px 14px rgba(181, 109, 127, 0.15);
+    border: 1px solid rgba(181, 109, 127, 0.2);
+}
+
+.pay-tab-btn .tab-badge {
+    background: #e5989b;
+    color: white;
+    font-size: 10px;
+    padding: 2px 7px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* UPI Main Container */
+.upi-gateway-container {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* GPay Hero Callout */
+.gpay-hero-card {
+    background: linear-gradient(135deg, #f8fbff 0%, #edf4ff 100%);
+    border: 1.5px solid #d3e2fe;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(66, 133, 244, 0.08);
+}
+
+.gpay-hero-card::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(66, 133, 244, 0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.gpay-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+}
+
+.gpay-title-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gpay-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #e1e8f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.gpay-logo-badge img {
+    height: 22px;
+    width: auto;
+}
+
+.gpay-logo-badge span {
+    font-size: 13px;
+    font-weight: 700;
+    color: #3c4043;
+    letter-spacing: -0.2px;
+}
+
+.gpay-direct-launch-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: #1a73e8;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 22px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(26, 115, 232, 0.35);
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+
+.gpay-direct-launch-btn:hover {
+    background: #1557b0;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(26, 115, 232, 0.45);
+    color: white;
+}
+
+.gpay-direct-launch-btn:active {
+    transform: translateY(0);
+}
+
+.gpay-direct-launch-btn i {
+    font-size: 20px;
+}
+
+/* Secondary UPI Apps Row */
+.other-upi-apps {
+    margin-top: 14px;
+}
+
+.other-upi-title {
+    font-size: 12px;
+    color: #5f6368;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.upi-apps-flex {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.app-launch-chip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #dcdfe4;
+    background: white;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: #333;
+}
+
+.app-launch-chip:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.app-launch-chip.phonepe {
+    color: #5f259f;
+    border-color: #d8c3f2;
+}
+
+.app-launch-chip.phonepe:hover {
+    background: #f7f1fc;
+}
+
+.app-launch-chip.paytm {
+    color: #00b9f5;
+    border-color: #bce9fa;
+}
+
+.app-launch-chip.paytm:hover {
+    background: #f0faff;
+}
+
+.app-launch-chip.generic-upi {
+    color: #2b7a4b;
+    border-color: #c7e6d2;
+}
+
+.app-launch-chip.generic-upi:hover {
+    background: #f2f9f5;
+}
+
+/* Desktop QR Code Card */
+.upi-qr-card {
+    background: white;
+    border: 1.5px solid #f0e6e8;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(181, 109, 127, 0.06);
+}
+
+.upi-qr-card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 4px;
+}
+
+.upi-qr-card p.qr-desc {
+    font-size: 12.5px;
+    color: #718096;
+    margin-bottom: 18px;
+}
+
+.qr-image-container {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 16px;
+    padding: 10px;
+    background: #ffffff;
+    border: 2px dashed #b56d7f;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.qr-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.qr-center-logo {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    border: 2px solid white;
+}
+
+.qr-center-logo i {
+    font-size: 20px;
+    color: #1a73e8;
+}
+
+/* Store UPI ID pill with Copy */
+.upi-id-pill-box {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #faf4f5;
+    border: 1px solid #ebd8dc;
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-bottom: 12px;
+}
+
+.upi-id-pill-box span.label {
+    font-size: 12px;
+    color: #888;
+    font-weight: 500;
+}
+
+.upi-id-pill-box strong.id-text {
+    font-size: 14px;
+    color: #944d61;
+    font-family: monospace;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.copy-id-btn {
+    border: none;
+    background: #b56d7f;
+    color: white;
+    border-radius: 20px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s ease;
+}
+
+.copy-id-btn:hover {
+    background: #944d61;
+}
+
+.edit-store-upi-link {
+    display: inline-block;
+    font-size: 11.5px;
+    color: #b56d7f;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+/* Confirmation & UTR Section */
+.upi-confirmation-card {
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.upi-confirmation-card h4 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.upi-confirmation-card h4 i {
+    color: #16a34a;
+}
+
+.utr-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.utr-input-group label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.utr-input-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.utr-input-group input:focus {
+    border-color: #16a34a;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+.confirm-upi-order-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.25);
+    transition: all 0.25s ease;
+}
+
+.confirm-upi-order-btn:hover {
+    background: linear-gradient(135deg, #15803d 0%, #166534 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(22, 163, 74, 0.35);
+}
+
+/* COD Panel */
+.cod-card {
+    background: #fdfaf6;
+    border: 1.5px solid #f6e0c3;
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+}
+
+.cod-icon-circle {
+    width: 64px;
+    height: 64px;
+    background: #fcf0e0;
+    color: #d97706;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 16px;
+}
+
+.cod-card h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.cod-card p {
+    font-size: 13.5px;
+    color: #666;
+    max-width: 440px;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+}
+
+.confirm-cod-btn {
+    width: 100%;
+    max-width: 380px;
+    background: #b56d7f;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s ease;
+}
+
+.confirm-cod-btn:hover {
+    background: #944d61;
+}
+

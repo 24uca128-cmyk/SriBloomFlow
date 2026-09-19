@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | My Profile</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="profile.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <nav class="navbar">
+            <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+            <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+                <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff758c" />
+                            <stop offset="50%" stop-color="#b56d7f" />
+                            <stop offset="100%" stop-color="#7e3b56" />
+                        </linearGradient>
+                        <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe699" />
+                            <stop offset="50%" stop-color="#f5a623" />
+                            <stop offset="100%" stop-color="#c97a2b" />
+                        </linearGradient>
+                        <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                    <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                    <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                    <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                    <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                    <circle cx="22" cy="22" r="2" fill="#ffffff" />
+                </svg>
+                <div class="sri-logo-text">
+                    <span class="sri-logo-prefix">SRI</span>
+                    <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="flowers.html">🌸 Flowers</a></li>
+                <li><a href="bouquets.html">💐 Bouquets</a></li>
+                <li><a href="home.html#why">✨ Why Us</a></li>
+            </ul>
+            <div class="nav-icons">
+                <button onclick="switchTab('notifications')" class="user-notif-nav-btn" title="View Notifications" aria-label="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="user-notif-badge" id="user-nav-notif-count" style="display: none;">0</span>
+                </button>
+                <button onclick="logoutUser()" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= PROFILE CONTAINER ================= -->
+    <main class="profile-container">
+        
+        <!-- Left Panel: User Profile Info -->
+        <section class="user-info-panel">
+            <div class="profile-avatar">
+                <i class="fa-regular fa-circle-user"></i>
+            </div>
+            <h2 id="profile-name">Customer Name</h2>
+            <p id="profile-email">email@example.com</p>
+            <span class="user-badge" id="profile-role-badge">Member</span>
+            
+            <div class="profile-stats">
+                <div class="stat-card" onclick="switchTab('orders')" style="cursor:pointer;" title="View Orders">
+                    <span class="stat-num" id="stat-orders-count">0</span>
+                    <span class="stat-label">Orders</span>
+                </div>
+                <div class="stat-card" onclick="switchTab('notifications')" style="cursor:pointer;" title="View Alerts">
+                    <span class="stat-num" id="stat-notifs-count">0</span>
+                    <span class="stat-label">Notifications</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Tabs for Orders and Notifications -->
+        <section class="dashboard-panel">
+            
+            <!-- Tab Headers -->
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="switchTab('orders')" id="tab-btn-orders">
+                    <i class="fa-solid fa-receipt"></i> Order History
+                </button>
+                <button class="tab-btn" onclick="switchTab('notifications')" id="tab-btn-notifications">
+                    <i class="fa-solid fa-bell"></i> Notifications
+                    <span class="tab-notif-bubble" id="tab-notif-bubble" style="display: none;">0</span>
+                </button>
+            </div>
+
+            <!-- Tab Content: Orders -->
+            <div class="tab-content active" id="tab-orders">
+                <!-- Live Order Tracking Search Bar -->
+                <div class="track-lookup-card">
+                    <div class="track-lookup-header">
+                        <div class="track-lookup-title">
+                            <div class="track-lookup-icon-wrap"><i class="fa-solid fa-truck-fast"></i></div>
+                            <div>
+                                <h4>Track Shipment & Live Milestones</h4>
+                                <p>Enter your Tracking ID (e.g. TRK-BF-12345) or Order # to view real-time delivery status.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="track-lookup-input-row">
+                        <div class="track-input-wrapper">
+                            <i class="fa-solid fa-barcode track-input-icon"></i>
+                            <input type="text" id="track-search-input" placeholder="Enter Tracking ID (e.g. TRK-BF-59182) or Order ID" onkeydown="if(event.key==='Enter') lookupOrderTracking()">
+                        </div>
+                        <button type="button" class="btn-track-lookup" onclick="lookupOrderTracking()">
+                            <i class="fa-solid fa-location-crosshairs"></i> Track Shipment
+                        </button>
+                    </div>
+                    <div id="tracking-lookup-result" class="tracking-lookup-result" style="display:none;"></div>
+                </div>
+
+                <div class="records-list" id="orders-list">
+                    <!-- Dynamic Orders List -->
+                </div>
+            </div>
+
+            <!-- Tab Content: Notifications -->
+            <div class="tab-content" id="tab-notifications">
+                <div class="notif-panel-header">
+                    <div>
+                        <h4 style="margin:0; font-size:16px; color:#2b1d22; font-weight:700;">
+                            <i class="fa-solid fa-bell" style="color:var(--primary); margin-right:6px;"></i> Order & Status Notifications
+                        </h4>
+                        <p style="margin:4px 0 0; font-size:12.5px; color:#64748b;">
+                            Live updates dispatched when you place orders, track milestones, or receive refunds.
+                        </p>
+                    </div>
+                    <button type="button" class="btn-mark-all-read-user" onclick="markAllUserNotifsRead()">
+                        <i class="fa-solid fa-check-double"></i> Mark all as read
+                    </button>
+                </div>
+
+                <div class="records-list" id="user-notifications-list">
+                    <!-- Dynamic User Notifications List -->
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="footer">
+        <h2>BloomFlow</h2>
+        <p>Made with ❤️ for every beautiful occasion.</p>
+        <p class="copy">© 2026 BloomFlow. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        let activeUser = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            validateSession();
+            loadUserData();
+        });
+
+        // Ensure user is signed in
+        function validateSession() {
+            activeUser = JSON.parse(localStorage.getItem('bloomflow_active_user'));
+            if (!activeUser) {
+                alert("Please log in to access your profile dashboard!");
+                window.location.href = "login.html";
+            }
+        }
+
+        // Load details, stats, orders, and bookings
+        async function loadUserData() {
+            if (!activeUser) return;
+
+            document.getElementById('profile-name').textContent = activeUser.name;
+            document.getElementById('profile-email').textContent = activeUser.email;
+            
+            if (activeUser.isGuest) {
+                document.getElementById('profile-role-badge').textContent = "Guest";
+            } else {
+                document.getElementById('profile-role-badge').textContent = "Customer Profile";
+            }
+
+            // 1. Try Backend & MongoDB for User Orders
+            if (window.BloomAPI && activeUser.email) {
+                try {
+                    const ordersRes = await window.BloomAPI.orders.getMyOrders(activeUser.email);
+
+                    let userOrders = [];
+                    if (ordersRes.ok && ordersRes.data && ordersRes.data.data) {
+                        userOrders = ordersRes.data.data.map(o => ({
+                            orderId: o.orderNumber || o._id,
+                            trackingId: o.trackingId || `TRK-BF-${(o.orderNumber || '').replace(/\D/g, '') || '89214'}`,
+                            recipientName: o.customerName,
+                            deliveryAddress: o.deliveryAddress ? `${o.deliveryAddress.street || ''}, ${o.deliveryAddress.city || 'Sivakasi'}` : '',
+                            deliveryDate: new Date(o.createdAt).toLocaleDateString(),
+                            date: new Date(o.createdAt).toLocaleDateString(),
+                            total: o.grandTotal || o.totalAmount,
+                            items: o.items || [],
+                            status: o.orderStatus || 'Pending',
+                            paymentMethod: o.paymentMethod || 'COD',
+                            paymentStatus: o.paymentStatus || 'Pending',
+                            refundDetails: o.refundDetails || null,
+                            refundId: o.refundDetails?.refundId || null,
+                            giftNote: o.orderNotes || ''
+                        }));
+                    }
+
+                    // Merge MongoDB and LocalStorage orders
+                    const localOrders = (JSON.parse(localStorage.getItem('bloomflow_orders')) || [])
+                        .filter(o => o.userEmail === activeUser.email || !o.userEmail);
+
+                    const combinedOrders = [...userOrders];
+                    localOrders.forEach(lo => {
+                        const existingIdx = combinedOrders.findIndex(co => co.orderId === lo.orderId || (co.trackingId && co.trackingId === lo.trackingId));
+                        if (existingIdx === -1) {
+                            combinedOrders.push(lo);
+                        } else if (lo.status === 'Cancelled' && combinedOrders[existingIdx].status !== 'Cancelled') {
+                            combinedOrders[existingIdx].status = 'Cancelled';
+                            combinedOrders[existingIdx].paymentStatus = lo.paymentStatus || 'Refunded';
+                        }
+                    });
+
+                    document.getElementById('stat-orders-count').textContent = combinedOrders.length;
+                    renderOrders(combinedOrders);
+
+                    // Load user notifications
+                    await loadUserNotifications();
+                    return;
+                } catch (apiErr) {
+                    console.warn("Profile MongoDB sync fallback:", apiErr);
+                }
+            }
+
+            // 2. Fallback to LocalStorage
+            const allOrders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+            const userOrders = allOrders.filter(o => o.userEmail === activeUser.email || !o.userEmail);
+            document.getElementById('stat-orders-count').textContent = userOrders.length;
+
+            renderOrders(userOrders);
+
+            await loadUserNotifications();
+        }
+
+        // Tab switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            document.getElementById(`tab-btn-${tabId}`).classList.add('active');
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+        }
+
+        // Render e-commerce order cards with Cancel & Refund controls
+        function renderOrders(orders) {
+            const container = document.getElementById('orders-list');
+            container.innerHTML = '';
+
+            if (orders.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <h3>No orders found</h3>
+                        <p>You haven't purchased any flowers yet. Head over to our catalog to select your blooms!</p>
+                        <a href="flowers.html" class="cta-btn">Browse Flowers</a>
+                    </div>
+                `;
+                return;
+            }
+
+            orders.slice().reverse().forEach(order => {
+                const card = document.createElement('div');
+                card.className = 'record-card';
+                
+                // Fallback tracking ID if missing
+                const trackingId = order.trackingId || `TRK-BF-${String(order.orderId).replace(/\D/g, '') || '89214'}`;
+                order.trackingId = trackingId;
+
+                // Set status color tag
+                let statusClass = 'status-pending';
+                if (order.status === 'Shipped' || order.status === 'Out for Delivery') statusClass = 'status-shipped';
+                if (order.status === 'Delivered') statusClass = 'status-delivered';
+                if (order.status === 'Cancelled') statusClass = 'status-cancelled';
+
+                // Compile items list HTML
+                let itemsHTML = '';
+                (order.items || []).forEach(item => {
+                    const qty = item.quantity || 1;
+                    const price = item.price || 0;
+                    itemsHTML += `<li><span>${item.name} <small class="item-qty-tag">x${qty}</small></span> <span>₹${(price * qty).toFixed(2)}</span></li>`;
+                });
+
+                // Determine if order is active and eligible for cancellation
+                const isCancelled = (order.status === 'Cancelled');
+                const isDelivered = (order.status === 'Delivered');
+                const isOnlinePaid = (order.paymentMethod === 'UPI' || order.paymentMethod === 'CARD' || order.paymentStatus === 'Completed' || order.paymentStatus === 'Refunded');
+                const isRefunded = (order.paymentStatus === 'Refunded' || (isCancelled && isOnlinePaid));
+
+                let paymentLabel = 'COD';
+                if (order.paymentMethod === 'UPI') paymentLabel = 'UPI';
+                if (order.paymentMethod === 'CARD') paymentLabel = 'Card';
+
+                // Cancel button or Refund notice
+                let actionHTML = '';
+                if (!isCancelled && !isDelivered) {
+                    const safeOrderId = String(order.orderId || '').replace(/'/g, "\\'");
+                    const safeRecipient = String(order.recipientName || 'Customer').replace(/'/g, "\\'");
+                    const safePayment = String(paymentLabel || 'COD').replace(/'/g, "\\'");
+                    actionHTML = `
+                        <button class="btn-cancel-order" type="button" onclick="event.stopPropagation(); promptCancelOrder('${safeOrderId}', ${Number(order.total || 0)}, '${safePayment}', '${safeRecipient}', ${isOnlinePaid})">
+                            <i class="fa-solid fa-ban"></i> Cancel Order ${isOnlinePaid ? '& Process Instant Refund' : ''}
+                        </button>
+                    `;
+                } else if (isCancelled) {
+                    if (isOnlinePaid || isRefunded) {
+                        const refundRef = order.refundId || order.refundDetails?.refundId || `REF-${(order.orderId || '').replace(/\D/g, '').slice(-5) || '99214'}`;
+                        actionHTML = `
+                            <div class="refund-alert-box">
+                                <i class="fa-solid fa-circle-check"></i>
+                                <div>
+                                    <strong>Instant Refund Processed:</strong> ₹${Number(order.total || 0).toLocaleString('en-IN')} refunded to your ${order.paymentMethod || 'UPI / Card'} account.
+                                    <div style="font-size: 11px; opacity: 0.85; margin-top: 2px;">Refund Reference ID: <code>${refundRef}</code></div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        actionHTML = `
+                            <div class="cancelled-alert-box">
+                                <i class="fa-solid fa-ban"></i>
+                                <div><strong>Order Cancelled:</strong> No payment was charged for this Cash on Delivery order.</div>
+                            </div>
+                        `;
+                    }
+                }
+
+                // Inline stepper HTML
+                const stepperHTML = buildTrackingStepperHTML(order.status);
+
+                card.innerHTML = `
+                    <div class="record-header" onclick="toggleCardDetails(this)">
+                        <div>
+                            <h4>Order ID: ${order.orderId} <span class="payment-method-tag">${paymentLabel}</span></h4>
+                            <div class="card-tracking-subrow">
+                                <span class="tracking-pill-badge">
+                                    <i class="fa-solid fa-barcode"></i> Tracking ID: <strong>${trackingId}</strong>
+                                </span>
+                                <button type="button" class="btn-card-copy" onclick="event.stopPropagation(); copyTrackingText('${trackingId}', this)" title="Copy Tracking ID">
+                                    <i class="fa-regular fa-copy"></i>
+                                </button>
+                            </div>
+                            <span class="record-date"><i class="fa-regular fa-calendar"></i> Placed on ${order.date || 'Recent'}</span>
+                        </div>
+                        <div class="record-header-right">
+                            <span class="status-badge ${statusClass}">${order.status}</span>
+                            <span class="record-price">₹${Number(order.total || 0).toLocaleString('en-IN')}</span>
+                            <i class="fa-solid fa-chevron-down expand-icon"></i>
+                        </div>
+                    </div>
+                    <div class="record-details">
+                        <!-- Live Tracking Stepper for this Order -->
+                        <div class="order-card-tracking-section">
+                            <div class="card-tracking-heading">
+                                <span><i class="fa-solid fa-truck-fast"></i> Delivery Status</span>
+                                <small style="color:#047857; font-weight:600;">SRI BloomFlow Express Sivakasi</small>
+                            </div>
+                            ${stepperHTML}
+                        </div>
+
+                        <h5>Delivery Recipient</h5>
+                        <p><strong>Name:</strong> ${order.recipientName}</p>
+                        <p><strong>Address:</strong> ${order.deliveryAddress}</p>
+                        <p><strong>Delivery Date:</strong> ${order.deliveryDate}</p>
+                        <p><strong>Payment Mode:</strong> ${paymentLabel} (${order.paymentStatus || 'Pending'})</p>
+                        
+                        <h5 style="margin-top: 15px;">Bouquet & Flower Details</h5>
+                        <ul class="order-items-list" style="list-style: none; padding: 0;">
+                            ${itemsHTML}
+                        </ul>
+
+                        ${actionHTML}
+                    </div>
+                `;
+                container.appendChild(card);
+
+                // Auto-expand card if this was the order just cancelled
+                if (lastCancelledOrderId && (String(order.orderId) === String(lastCancelledOrderId) || String(order.trackingId) === String(lastCancelledOrderId))) {
+                    const details = card.querySelector('.record-details');
+                    const icon = card.querySelector('.expand-icon');
+                    if (details) {
+                        details.classList.add('open');
+                        details.style.maxHeight = 'none';
+                        details.style.overflow = 'visible';
+                    }
+                    if (icon) {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                    setTimeout(() => {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }, 150);
+                }
+            });
+        }
+
+        // ================= CANCEL ORDER MODAL & LOGIC =================
+        let pendingCancelOrder = null;
+        let lastCancelledOrderId = null;
+
+        function promptCancelOrder(orderId, total, paymentMethod, recipientName, isOnlinePaid) {
+            pendingCancelOrder = {
+                orderId,
+                total,
+                paymentMethod,
+                recipientName,
+                isOnlinePaid
+            };
+
+            const orderIdLabel = document.getElementById('modal-order-id-label');
+            const recipientLabel = document.getElementById('modal-recipient-name');
+            const totalLabel = document.getElementById('modal-order-total');
+            const paymentModeLabel = document.getElementById('modal-payment-mode');
+            const refundNotice = document.getElementById('modal-refund-notice');
+
+            if (orderIdLabel) orderIdLabel.textContent = `#${orderId}`;
+            if (recipientLabel) recipientLabel.textContent = recipientName || 'Customer';
+            if (totalLabel) totalLabel.textContent = `₹${Number(total || 0).toLocaleString('en-IN')}`;
+            if (paymentModeLabel) paymentModeLabel.textContent = paymentMethod || 'COD';
+
+            if (refundNotice) {
+                if (isOnlinePaid) {
+                    refundNotice.className = 'cancel-refund-notice online';
+                    refundNotice.innerHTML = `
+                        <i class="fa-solid fa-circle-check" style="font-size: 22px; color: #16a34a; flex-shrink: 0; margin-top: 2px;"></i>
+                        <div>
+                            <strong>⚡ Instant Refund Guaranteed:</strong>
+                            <div>₹${Number(total || 0).toLocaleString('en-IN')} will be refunded immediately back to your ${paymentMethod} account with an official Refund Reference ID.</div>
+                        </div>
+                    `;
+                } else {
+                    refundNotice.className = 'cancel-refund-notice cod';
+                    refundNotice.innerHTML = `
+                        <i class="fa-solid fa-circle-info" style="font-size: 22px; color: #2563eb; flex-shrink: 0; margin-top: 2px;"></i>
+                        <div>
+                            <strong>Cash on Delivery (COD) Order:</strong>
+                            <div>No payment was deducted. The flower shop team will stop harvest and dispatching immediately.</div>
+                        </div>
+                    `;
+                }
+            }
+
+            const modal = document.getElementById('cancelOrderModal');
+            if (modal) modal.classList.add('open');
+        }
+
+        function closeCancelModal() {
+            const modal = document.getElementById('cancelOrderModal');
+            if (modal) modal.classList.remove('open');
+            pendingCancelOrder = null;
+        }
+
+        async function executeCancelOrder() {
+            if (!pendingCancelOrder) return;
+            const { orderId, total, paymentMethod, isOnlinePaid } = pendingCancelOrder;
+            const reasonSelect = document.getElementById('cancel-reason-select');
+            const reason = reasonSelect ? reasonSelect.value : 'Customer requested cancellation from profile';
+
+            const confirmBtn = document.getElementById('btn-confirm-cancel-action');
+            if (confirmBtn) {
+                confirmBtn.disabled = true;
+                confirmBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Cancelling...`;
+            }
+
+            try {
+                let refundAmount = total;
+                let refundId = 'REF-' + Date.now().toString().slice(-6);
+
+                // 1. Backend API Call
+                if (window.BloomAPI && window.BloomAPI.orders) {
+                    try {
+                        const cancelRes = await window.BloomAPI.orders.cancel(orderId, reason);
+                        if (cancelRes.ok && cancelRes.data && cancelRes.data.data) {
+                            const o = cancelRes.data.data;
+                            refundAmount = o.grandTotal || o.totalAmount || refundAmount;
+                            if (o.refundDetails?.refundId) refundId = o.refundDetails.refundId;
+                        }
+                    } catch (apiErr) {
+                        console.warn("Backend cancel order sync fallback:", apiErr);
+                    }
+                }
+
+                // 2. LocalStorage Update
+                let orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+                const targetOrder = orders.find(o => String(o.orderId) === String(orderId) || (o.trackingId && String(o.trackingId) === String(orderId)));
+
+                if (targetOrder) {
+                    targetOrder.status = 'Cancelled';
+                    if (isOnlinePaid || targetOrder.paymentMethod === 'UPI' || targetOrder.paymentMethod === 'CARD' || targetOrder.paymentStatus === 'Completed') {
+                        targetOrder.paymentStatus = 'Refunded';
+                        targetOrder.refundId = refundId;
+                        targetOrder.refundAmount = refundAmount;
+                    } else {
+                        targetOrder.paymentStatus = 'Cancelled';
+                    }
+                    localStorage.setItem('bloomflow_orders', JSON.stringify(orders));
+                }
+
+                // 3. Admin Notification
+                try {
+                    const cancelNotif = {
+                        id: 'notif_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+                        type: 'order_cancelled',
+                        title: 'Order Cancelled',
+                        message: `Order #${orderId} was cancelled by customer. Reason: ${reason}`,
+                        orderId: orderId,
+                        amount: refundAmount || 0,
+                        timestamp: new Date().toISOString(),
+                        read: false
+                    };
+                    let adminNotifs = JSON.parse(localStorage.getItem('bloomflow_admin_notifications')) || [];
+                    adminNotifs.unshift(cancelNotif);
+                    localStorage.setItem('bloomflow_admin_notifications', JSON.stringify(adminNotifs));
+                } catch (notifErr) {}
+
+                // 4. User Notification
+                try {
+                    const userCancelNotif = {
+                        id: 'user_notif_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+                        type: 'order_cancelled',
+                        title: isOnlinePaid ? 'Order Cancelled & Refund Processed' : 'Order Cancelled Successfully',
+                        message: isOnlinePaid
+                            ? `Your order #${orderId} has been cancelled. Instant refund of ₹${Number(refundAmount).toLocaleString('en-IN')} has been processed to your account (Ref: ${refundId}).`
+                            : `Your order #${orderId} has been cancelled successfully. No payment was charged.`,
+                        orderId: orderId,
+                        amount: refundAmount || 0,
+                        timestamp: new Date().toISOString(),
+                        read: false
+                    };
+                    let userNotifs = JSON.parse(localStorage.getItem('bloomflow_user_notifications')) || [];
+                    userNotifs.unshift(userCancelNotif);
+                    localStorage.setItem('bloomflow_user_notifications', JSON.stringify(userNotifs));
+                } catch (uErr) {}
+
+                // Set lastCancelledOrderId so renderOrders keeps it OPEN for the user to see!
+                lastCancelledOrderId = orderId;
+
+                // Close Modal
+                closeCancelModal();
+
+                // Show in-app Toast (no blocking browser alert)
+                showProfileToast(
+                    isOnlinePaid
+                        ? `✅ Order #${orderId} cancelled! Instant refund of ₹${Number(refundAmount).toLocaleString('en-IN')} processed.`
+                        : `✅ Order #${orderId} cancelled successfully.`
+                );
+
+                // Refresh orders
+                await loadUserData();
+
+            } catch (err) {
+                console.error(err);
+                showProfileToast("An error occurred while cancelling your order. Please try again.", "error");
+            } finally {
+                if (confirmBtn) {
+                    confirmBtn.disabled = false;
+                    confirmBtn.innerHTML = `<i class="fa-solid fa-ban"></i> Yes, Cancel Order`;
+                }
+            }
+        }
+
+        // Profile Toast Utility
+        function showProfileToast(message, type = 'success') {
+            const container = document.getElementById('profile-toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = `profile-toast ${type === 'error' ? 'error' : ''}`;
+            toast.innerHTML = `
+                <i class="fa-solid ${type === 'error' ? 'fa-triangle-exclamation' : 'fa-circle-check'}" style="color: ${type === 'error' ? '#ef4444' : '#10b981'}; font-size: 18px;"></i>
+                <span>${message}</span>
+            `;
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(10px)';
+                toast.style.transition = 'all 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 4500);
+        }
+
+        // ================= USER NOTIFICATIONS CENTER =================
+        let userNotifications = [];
+
+        async function loadUserNotifications() {
+            if (!activeUser || !activeUser.email) return;
+
+            try {
+                let notifs = [];
+                if (window.BloomAPI && window.BloomAPI.notifications) {
+                    try {
+                        const res = await window.BloomAPI.notifications.getAll({ email: activeUser.email });
+                        if (res.ok && res.data && res.data.data) {
+                            notifs = res.data.data;
+                        }
+                    } catch (e) {
+                        console.warn("User notifications API fallback:", e);
+                    }
+                }
+
+                // Merge with localStorage user notifications
+                const localUserNotifs = JSON.parse(localStorage.getItem('bloomflow_user_notifications')) || [];
+                const combined = [...notifs];
+                localUserNotifs.forEach(lu => {
+                    if (!combined.some(c => (c.orderId && c.orderId === lu.orderId && c.type === lu.type) || (c._id && c._id === lu.id))) {
+                        combined.push(lu);
+                    }
+                });
+
+                userNotifications = combined.sort((a, b) => new Date(b.createdAt || b.timestamp || 0) - new Date(a.createdAt || a.timestamp || 0));
+
+                // Update indicators
+                const unreadCount = userNotifications.filter(n => !n.read).length;
+
+                // Nav badge
+                const navBadge = document.getElementById('user-nav-notif-count');
+                if (navBadge) {
+                    if (unreadCount > 0) {
+                        navBadge.textContent = unreadCount > 9 ? '9+' : unreadCount;
+                        navBadge.style.display = 'flex';
+                    } else {
+                        navBadge.style.display = 'none';
+                    }
+                }
+
+                // Tab bubble
+                const tabBubble = document.getElementById('tab-notif-bubble');
+                if (tabBubble) {
+                    if (unreadCount > 0) {
+                        tabBubble.textContent = unreadCount;
+                        tabBubble.style.display = 'inline-flex';
+                    } else {
+                        tabBubble.style.display = 'none';
+                    }
+                }
+
+                // Stat count
+                const statNotifs = document.getElementById('stat-notifs-count');
+                if (statNotifs) {
+                    statNotifs.textContent = userNotifications.length;
+                }
+
+                renderUserNotifications();
+            } catch (err) {
+                console.error("Failed to load user notifications:", err);
+            }
+        }
+
+        function renderUserNotifications() {
+            const container = document.getElementById('user-notifications-list');
+            if (!container) return;
+
+            if (userNotifications.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fa-regular fa-bell-slash"></i>
+                        <h3>No notifications yet</h3>
+                        <p>You will receive live order confirmations, delivery milestones, and instant refund alerts here.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = userNotifications.map(n => {
+                const isUnread = !n.read;
+                const isCancelled = (n.type === 'order_cancelled');
+                const icon = isCancelled ? 'fa-ban' : 'fa-seedling';
+                const iconBg = isCancelled ? '#fee2e2' : '#fdf2f8';
+                const iconColor = isCancelled ? '#dc2626' : '#b56d7f';
+                const dateObj = new Date(n.createdAt || n.timestamp || Date.now());
+                const timeFormatted = isNaN(dateObj) ? 'Recent' : dateObj.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+
+                return `
+                    <div class="user-notif-card ${isUnread ? 'unread' : ''}">
+                        <div class="user-notif-icon" style="background:${iconBg}; color:${iconColor};">
+                            <i class="fa-solid ${icon}"></i>
+                        </div>
+                        <div class="user-notif-body">
+                            <div class="user-notif-top">
+                                <h5>${escapeHTML(n.title)}</h5>
+                                <span class="user-notif-time">${timeFormatted}</span>
+                            </div>
+                            <p class="user-notif-msg">${escapeHTML(n.message)}</p>
+                            ${n.orderId ? `<div class="user-notif-meta"><span class="badge-order-ref"><i class="fa-solid fa-receipt"></i> Order: ${escapeHTML(n.orderId)}</span> ${n.trackingId ? `<span class="badge-track-ref"><i class="fa-solid fa-barcode"></i> Tracking: ${escapeHTML(n.trackingId)}</span>` : ''}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        async function markAllUserNotifsRead() {
+            if (!activeUser || !activeUser.email) return;
+
+            if (window.BloomAPI && window.BloomAPI.notifications) {
+                try {
+                    await window.BloomAPI.notifications.markAllRead({ email: activeUser.email });
+                } catch (e) {}
+            }
+
+            let localNotifs = JSON.parse(localStorage.getItem('bloomflow_user_notifications')) || [];
+            localNotifs.forEach(n => n.read = true);
+            localStorage.setItem('bloomflow_user_notifications', JSON.stringify(localNotifs));
+
+            userNotifications.forEach(n => n.read = true);
+            const navBadge = document.getElementById('user-nav-notif-count');
+            if (navBadge) navBadge.style.display = 'none';
+            const tabBubble = document.getElementById('tab-notif-bubble');
+            if (tabBubble) tabBubble.style.display = 'none';
+            renderUserNotifications();
+        }
+
+        // ================= TRACKING HELPERS =================
+
+        function copyTrackingText(text, btnElem) {
+            navigator.clipboard.writeText(text).then(() => {
+                if (btnElem) {
+                    const origHTML = btnElem.innerHTML;
+                    btnElem.innerHTML = '<i class="fa-solid fa-check" style="color:#10b981;"></i>';
+                    setTimeout(() => btnElem.innerHTML = origHTML, 1800);
+                }
+            }).catch(() => {
+                prompt("Copy Tracking ID:", text);
+            });
+        }
+
+        // Generate visual milestone stepper HTML for a given status
+        function buildTrackingStepperHTML(status) {
+            const normalized = (status || 'Pending').toLowerCase();
+
+            if (normalized === 'cancelled') {
+                return `
+                    <div class="tracking-cancelled-banner">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <div>
+                            <strong>Shipment Cancelled</strong>
+                            <span>This order was cancelled. No delivery in transit.</span>
+                        </div>
+                    </div>
+                `;
+            }
+
+            let s1 = 'step-completed', s2 = '', s3 = '', s4 = '';
+            let l1 = '', l2 = '', l3 = '';
+
+            if (normalized === 'pending') {
+                s2 = 'step-active';
+            } else if (normalized === 'confirmed') {
+                s2 = 'step-completed';
+                l1 = 'step-line-active';
+                s3 = 'step-active';
+            } else if (normalized === 'processing') {
+                s2 = 'step-completed';
+                s3 = 'step-active';
+                l1 = 'step-line-active';
+                l2 = 'step-line-active';
+            } else if (normalized === 'shipped' || normalized === 'out for delivery') {
+                s2 = 'step-completed';
+                s3 = 'step-completed';
+                s4 = 'step-active';
+                l1 = 'step-line-active';
+                l2 = 'step-line-active';
+                l3 = 'step-line-active';
+            } else if (normalized === 'delivered') {
+                s2 = 'step-completed';
+                s3 = 'step-completed';
+                s4 = 'step-completed';
+                l1 = 'step-line-active';
+                l2 = 'step-line-active';
+                l3 = 'step-line-active';
+            }
+
+            return `
+                <div class="order-mini-stepper">
+                    <div class="mini-step ${s1}">
+                        <div class="mini-step-dot"><i class="fa-solid fa-check"></i></div>
+                        <span>Placed</span>
+                    </div>
+                    <div class="mini-step-line ${l1}"></div>
+                    <div class="mini-step ${s2}">
+                        <div class="mini-step-dot">${s2 === 'step-completed' ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-receipt"></i>'}</div>
+                        <span>Confirmed</span>
+                    </div>
+                    <div class="mini-step-line ${l2}"></div>
+                    <div class="mini-step ${s3}">
+                        <div class="mini-step-dot">${s3 === 'step-completed' ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-boxes-packing"></i>'}</div>
+                        <span>Packing</span>
+                    </div>
+                    <div class="mini-step-line ${l3}"></div>
+                    <div class="mini-step ${s4}">
+                        <div class="mini-step-dot">${s4 === 'step-completed' ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-truck-fast"></i>'}</div>
+                        <span>${normalized === 'delivered' ? 'Delivered' : 'Delivery'}</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Dedicated Live Tracking Lookup
+        async function lookupOrderTracking() {
+            const input = document.getElementById('track-search-input');
+            const resultBox = document.getElementById('tracking-lookup-result');
+            if (!input || !resultBox) return;
+
+            const query = input.value.trim().toUpperCase();
+            if (!query) {
+                alert("Please enter a valid Tracking ID or Order ID.");
+                input.focus();
+                return;
+            }
+
+            resultBox.style.display = 'block';
+            resultBox.innerHTML = `
+                <div style="padding:16px; text-align:center; color:#64748b;">
+                    <i class="fa-solid fa-spinner fa-spin"></i> Searching live tracking records...
+                </div>
+            `;
+
+            let foundOrder = null;
+
+            // 1. Search in localStorage
+            const localOrders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+            foundOrder = localOrders.find(o => 
+                (o.trackingId && o.trackingId.toUpperCase() === query) ||
+                (o.orderId && o.orderId.toUpperCase() === query) ||
+                (o.orderId && o.orderId.toUpperCase().replace(/\D/g, '') === query.replace(/\D/g, ''))
+            );
+
+            // 2. Search in Backend
+            if (!foundOrder && window.BloomAPI && window.BloomAPI.orders) {
+                try {
+                    const apiRes = await window.BloomAPI.orders.getAll();
+                    if (apiRes.ok && apiRes.data && apiRes.data.data) {
+                        const mOrder = apiRes.data.data.find(o => 
+                            (o.trackingId && o.trackingId.toUpperCase() === query) ||
+                            (o.orderNumber && o.orderNumber.toUpperCase() === query) ||
+                            (o.orderNumber && o.orderNumber.toUpperCase().replace(/\D/g, '') === query.replace(/\D/g, ''))
+                        );
+                        if (mOrder) {
+                            foundOrder = {
+                                orderId: mOrder.orderNumber,
+                                trackingId: mOrder.trackingId || `TRK-BF-${mOrder.orderNumber.replace(/\D/g, '')}`,
+                                recipientName: mOrder.customerName,
+                                deliveryAddress: mOrder.deliveryAddress ? `${mOrder.deliveryAddress.street || ''}, ${mOrder.deliveryAddress.city || 'Sivakasi'}` : 'Sivakasi',
+                                deliveryDate: new Date(mOrder.createdAt).toLocaleDateString(),
+                                total: mOrder.grandTotal || mOrder.totalAmount,
+                                status: mOrder.orderStatus || 'Pending',
+                                items: mOrder.items || []
+                            };
+                        }
+                    }
+                } catch (e) {
+                    console.warn("Backend lookup tracking error:", e);
+                }
+            }
+
+            if (!foundOrder) {
+                resultBox.innerHTML = `
+                    <div class="track-not-found">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div>
+                            <strong>No Shipment Found for "${escapeHTML(query)}"</strong>
+                            <p>Please double-check your Tracking ID or Order reference number.</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            const trkId = foundOrder.trackingId || `TRK-BF-${foundOrder.orderId.replace(/\D/g, '') || '89214'}`;
+            const stepper = buildTrackingStepperHTML(foundOrder.status);
+
+            resultBox.innerHTML = `
+                <div class="track-result-card">
+                    <div class="track-result-header">
+                        <div>
+                            <span class="track-badge-pill"><i class="fa-solid fa-circle-check"></i> Active Shipment</span>
+                            <h4 style="margin:4px 0 0; font-size:16px; color:#1e293b;">Tracking ID: <code>${trkId}</code></h4>
+                            <small style="color:#64748b;">Order Ref: <strong>${foundOrder.orderId}</strong> • Delivery to ${foundOrder.recipientName || 'Customer'}</small>
+                        </div>
+                        <button type="button" class="btn-close-track" onclick="document.getElementById('tracking-lookup-result').style.display='none'">&times;</button>
+                    </div>
+
+                    <div style="margin:16px 0 10px;">
+                        ${stepper}
+                    </div>
+
+                    <div class="track-meta-grid">
+                        <div>
+                            <span class="meta-label">Destination</span>
+                            <strong>${foundOrder.deliveryAddress || 'Sivakasi'}</strong>
+                        </div>
+                        <div>
+                            <span class="meta-label">Scheduled</span>
+                            <strong>${foundOrder.deliveryDate || 'Today / Tomorrow'}</strong>
+                        </div>
+                        <div>
+                            <span class="meta-label">Status</span>
+                            <span class="status-badge status-${(foundOrder.status || 'pending').toLowerCase().replace(/\s+/g, '-')}">${foundOrder.status || 'Pending'}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Auto-check URL query for ?track=...
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const trackVal = urlParams.get('track');
+            if (trackVal) {
+                switchTab('orders');
+                const searchInput = document.getElementById('track-search-input');
+                if (searchInput) {
+                    searchInput.value = trackVal;
+                    setTimeout(lookupOrderTracking, 300);
+                }
+            }
+        });
+
+        // Toggle card detail view (accordion effect)
+        function toggleCardDetails(headerEl) {
+            const card = headerEl.parentElement;
+            const details = card.querySelector('.record-details');
+            const icon = card.querySelector('.expand-icon');
+
+            if (details.classList.contains('open')) {
+                details.style.overflow = 'hidden';
+                details.style.maxHeight = details.scrollHeight + "px";
+                requestAnimationFrame(() => {
+                    details.style.maxHeight = '0px';
+                    details.classList.remove('open');
+                    icon.style.transform = 'rotate(0deg)';
+                });
+            } else {
+                details.classList.add('open');
+                // Ensure generous height room so button & details are never cut off
+                details.style.maxHeight = (details.scrollHeight + 160) + "px";
+                icon.style.transform = 'rotate(180deg)';
+                setTimeout(() => {
+                    if (details.classList.contains('open')) {
+                        details.style.maxHeight = 'none';
+                        details.style.overflow = 'visible';
+                    }
+                }, 420);
+            }
+        }
+
+        // Log out action
+        function logoutUser() {
+            if (window.BloomAPI && window.BloomAPI.auth) {
+                window.BloomAPI.auth.logout();
+            } else {
+                localStorage.removeItem('bloomflow_active_user');
+                window.location.href = "home.html";
+            }
+        }
+    </script>
+
+    <!-- ================= CANCEL ORDER CONFIRMATION MODAL ================= -->
+    <div class="cancel-order-modal-backdrop" id="cancelOrderModal">
+        <div class="cancel-modal-card">
+            <div class="cancel-modal-header">
+                <div class="cancel-modal-icon-wrap">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div>
+                    <h3 class="cancel-modal-title">Cancel Order Confirmation</h3>
+                    <p class="cancel-modal-subtitle">Order Reference: <strong id="modal-order-id-label">#BF-00000</strong></p>
+                </div>
+                <button type="button" class="cancel-modal-close" onclick="closeCancelModal()" aria-label="Close dialog">&times;</button>
+            </div>
+
+            <div class="cancel-modal-body">
+                <!-- Order summary pills -->
+                <div class="cancel-order-summary-box">
+                    <div class="summary-item">
+                        <span>Recipient</span>
+                        <strong id="modal-recipient-name">Customer</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Order Total</span>
+                        <strong id="modal-order-total" style="color: #d81b60;">₹0.00</strong>
+                    </div>
+                    <div class="summary-item">
+                        <span>Payment Method</span>
+                        <strong id="modal-payment-mode">UPI</strong>
+                    </div>
+                </div>
+
+                <!-- Dynamic Refund / Cancellation Policy Info Banner -->
+                <div id="modal-refund-notice" class="cancel-refund-notice">
+                    <!-- Dynamically filled: Instant refund info or COD cancellation info -->
+                </div>
+
+                <!-- Cancellation Reason Selection -->
+                <div class="cancel-reason-group">
+                    <label for="cancel-reason-select"><strong>Why are you cancelling this order?</strong></label>
+                    <select id="cancel-reason-select" class="form-select">
+                        <option value="Ordered by mistake / accidental click">Ordered by mistake / accidental click</option>
+                        <option value="Change in event date or pooja schedule">Change in event date or pooja schedule</option>
+                        <option value="Want to change flower items or weights">Want to change flower items or weights</option>
+                        <option value="Delivery address change needed">Delivery address change needed</option>
+                        <option value="Found alternative / Other reason">Found alternative / Other reason</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="cancel-modal-footer">
+                <button type="button" class="btn-cancel-modal-dismiss" onclick="closeCancelModal()">
+                    <i class="fa-solid fa-arrow-left"></i> Keep My Order
+                </button>
+                <button type="button" class="btn-cancel-modal-confirm" id="btn-confirm-cancel-action" onclick="executeCancelOrder()">
+                    <i class="fa-solid fa-ban"></i> Yes, Cancel Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TOAST CONTAINER FOR PROFILE ================= -->
+    <div id="profile-toast-container" class="profile-toast-container"></div>
+
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

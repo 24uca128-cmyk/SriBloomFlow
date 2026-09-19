@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloomFlow | Flowers</title>
+
+    <link rel="stylesheet" href="categories.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <a href="home.html" class="logo"
+                style="text-decoration:none; color:inherit; display:flex; align-items:center; gap:8px;">
+                <span style="font-size: 24px;">🌸</span>
+                <span style="font-weight: 700; font-size: 22px; color:#4a2837;">Bloom<span
+                        style="color:#b56d7f;">Flow</span></span>
+            </a>
+
+            <ul>
+
+                <li>
+                    <a href="home.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="categories.html" class="active">
+                        🌸 Flowers
+                    </a>
+                </li>
+
+                <li>
+                    <a href="bouquets.html">
+                        💐 Bouquets
+                    </a>
+                </li>
+
+                <li>
+                    <a href="home.html#why">
+                        ✨ Why Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#footer">
+                        About
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#footer">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- NAV ICONS -->
+
+            <div class="nav-icons">
+
+                <!-- Search -->
+                <a href="flowers.html?focusSearch=true" style="color:inherit;">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </a>
+
+
+                <!-- Wishlist -->
+                <a href="flowers.html?openWishlist=true" style="color:inherit; position:relative;"
+                    title="View Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="cart-badge" id="nav-wishlist-count" style="display:none; background:#e91e63;">
+                        0
+                    </span>
+                </a>
+
+
+                <!-- Cart -->
+
+                <a href="flowers.html?openCart=true" style="color:inherit; position:relative;">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                    <span class="cart-badge" id="nav-cart-count">
+                        0
+                    </span>
+
+                </a>
+
+
+                <!-- Login -->
+
+                <a href="login.html" class="login-btn">
+
+                    Login
+
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="category-hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <span class="hero-small">
+                FRESH • LOCAL • BEAUTIFUL
+            </span>
+
+            <h1>
+                Explore Our Flowers
+            </h1>
+
+            <p>
+                Fresh flowers carefully selected from local markets
+                around Sivakasi for every beautiful occasion.
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FLOWER COLLECTION ================= -->
+
+    <section class="category">
+
+        <div class="category-heading">
+
+            <span class="section-label">
+                OUR COLLECTION
+            </span>
+
+            <h2>
+                Fresh Flowers & Garlands
+            </h2>
+
+            <p>
+                Choose your favourite flowers and garlands from BloomFlow.
+            </p>
+
+        </div>
+
+
+        <div class="category-container">
+
+
+            <!-- ================= MALLIPOO ================= -->
+
+            <a href="flower-details.html?flower=mallipoo" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/jas.jpg" alt="Fresh Mallipoo">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Mallipoo')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="card-content">
+
+                    <h3>Mallipoo</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹120.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Mallipoo')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= MULLAI ================= -->
+
+            <a href="flower-details.html?flower=mullai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/mullai.jpg" alt="Fresh Mullai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Mullai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Mullai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹100.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Mullai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= SAMANTHI ================= -->
+
+            <a href="flower-details.html?flower=samanthi" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/marigold.jpg" alt="Fresh Samanthi">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Samanthi')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Samanthi</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹30.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Samanthi')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= SEVANTHI ================= -->
+
+            <a href="flower-details.html?flower=sevanthi" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/sevanthi.jpg" alt="Fresh Sevanthi">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Sevanthi')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Sevanthi</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹40.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Sevanthi')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= KANAKAMBARAM ================= -->
+
+            <a href="flower-details.html?flower=kanakambaram" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/kanakambaram.jpg" alt="Fresh Kanakambaram">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Kanakambaram')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Kanakambaram</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹100.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Kanakambaram')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= PICHI ================= -->
+
+            <a href="flower-details.html?flower=pichi" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/pichi.jpg" alt="Fresh Pichi">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Pichi')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Pichi</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹90.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Pichi')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= ARALI ================= -->
+
+            <a href="flower-details.html?flower=arali" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/arali.jpg" alt="Fresh Arali">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Arali')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Arali</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹30.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Arali')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= HIBISCUS ================= -->
+
+            <a href="flower-details.html?flower=hibiscus" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/hibiscus.jpg" alt="Fresh Hibiscus">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Hibiscus')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Hibiscus</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹40.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Hibiscus')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= LOTUS ================= -->
+
+            <a href="flower-details.html?flower=lotus" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/lotus.jpg" alt="Fresh Lotus">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Lotus')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Lotus</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹50.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Lotus')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= GERBERA ================= -->
+
+            <a href="flower-details.html?flower=gerbera" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/gerbera.jpg" alt="Fresh Gerbera">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Gerbera')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Gerbera</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹50.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Gerbera')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= ROSE ================= -->
+
+            <a href="flower-details.html?flower=rose" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/rose.jpg" alt="Fresh Rose">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Rose')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Rose</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹40.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Rose')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================================================= -->
+            <!-- ================= GARLANDS ======================= -->
+            <!-- ================================================= -->
+
+
+            <!-- ================= MALLIPOO MAALAI ================= -->
+
+            <a href="flower-details.html?flower=mallipoo-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/mallipoo maalai.jpg" alt="Mallipoo Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Mallipoo Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Mallipoo Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹450.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Mallipoo Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= ROSE MAALAI ================= -->
+
+            <a href="flower-details.html?flower=rose-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/rose maalai.jpg" alt="Rose Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Rose Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Rose Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹650.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Rose Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= SAMANTHI MAALAI ================= -->
+
+            <a href="flower-details.html?flower=samanthi-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/samanthi maalai.jpg" alt="Samanthi Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Samanthi Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Samanthi Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹400.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Samanthi Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= SAMBANGI MAALAI ================= -->
+
+            <a href="flower-details.html?flower=sambangi-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/sambangi.jpg" alt="Sambangi Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Sambangi Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Sambangi Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹450.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Sambangi Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= PETALS MAALAI ================= -->
+
+            <a href="flower-details.html?flower=petals-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/petals maalai.jpg" alt="Petals Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Petals Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Petals Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹550.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Petals Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= OOTY ROSE MAALAI ================= -->
+
+            <a href="flower-details.html?flower=ooty-rose-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/ooty rose maalai.jpg" alt="Ooty Rose Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Ooty Rose Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Ooty Rose Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹750.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Ooty Rose Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= LOTUS MAALAI ================= -->
+
+            <a href="flower-details.html?flower=lotus-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/Lotus.jpg" alt="Lotus Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Lotus Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Lotus Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹500.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Lotus Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= GERBERA MAALAI ================= -->
+
+            <a href="flower-details.html?flower=gerbera-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/gerbera.jpg" alt="Gerbera Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Gerbera Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Gerbera Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹600.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Gerbera Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= ORCHID MAALAI ================= -->
+
+            <a href="flower-details.html?flower=orchid-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/orchid.jpg" alt="Orchid Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Orchid Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Orchid Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹850.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Orchid Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= VETRIVER MAALAI ================= -->
+
+            <a href="flower-details.html?flower=vetriver-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/vetriver.jpg" alt="Vetriver Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Vetriver Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Vetriver Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹350.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Vetriver Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= CARDAMOM MAALAI ================= -->
+
+            <a href="flower-details.html?flower=cardamom-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/cardamom.jpg" alt="Cardamom Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Cardamom Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Cardamom Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹400.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Cardamom Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= ROSE & SEVANTHI ================= -->
+
+            <a href="flower-details.html?flower=rose-sevanthi-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/rose and sevanthi.jpg" alt="Rose and Sevanthi Maalai">
+
+                    <button class="wishlist-btn"
+                        onclick="event.preventDefault(); toggleWishlist('Rose and Sevanthi Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Rose & Sevanthi Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹700.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Rose and Sevanthi Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= MAYILMALAR MAALAI ================= -->
+
+            <a href="flower-details.html?flower=mayil-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/mayilmaalai.jpg" alt="Mayil Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Mayil Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Mayil Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹500.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Mayil Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <!-- ================= VAADAMALLI MAALAI ================= -->
+
+            <a href="flower-details.html?flower=vaadamalli-maalai" class="card animate-fade">
+
+                <div class="image-wrapper">
+
+                    <img src="images/Vadamalli.webp" alt="Vaadamalli Maalai">
+
+                    <button class="wishlist-btn" onclick="event.preventDefault(); toggleWishlist('Vaadamalli Maalai')">
+
+                        <i class="fa-regular fa-heart"></i>
+
+                    </button>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h3>Vaadamalli Maalai</h3>
+
+                    <div class="product-bottom">
+
+                        <span class="price">
+                            ₹450.00
+                        </span>
+
+                        <button class="add-btn" onclick="event.preventDefault(); addToCart('Vaadamalli Maalai')">
+
+                            <i class="fa-solid fa-plus"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer id="footer">
+
+        <h2>
+
+            <i class="fa-solid fa-seedling"></i>
+            BloomFlow
+
+        </h2>
+
+        <p>
+            Fresh flowers for every beautiful occasion.
+        </p>
+
+        <div class="social">
+
+            <i class="fab fa-facebook"></i>
+            <i class="fab fa-instagram"></i>
+            <a href="https://wa.me/919489019413" target="_blank" rel="noopener noreferrer" style="color:inherit;"><i class="fab fa-whatsapp"></i></a>
+            <i class="fab fa-twitter"></i>
+
+        </div>
+
+        <p class="copy">
+            © 2026 BloomFlow. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* ================= CART COUNT ================= */
+
+        function updateCartCount() {
+
+            try {
+
+                const cart =
+                    JSON.parse(
+                        localStorage.getItem("bloomflow_cart")
+                    ) || [];
+
+                const count =
+                    cart.reduce(
+                        (total, item) =>
+                            total + (item.quantity || 0),
+                        0
+                    );
+
+                const badge =
+                    document.getElementById("nav-cart-count");
+
+                if (badge) {
+
+                    badge.textContent = count;
+
+                    badge.style.display =
+                        count > 0 ? "flex" : "none";
+
+                }
+
+            } catch (e) {
+
+                console.error(e);
+
+            }
+
+        }
+
+
+
+        /* ================= ADD TO CART ================= */
+
+        const categoriesPriceMap = {
+            'mallipoo': { id: 1, price: 120, unit: '100g', image: 'images/jas.jpg' },
+            'mullai': { id: 2, price: 100, unit: '100g', image: 'images/mullai.jpg' },
+            'samanthi': { id: 3, price: 30, unit: '100g', image: 'images/marigold.jpg' },
+            'sevanthi': { id: 4, price: 40, unit: '100g', image: 'images/sevanthi.jpg' },
+            'kanakambaram': { id: 5, price: 100, unit: '100g', image: 'images/kanakambaram.jpg' },
+            'pichi': { id: 6, price: 90, unit: '100g', image: 'images/pichi.jpg' },
+            'arali': { id: 7, price: 30, unit: '100g', image: 'images/arali.jpg' },
+            'hibiscus': { id: 8, price: 40, unit: '100g', image: 'images/hibiscus.jpg' },
+            'lotus': { id: 9, price: 50, unit: '1 piece', image: 'images/Lotus.jpg' },
+            'gerbera': { id: 10, price: 50, unit: '100g', image: 'images/gerbera.jpg' },
+            'rose': { id: 11, price: 40, unit: '100g', image: 'images/rose.jpg' },
+            'mallipoo maalai': { id: 12, price: 450, unit: '1 piece', image: 'images/mallipoo maalai.jpg' },
+            'rose maalai': { id: 13, price: 650, unit: '1 piece', image: 'images/rose maalai.jpg' },
+            'samanthi maalai': { id: 14, price: 400, unit: '1 piece', image: 'images/samanthi maalai.jpg' },
+            'sambangi maalai': { id: 15, price: 450, unit: '1 piece', image: 'images/sambangi.jpg' },
+            'petals maalai': { id: 16, price: 550, unit: '1 piece', image: 'images/petals maalai.jpg' },
+            'ooty rose maalai': { id: 17, price: 650, unit: '1 piece', image: 'images/ooty rose maalai.jpg' },
+            'lotus maalai': { id: 18, price: 550, unit: '1 piece', image: 'images/Lotus.jpg' },
+            'gerbera maalai': { id: 19, price: 500, unit: '1 piece', image: 'images/gerbera.jpg' },
+            'orchid maalai': { id: 20, price: 850, unit: '1 piece', image: 'images/orchid.jpg' },
+            'vetriver maalai': { id: 21, price: 350, unit: '1 piece', image: 'images/vetriver.jpg' },
+            'cardamom maalai': { id: 22, price: 500, unit: '1 piece', image: 'images/cardamom.jpg' },
+            'rose and sevanthi maalai': { id: 23, price: 600, unit: '1 piece', image: 'images/rose and sevanthi.jpg' },
+            'mayil maalai': { id: 24, price: 750, unit: '1 piece', image: 'images/mayilmaalai.jpg' },
+            'vaadamalli maalai': { id: 25, price: 450, unit: '1 piece', image: 'images/Vadamalli.webp' }
+        };
+
+        function addToCart(name) {
+            try {
+                let cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+                const key = name.toLowerCase().trim();
+                const meta = categoriesPriceMap[key] || { id: 1, price: 50, unit: '100g', image: 'images/flower-placeholder.jpg' };
+
+                const existing = cart.find(item => item.name.toLowerCase() === key);
+
+                if (existing) {
+                    existing.quantity += 1;
+                } else {
+                    cart.push({
+                        id: meta.id,
+                        name: name,
+                        price: meta.price,
+                        unit: meta.unit,
+                        image: meta.image,
+                        quantity: 1
+                    });
+                }
+
+                localStorage.setItem("bloomflow_cart", JSON.stringify(cart));
+                updateCartCount();
+
+                // Sleek feedback
+                alert("🌸 " + name + " added to your cart successfully!");
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+
+
+        /* ================= WISHLIST ================= */
+
+        function updateWishlistCount() {
+            try {
+                const wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+                const badge = document.getElementById("nav-wishlist-count");
+                if (badge) {
+                    badge.textContent = wishlist.length;
+                    badge.style.display = wishlist.length > 0 ? "inline-flex" : "none";
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function toggleWishlist(name) {
+            try {
+                let wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+                const key = name.toLowerCase().trim();
+                const meta = categoriesPriceMap[key] || { id: 1, price: 50, unit: '100g', image: 'images/flower-placeholder.jpg' };
+
+                const existingIndex = wishlist.findIndex(item =>
+                    (typeof item === 'string' && item.toLowerCase() === key) ||
+                    (typeof item === 'object' && item.name.toLowerCase() === key)
+                );
+
+                if (existingIndex === -1) {
+                    wishlist.push({
+                        id: meta.id,
+                        name: name,
+                        price: meta.price,
+                        unit: meta.unit,
+                        image: meta.image
+                    });
+                    alert("❤️ " + name + " saved to your Wishlist!");
+                } else {
+                    wishlist.splice(existingIndex, 1);
+                    alert(name + " removed from Wishlist.");
+                }
+
+                localStorage.setItem("bloomflow_wishlist", JSON.stringify(wishlist));
+                updateWishlistCount();
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+
+
+        /* ================= USER AUTH ================= */
+
+        function updateNavbarAuth() {
+
+            try {
+
+                const activeUser =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "bloomflow_active_user"
+                        )
+                    );
+
+
+                const navIcons =
+                    document.querySelector(".nav-icons");
+
+
+                if (!navIcons) return;
+
+
+                const loginBtn =
+                    navIcons.querySelector(".login-btn");
+
+
+                if (activeUser && loginBtn) {
+
+                    const firstName =
+                        activeUser.name
+                            ? activeUser.name.split(" ")[0]
+                            : "Account";
+
+
+                    loginBtn.outerHTML = `
+
+                        <a href="profile.html"
+                           class="login-btn"
+                           style="
+                           display:flex;
+                           align-items:center;
+                           gap:6px;
+                           padding:8px 16px;
+                           ">
+
+                            <i class="fa-regular fa-circle-user"></i>
+
+                            ${firstName}
+
+                        </a>
+
+
+                        <a href="#"
+                           onclick="logoutUser(event)"
+                           title="Sign Out"
+                           style="
+                           color:inherit;
+                           font-size:16px;
+                           margin-left:5px;
+                           display:inline-flex;
+                           align-items:center;
+                           ">
+
+                            <i class="fa-solid fa-right-from-bracket"></i>
+
+                        </a>
+
+                    `;
+
+                }
+
+            } catch (e) {
+
+                console.error(e);
+
+            }
+
+        }
+
+
+
+        /* ================= LOGOUT ================= */
+
+        function logoutUser(e) {
+
+            if (e) {
+
+                e.preventDefault();
+
+            }
+
+
+            localStorage.removeItem(
+                "bloomflow_active_user"
+            );
+
+
+            window.location.reload();
+
+        }
+
+
+
+        /* ================= HEADER SCROLL ================= */
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                const header =
+                    document.querySelector("header");
+
+
+                if (window.scrollY > 50) {
+
+                    header.classList.add("scrolled");
+
+                } else {
+
+                    header.classList.remove("scrolled");
+
+                }
+
+            }
+        );
+
+
+
+        /* ================= PAGE LOAD ================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                updateCartCount();
+                updateWishlistCount();
+                updateNavbarAuth();
+
+            }
+        );
+
+    </script>
+
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+
+</body>
+
+</html>

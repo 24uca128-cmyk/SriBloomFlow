@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | Order Success</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="order-success.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <nav class="navbar">
+            <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+            <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+                <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff758c" />
+                            <stop offset="50%" stop-color="#b56d7f" />
+                            <stop offset="100%" stop-color="#7e3b56" />
+                        </linearGradient>
+                        <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe699" />
+                            <stop offset="50%" stop-color="#f5a623" />
+                            <stop offset="100%" stop-color="#c97a2b" />
+                        </linearGradient>
+                        <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                    <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                    <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                    <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                    <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                    <circle cx="22" cy="22" r="2" fill="#ffffff" />
+                </svg>
+                <div class="sri-logo-text">
+                    <span class="sri-logo-prefix">SRI</span>
+                    <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="flowers.html">🌸 Flowers</a></li>
+                <li><a href="bouquets.html">💐 Bouquets</a></li>
+                <li><a href="home.html#why">✨ Why Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= SUCCESS CONTENT ================= -->
+    <main class="success-container">
+        <div class="success-card">
+            
+            <!-- Animated Green Checkmark with Glow -->
+            <div class="success-icon-wrap">
+                <div class="success-icon">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+
+            <div class="success-badge-celebration">
+                <i class="fa-solid fa-sparkles"></i>
+                <span>Order Confirmed & In Preparation</span>
+            </div>
+
+            <h1 class="success-headline">ORDER PLACED SUCCESSFULLY!</h1>
+            <p class="invoice-intro">Thank you for your order! Fresh blooms from Sivakasi are being handpicked and prepared for delivery.</p>
+            
+            <!-- Order Metadata Details -->
+            <div class="order-meta-box">
+                <div class="meta-row meta-tracking-row">
+                    <span class="tracking-label"><i class="fa-solid fa-barcode"></i> Live Tracking ID</span>
+                    <div class="tracking-code-wrap">
+                        <strong id="success-tracking-id" class="tracking-code-text">TRK-BF-000000</strong>
+                        <button type="button" class="btn-copy-tracking" onclick="copyTrackingId()" title="Copy Tracking ID">
+                            <i class="fa-regular fa-copy" id="copy-icon"></i> <span id="copy-label">Copy</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="meta-row">
+                    <span>Order Reference</span>
+                    <strong id="success-order-id" style="color: #15803d; letter-spacing: 0.5px;">#BF-ORD-00000</strong>
+                </div>
+                <div class="meta-row">
+                    <span>Payment Method</span>
+                    <span id="success-payment-method" class="order-badge-pill badge-paid">UPI Payment</span>
+                </div>
+                <div class="meta-row">
+                    <span>Payment Status</span>
+                    <span id="success-payment-status" class="order-badge-pill badge-paid">Paid Online (Completed)</span>
+                </div>
+                <div class="meta-row">
+                    <span>Delivery Recipient</span>
+                    <span id="success-name">Customer</span>
+                </div>
+                <div class="meta-row">
+                    <span>Delivery Destination</span>
+                    <span id="success-address">Sivakasi, Tamil Nadu</span>
+                </div>
+                <div class="meta-row">
+                    <span>Scheduled Delivery Date</span>
+                    <span id="success-date">Tomorrow</span>
+                </div>
+            </div>
+
+            <!-- Interactive Live Tracking Stepper -->
+            <div class="tracking-card-box">
+                <div class="tracking-card-header">
+                    <div>
+                        <h4><i class="fa-solid fa-route"></i> Live Order Tracker</h4>
+                        <p class="tracking-subtitle">Real-time status updates from Sivakasi floral hub</p>
+                    </div>
+                    <span class="live-pulse-badge"><span class="pulse-dot"></span> Active Tracking</span>
+                </div>
+
+                <div class="tracking-stepper">
+                    <div class="step-item step-completed">
+                        <div class="step-icon"><i class="fa-solid fa-check"></i></div>
+                        <div class="step-info">
+                            <h5>Order Placed</h5>
+                            <span class="step-time">Just now</span>
+                        </div>
+                    </div>
+                    <div class="step-line step-line-active"></div>
+                    <div class="step-item step-active">
+                        <div class="step-icon"><i class="fa-solid fa-receipt"></i></div>
+                        <div class="step-info">
+                            <h5>Confirmed</h5>
+                            <span class="step-time">Verified</span>
+                        </div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-item">
+                        <div class="step-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+                        <div class="step-info">
+                            <h5>Packaging</h5>
+                            <span class="step-time">Fresh Harvest</span>
+                        </div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-item">
+                        <div class="step-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                        <div class="step-info">
+                            <h5>Delivery</h5>
+                            <span class="step-time">Express</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tracking-partner-banner">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <div>
+                        <strong>SRI BloomFlow Express Sivakasi</strong>
+                        <span>Handled with hydration seal & local direct transit.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items summary invoice list -->
+            <div class="items-invoice-box">
+                <h3>
+                    <span><i class="fa-solid fa-seedling"></i> Items Summary</span>
+                    <small id="items-count-badge" style="font-size: 11.5px; font-weight: 600; color: #166534;">1 Item</small>
+                </h3>
+                <div class="invoice-items-container" id="success-items-list">
+                    <!-- Loaded dynamically -->
+                </div>
+                <div class="invoice-grand-total">
+                    <span>Total Amount</span>
+                    <strong id="success-total">₹0.00</strong>
+                </div>
+            </div>
+
+            <!-- Navigation Redirect Buttons -->
+            <div class="success-actions">
+                <a id="btn-track-live" href="profile.html" class="btn-track-live"><i class="fa-solid fa-location-crosshairs"></i> Track Order</a>
+                <a href="profile.html" class="btn-profile"><i class="fa-solid fa-receipt"></i> My Orders</a>
+                <a href="flowers.html" class="btn-shop"><i class="fa-solid fa-bag-shopping"></i> Continue Shopping</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="footer">
+        <h2>BloomFlow</h2>
+        <p>Made with ❤️ for every beautiful occasion in Sivakasi.</p>
+        <p class="copy">© 2026 BloomFlow. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        let currentTrackingId = '';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadOrderReceipt();
+        });
+
+        function copyTrackingId() {
+            if (!currentTrackingId) return;
+            navigator.clipboard.writeText(currentTrackingId).then(() => {
+                const label = document.getElementById('copy-label');
+                const icon = document.getElementById('copy-icon');
+                if (label) label.textContent = 'Copied!';
+                if (icon) icon.className = 'fa-solid fa-check';
+                setTimeout(() => {
+                    if (label) label.textContent = 'Copy';
+                    if (icon) icon.className = 'fa-regular fa-copy';
+                }, 2000);
+            }).catch(() => {
+                prompt("Copy your tracking ID below:", currentTrackingId);
+            });
+        }
+
+        // Parse query params and lookup order details
+        async function loadOrderReceipt() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            const urlTrackingId = urlParams.get('trackingId');
+
+            if (!orderId && !urlTrackingId) {
+                alert("Order reference not found! Redirecting to shop.");
+                window.location.href = "flowers.html";
+                return;
+            }
+
+            try {
+                let order = null;
+
+                // 1. Try MongoDB Backend
+                if (window.BloomAPI && window.BloomAPI.orders) {
+                    try {
+                        const ordersRes = await window.BloomAPI.orders.getAll();
+                        if (ordersRes.ok && ordersRes.data && ordersRes.data.data) {
+                            const found = ordersRes.data.data.find(o => 
+                                (orderId && (o.orderNumber === orderId || o._id === orderId)) ||
+                                (urlTrackingId && o.trackingId === urlTrackingId)
+                            );
+                            if (found) {
+                                order = {
+                                    orderId: found.orderNumber,
+                                    trackingId: found.trackingId,
+                                    recipientName: found.customerName,
+                                    deliveryAddress: found.deliveryAddress ? `${found.deliveryAddress.street || ''}, ${found.deliveryAddress.city || 'Sivakasi'}` : 'Sivakasi',
+                                    deliveryDate: new Date(found.createdAt).toLocaleDateString(),
+                                    paymentMethod: found.paymentMethod || 'COD',
+                                    paymentStatus: found.paymentStatus || 'Pending',
+                                    total: found.grandTotal || found.totalAmount,
+                                    items: found.items || []
+                                };
+                            }
+                        }
+                    } catch (e) {
+                        console.warn("Backend order receipt fetch:", e);
+                    }
+                }
+
+                // 2. Fallback to localStorage
+                if (!order) {
+                    const orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+                    order = orders.find(o => 
+                        (orderId && o.orderId === orderId) ||
+                        (urlTrackingId && o.trackingId === urlTrackingId)
+                    );
+                }
+
+                const displayOrderId = (order && order.orderId) || orderId || 'BF-88219';
+                currentTrackingId = (order && order.trackingId) || urlTrackingId || `TRK-BF-${displayOrderId.replace(/\D/g, '') || Math.floor(100000 + Math.random() * 900000)}`;
+
+                document.getElementById('success-order-id').textContent = displayOrderId;
+                document.getElementById('success-tracking-id').textContent = currentTrackingId;
+
+                const trackLiveBtn = document.getElementById('btn-track-live');
+                if (trackLiveBtn) {
+                    trackLiveBtn.href = `profile.html?track=${encodeURIComponent(currentTrackingId)}`;
+                }
+
+                if (!order) {
+                    return;
+                }
+
+                // Populate receipt fields
+                document.getElementById('success-name').textContent = order.recipientName || 'Customer';
+                document.getElementById('success-address').textContent = order.deliveryAddress || 'Sivakasi';
+                document.getElementById('success-date').textContent = order.deliveryDate || 'Scheduled Delivery';
+                document.getElementById('success-total').textContent = `₹${Number(order.total || 0).toLocaleString('en-IN')}`;
+
+                // Payment Method & Status labels
+                const methodEl = document.getElementById('success-payment-method');
+                const statusEl = document.getElementById('success-payment-status');
+                
+                let methodLabel = 'Cash on Delivery (COD)';
+                if (order.paymentMethod === 'UPI') methodLabel = 'UPI / Google Pay / PhonePe';
+                if (order.paymentMethod === 'CARD') methodLabel = 'Credit / Debit Card';
+                
+                if (methodEl) methodEl.textContent = methodLabel;
+
+                if (statusEl) {
+                    if (order.paymentMethod === 'COD') {
+                        statusEl.textContent = 'Pay on Delivery';
+                        statusEl.className = 'order-badge-pill badge-cod';
+                    } else {
+                        statusEl.textContent = 'Paid Online (Completed)';
+                        statusEl.className = 'order-badge-pill badge-paid';
+                    }
+                }
+
+                // Load items
+                const itemsList = document.getElementById('success-items-list');
+                const countBadge = document.getElementById('items-count-badge');
+                if (itemsList) {
+                    itemsList.innerHTML = '';
+                    const items = order.items || [];
+                    if (countBadge) countBadge.textContent = `${items.length} ${items.length === 1 ? 'Item' : 'Items'}`;
+
+                    items.forEach(item => {
+                        const row = document.createElement('div');
+                        row.className = 'invoice-item-row';
+                        const itemPrice = Number(item.price || 0);
+                        const itemQty = Number(item.quantity || 1);
+                        row.innerHTML = `
+                            <span><strong>${item.name}</strong> <span class="qty-muted">x${itemQty} (${item.unit || '100g'})</span></span>
+                            <span>₹${(itemPrice * itemQty).toFixed(2)}</span>
+                        `;
+                        itemsList.appendChild(row);
+                    });
+                }
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    </script>
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

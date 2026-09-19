@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | Handcrafted Bouquets & Aaram 💐</title>
+
+    <link rel="stylesheet" href="flowers.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        .price-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .product-unit {
+            font-size: 11.5px;
+            color: #8c7a82;
+            font-weight: 500;
+        }
+
+        .sivakasi-rate-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10.5px;
+            font-weight: 600;
+            color: #2e7d32;
+            background: #e8f5e9;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-top: 3px;
+        }
+
+        .filter-btn .filter-count {
+            display: inline-block;
+            background: rgba(0,0,0,0.06);
+            color: inherit;
+            padding: 1px 6px;
+            border-radius: 10px;
+            font-size: 10.5px;
+            margin-left: 5px;
+            font-weight: 700;
+        }
+
+        .filter-btn.active .filter-count {
+            background: rgba(255,255,255,0.25);
+            color: #fff;
+        }
+
+        .product-card img,
+        .product-info h3 {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <nav class="navbar">
+
+        <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+        <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+            <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff758c" />
+                        <stop offset="50%" stop-color="#b56d7f" />
+                        <stop offset="100%" stop-color="#7e3b56" />
+                    </linearGradient>
+                    <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffe699" />
+                        <stop offset="50%" stop-color="#f5a623" />
+                        <stop offset="100%" stop-color="#c97a2b" />
+                    </linearGradient>
+                    <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                    </filter>
+                </defs>
+                <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                <circle cx="22" cy="22" r="2" fill="#ffffff" />
+            </svg>
+            <div class="sri-logo-text">
+                <span class="sri-logo-prefix">SRI</span>
+                <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="flowers.html">🌸 Flowers</a></li>
+            <li><a href="bouquets.html" class="active">💐 Bouquets</a></li>
+            <li><a href="home.html#why">✨ Why Us</a></li>
+            <li><a href="#footer">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+            <button class="nav-icon-btn" onclick="focusSearch()" title="Search Bouquets & Aaram">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button class="nav-icon-btn wishlist-button" onclick="openWishlist()" title="View Wishlist" style="position: relative;">
+                <i class="fa-regular fa-heart"></i>
+                <span id="wishlist-count" class="cart-badge" style="position: absolute; top: -6px; right: -6px; background: #e91e63; color: #fff; font-size: 10px; font-weight: 700; border-radius: 50%; min-width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; padding: 0 4px;">0</span>
+            </button>
+
+            <button class="nav-icon-btn cart-button" onclick="openCart()" title="View Cart" style="position: relative;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </button>
+
+            <a href="login.html" class="login-btn" id="nav-login-btn">
+                👤 Login
+            </a>
+        </div>
+
+    </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="flowers-hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <span class="hero-small">
+            💐 HANDCRAFTED ARTISAN DESIGNS & SACRED AARAM
+        </span>
+
+        <h1>
+            🌸 Handcrafted Bouquets & Aaram
+        </h1>
+
+        <p>
+            Celebrate birthdays, anniversaries, weddings, and auspicious moments with fresh floral bouquets and authentic handcrafted wedding aaram.
+        </p>
+
+        <a href="#bouquet-shop" class="hero-btn">
+            Explore Collection
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
+    </div>
+</section>
+
+<!-- ================= SHOP ================= -->
+<main id="bouquet-shop">
+    <section class="shop-section">
+
+        <!-- SECTION TITLE -->
+        <div class="section-heading">
+            <span>🌿 OUR BOUQUET & AARAM COLLECTION</span>
+            <h2>
+                Handcrafted Bouquets & Sacred Aaram
+            </h2>
+            <p>
+                Freshly hand-tied bouquets and traditional wedding aaram with today's Sivakasi market prices.
+            </p>
+        </div>
+
+        <!-- ================= SEARCH ================= -->
+        <div class="shop-tools">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    id="bouquet-search"
+                    placeholder="Search bouquets, aaram, roses, gerbera..."
+                    oninput="filterBouquetList()"
+                >
+            </div>
+        </div>
+
+        <!-- ================= FILTERS ================= -->
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all" onclick="setCategoryFilter('all', this)">
+                🌟 All Items <span class="filter-count" id="count-all">19</span>
+            </button>
+
+          
+
+            <button class="filter-btn" data-category="aaram" onclick="setCategoryFilter('aaram', this)">
+                📿  Aaram <span class="filter-count" id="count-aaram">3</span>
+            </button>
+
+            <button class="filter-btn" data-category="rose" onclick="setCategoryFilter('rose', this)">
+                🌹 Rose Bouquets <span class="filter-count" id="count-rose">7</span>
+            </button>
+
+            <button class="filter-btn" data-category="gerbera" onclick="setCategoryFilter('gerbera', this)">
+                🌻 Gerbera Bouquets <span class="filter-count" id="count-gerbera">4</span>
+            </button>
+        </div>
+
+        <!-- ================= PRODUCTS GRID ================= -->
+        <div class="products-grid" id="products-grid">
+            <!-- Rendered dynamically by JS in identical format to flowers.html -->
+        </div>
+
+        <!-- ================= NO RESULTS ================= -->
+        <div class="no-results" id="no-results" style="display:none;">
+            <i class="fa-solid fa-seedling"></i>
+            <h3>No items found</h3>
+            <p>Try searching for another bouquet or aaram name.</p>
+        </div>
+
+    </section>
+</main>
+
+<!-- ================= CART OVERLAY & DRAWER ================= -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+        <div>
+            <span>Your Cart</span>
+            <h3><span id="cart-item-count">0</span> Items</h3>
+        </div>
+        <button class="close-cart" onclick="closeCart()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div class="cart-items" id="cart-items">
+        <div class="empty-cart" style="text-align: center; padding: 45px 20px;">
+            <i class="fa-solid fa-basket-shopping" style="font-size: 45px; color: #f2b8ca; margin-bottom: 15px; display:block;"></i>
+            <h4 style="font-size: 18px; color: #4a2837; margin-bottom: 8px;">🌸 Your cart is empty</h4>
+            <p style="font-size: 13px; color: #88787f;">Add beautiful bouquets or fresh flowers!</p>
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="cart-summary">
+            <span>Subtotal</span>
+            <strong id="cart-subtotal">₹0.00</strong>
+        </div>
+        <div class="cart-summary">
+            <span>Delivery</span>
+            <strong class="free">FREE</strong>
+        </div>
+        <div class="cart-total">
+            <span>Total</span>
+            <strong id="cart-total">₹0.00</strong>
+        </div>
+        <button class="checkout-btn" onclick="goToCheckout()">
+            Proceed to Checkout <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+</aside>
+
+<!-- ================= WISHLIST OVERLAY & DRAWER ================= -->
+<div class="wishlist-overlay" id="wishlist-overlay" onclick="closeWishlist()"></div>
+<aside class="wishlist-drawer" id="wishlist-drawer">
+    <div class="cart-header" style="border-bottom: 1px solid #fce4ec;">
+        <div>
+            <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #e91e63; font-weight: 700;">Your Saved Blooms</span>
+            <h3 style="margin: 0; color: #4d3741; font-size: 18px;"><span id="wishlist-drawer-count">0</span> Items in Wishlist</h3>
+        </div>
+        <button class="close-cart" onclick="closeWishlist()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div class="cart-items" id="wishlist-items-container" style="flex: 1; overflow-y: auto; padding: 20px;"></div>
+    <div class="cart-footer" style="padding: 20px; border-top: 1px solid #fce4ec; background: #fff5f8;">
+        <button class="checkout-btn" id="wishlist-move-all-btn" onclick="addAllWishlistToCart()" style="background: #8e4585; border: none; margin-bottom: 10px;">
+            <i class="fa-solid fa-cart-plus"></i> Move All to Cart
+        </button>
+        <button onclick="closeWishlist()" style="width: 100%; padding: 10px; background: transparent; border: 1px solid #e0d0d8; border-radius: 12px; color: #666; font-size: 13px; font-weight: 600; cursor: pointer;">
+            Continue Shopping
+        </button>
+    </div>
+</aside>
+
+<!-- ================= TOAST ================= -->
+<div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Added to cart</span>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer id="footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <span style="font-weight: 800; color: #d48b48;">SRI</span> BloomFlow
+            </div>
+            <p>
+                Fresh flowers, handcrafted bouquets, and sacred aaram for every memorable and auspicious moment.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="home.html">Home</a>
+            <a href="flowers.html">🌸 Flowers</a>
+            <a href="bouquets.html">💐 Bouquets</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Customer Care</h3>
+            <a href="#">About Us</a>
+            <a href="#">Contact Support</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Direct Contact</h3>
+            <p><i class="fa-solid fa-phone"></i> +91 8526778960</p>
+            <p><i class="fa-solid fa-phone"></i> +91 9489019413</p>
+            <p><i class="fa-solid fa-location-dot"></i> Sivakasi, Tamil Nadu</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/919489019413" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 SRI BloomFlow. All Rights Reserved.</p>
+        <p>Made with ❤️ for every beautiful occasion in Sivakasi.</p>
+    </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+
+<script>
+/* =========================================================
+   STRICT PRODUCT LIST:
+   Only images saved as bouquet and aaram in images/ folder
+   ========================================================= */
+const products = [
+    /* ----- BOUQUETS (16 Items) ----- */
+    {
+        id: 101,
+        slug: "pastel-dream-rose-bouquet",
+        name: "Pastel Dream Rose Bouquet",
+        category: "bouquet rose pastel",
+        categoryDisplay: "🌸 Pastel Luxury Bouquet",
+        type: "bouquet",
+        price: 699,
+        unit: "1 Bouquet",
+        image: "images/bouquet_pastel_roses.jpg",
+        fallbackImage: "images/bouquet_pastel.png",
+        rating: 4.9,
+        tagline: "Soft blush pink roses mixed with baby's breath and premium frosted wrap."
+    },
+    {
+        id: 102,
+        slug: "classic-romance-red-rose-bouquet",
+        name: "Classic Romance Red Rose Bouquet",
+        category: "bouquet rose wedding",
+        categoryDisplay: "🌹 Classic Red Roses",
+        type: "bouquet",
+        price: 599,
+        unit: "1 Bouquet",
+        image: "images/bouquet_red_roses.jpg",
+        fallbackImage: "images/bouquet.png",
+        rating: 4.9,
+        tagline: "Stunning red velvet roses hand-tied with elegant silk ribbon & gypsophila."
+    },
+    {
+        id: 103,
+        slug: "blush-pink-lily-charm-bouquet",
+        name: "Blush Pink Lily Charm Bouquet",
+        category: "bouquet lily pastel",
+        categoryDisplay: "🪷 Fragrant Pink Lily",
+        type: "bouquet",
+        price: 850,
+        unit: "1 Bouquet",
+        image: "images/bouquet_pink_lily.jpg",
+        fallbackImage: "images/lily_pink.png",
+        rating: 4.9,
+        tagline: "Fragrant Oriental Pink Lilies with fresh eucalyptus and lavender wrap."
+    },
+    {
+        id: 104,
+        slug: "elegance-pink-rose-bunch",
+        name: "Elegance Pink Rose Bunch",
+        category: "bouquet rose pastel",
+        categoryDisplay: "🌸 Fresh Morning Roses",
+        type: "bouquet",
+        price: 550,
+        unit: "1 Bouquet",
+        image: "images/bouquet_pink_roses.jpg",
+        fallbackImage: "images/rose_pink.png",
+        rating: 4.8,
+        tagline: "Fresh morning pink roses wrapped in Korean frosted paper with love."
+    },
+    {
+        id: 105,
+        slug: "royal-white-lily-bridal-bunch",
+        name: "Royal White Bridal Lily Bouquet",
+        category: "bouquet lily wedding",
+        categoryDisplay: "💍 Royal Bridal White",
+        type: "bouquet",
+        price: 899,
+        unit: "1 Bouquet",
+        image: "images/bouquet_white_bridal.jpg",
+        fallbackImage: "images/lily.png",
+        rating: 5.0,
+        tagline: "Pristine white lilies and fragrant baby blooms for weddings and celebrations."
+    },
+    {
+        id: 106,
+        slug: "exotic-purple-orchid-bouquet",
+        name: "Exotic Purple Orchid Luxury Bouquet",
+        category: "bouquet exotic wedding",
+        categoryDisplay: "👑 VIP Exotic Orchid",
+        type: "bouquet",
+        price: 950,
+        unit: "1 Bouquet",
+        image: "images/bouquet_purple_orchid.jpg",
+        fallbackImage: "images/orchid.png",
+        rating: 4.9,
+        tagline: "Premium fresh blue-purple orchids wrapped in matte black and gold foil."
+    },
+    {
+        id: 107,
+        slug: "mixed-rose-festival-bouquet",
+        name: "Mixed Rose Bouquet",
+        category: "bouquet rose",
+        categoryDisplay: "🌹 Mixed Garden Roses",
+        type: "bouquet",
+        price: 650,
+        unit: "1 Bouquet",
+        image: "images/mixedrosebouquet.jpg",
+        fallbackImage: "images/rose.jpg",
+        rating: 4.8,
+        tagline: "Joyful blend of red, pink, yellow & orange fresh roses with greenery."
+    },
+    {
+        id: 108,
+        slug: "red-rose-bouquet",
+        name: "Red Rose Bouquet",
+        category: "bouquet rose wedding",
+        categoryDisplay: "🌹 Velvet Red Roses",
+        type: "bouquet",
+        price: 599,
+        unit: "1 Bouquet",
+        image: "images/redrosebouquet.jpg",
+        fallbackImage: "images/redrose.jpg",
+        rating: 4.9,
+        tagline: "Handpicked deep crimson red roses in artisan textured red wrap."
+    },
+    {
+        id: 109,
+        slug: "pink-rose-bouquet",
+        name: "Pink Rose Bouquet",
+        category: "bouquet rose pastel",
+        categoryDisplay: "🌸 Sweet Pink Roses",
+        type: "bouquet",
+        price: 550,
+        unit: "1 Bouquet",
+        image: "images/pinkrosebouquet.jpg",
+        fallbackImage: "images/pinkrose.jpg",
+        rating: 4.8,
+        tagline: "Tender pink roses bundled with delicate baby's breath and blush ribbons."
+    },
+    {
+        id: 110,
+        slug: "yellow-rose-bouquet",
+        name: "Yellow Rose Bouquet",
+        category: "bouquet rose",
+        categoryDisplay: "🌻 Golden Sunshine Roses",
+        type: "bouquet",
+        price: 499,
+        unit: "1 Bouquet",
+        image: "images/yellowrosebouquet.jpg",
+        fallbackImage: "images/yellowrose.jpg",
+        rating: 4.7,
+        tagline: "Bright yellow roses symbolizing friendship and joyous celebrations."
+    },
+    {
+        id: 111,
+        slug: "orange-rose-bouquet",
+        name: "Orange Rose Bouquet",
+        category: "bouquet rose",
+        categoryDisplay: "🌅 Sunset Orange Roses",
+        type: "bouquet",
+        price: 550,
+        unit: "1 Bouquet",
+        image: "images/orangerosebouquet.jpg",
+        fallbackImage: "images/rose.jpg",
+        rating: 4.8,
+        tagline: "Warm orange fresh roses wrapped with rustic craft paper and golden twine."
+    },
+    {
+        id: 112,
+        slug: "red-white-rose-bouquet",
+        name: "Red & White Rose Bouquet",
+        category: "bouquet rose wedding",
+        categoryDisplay: "🌹 Red & White Harmony",
+        type: "bouquet",
+        price: 650,
+        unit: "1 Bouquet",
+        image: "images/redwhiterosebouquet.jpg",
+        fallbackImage: "images/rose.jpg",
+        rating: 4.9,
+        tagline: "Dual-tone arrangement of rich red roses and pure white roses in harmony."
+    },
+    {
+        id: 113,
+        slug: "mixed-gerbera-bouquet",
+        name: "Mixed Gerbera Bouquet",
+        category: "bouquet gerbera",
+        categoryDisplay: "🌻 Mixed Gerberas",
+        type: "bouquet",
+        price: 499,
+        unit: "1 Bouquet",
+        image: "images/mixedgerberabouquet.jpg",
+        fallbackImage: "images/gerbera.jpg",
+        rating: 4.8,
+        tagline: "Cheerful medley of yellow, red, pink and orange gerbera flowers."
+    },
+    {
+        id: 114,
+        slug: "pink-gerbera-bouquet",
+        name: "Pink Gerbera Bouquet",
+        category: "bouquet gerbera pastel",
+        categoryDisplay: "🌸 Pretty Pink Gerbera",
+        type: "bouquet",
+        price: 450,
+        unit: "1 Bouquet",
+        image: "images/pinkgerberabouquet.jpg",
+        fallbackImage: "images/ger.jpg",
+        rating: 4.7,
+        tagline: "Sweet pink gerberas arranged with seasonal fillers and soft wrap."
+    },
+    {
+        id: 115,
+        slug: "red-gerbera-bouquet",
+        name: "Red Gerbera Bouquet",
+        category: "bouquet gerbera",
+        categoryDisplay: "🌺 Crimson Red Gerbera",
+        type: "bouquet",
+        price: 450,
+        unit: "1 Bouquet",
+        image: "images/redgerberabouquet.jpg",
+        fallbackImage: "images/gerbera.jpg",
+        rating: 4.7,
+        tagline: "Bold red gerbera blooms in modern dual-layer packaging."
+    },
+    {
+        id: 116,
+        slug: "yellow-gerbera-bouquet",
+        name: "Yellow Gerbera Bouquet",
+        category: "bouquet gerbera",
+        categoryDisplay: "☀️ Sunshine Yellow Gerbera",
+        type: "bouquet",
+        price: 450,
+        unit: "1 Bouquet",
+        image: "images/yellowgerberabouquet.jpg",
+        fallbackImage: "images/ger.jpg",
+        rating: 4.7,
+        tagline: "Energetic yellow gerbera bouquet for congratulations and celebrations."
+    },
+
+    /* ----- SACRED AARAM (3 Items) ----- */
+    {
+        id: 118,
+        slug: "jasmine-aaram",
+        name: "Traditional Jasmine Aaram",
+        category: "aaram wedding",
+        categoryDisplay: "📿 Jasmine Wedding Aaram",
+        type: "aaram",
+        price: 850,
+        unit: "1 Aaram",
+        image: "images/jasmineaaram.jpg",
+        fallbackImage: "images/jas.jpg",
+        rating: 4.9,
+        tagline: "Dense, highly fragrant Sivakasi Mallipoo wedding aaram hand-woven for bridal elegance."
+    },
+    {
+        id: 119,
+        slug: "mullai-aaram",
+        name: "Royal Mullai Aaram",
+        category: "aaram wedding",
+        categoryDisplay: "📿 Royal Mullai Aaram",
+        type: "aaram",
+        price: 890,
+        unit: "1 Aaram",
+        image: "images/mullaiaaram.jpg",
+        fallbackImage: "images/mullai.jpg",
+        rating: 4.9,
+        tagline: "Premium fresh Mullai buds strung into an exquisite traditional auspicious aaram."
+    },
+    {
+        id: 120,
+        slug: "rose-petals-aaram",
+        name: "Grand Rose Petals Wedding Aaram",
+        category: "aaram wedding",
+        categoryDisplay: "🌹 Grand Rose Petal Aaram",
+        type: "aaram",
+        price: 950,
+        unit: "1 Aaram",
+        image: "images/rosepetalsaaram.jpg",
+        fallbackImage: "images/rose.jpg",
+        rating: 5.0,
+        tagline: "Luxurious layered rose petal aaram crafted specifically for grand marriage ceremonies."
+    }
+];
+
+let selectedCategory = "all";
+let searchFilter = "";
+
+/* =========================================================
+   STAR ICONS
+   ========================================================= */
+function createStars(rating) {
+    let html = "";
+    const fullStars = Math.floor(rating);
+    const hasHalf = rating % 1 !== 0;
+
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            html += '<i class="fa-solid fa-star"></i>';
+        } else if (i === fullStars && hasHalf) {
+            html += '<i class="fa-solid fa-star-half-stroke"></i>';
+        } else {
+            html += '<i class="fa-regular fa-star"></i>';
+        }
+    }
+    return html;
+}
+
+/* =========================================================
+   RENDER PRODUCTS (SAME FORMAT AS flowers.html)
+   ========================================================= */
+function renderProducts() {
+    const grid = document.getElementById("products-grid");
+    const noResults = document.getElementById("no-results");
+    if (!grid) return;
+
+    grid.innerHTML = "";
+
+    const filtered = products.filter(product => {
+        const matchesCategory = (selectedCategory === "all") ||
+            (selectedCategory === "bouquet" && product.category.includes("bouquet")) ||
+            (selectedCategory === "aaram" && product.category.includes("aaram")) ||
+            (selectedCategory === "rose" && product.category.includes("rose")) ||
+            (selectedCategory === "gerbera" && product.category.includes("gerbera"));
+
+        const q = searchFilter.toLowerCase().trim();
+        const matchesSearch = !q ||
+            product.name.toLowerCase().includes(q) ||
+            product.tagline.toLowerCase().includes(q) ||
+            product.categoryDisplay.toLowerCase().includes(q);
+
+        return matchesCategory && matchesSearch;
+    });
+
+    if (filtered.length === 0) {
+        if (noResults) noResults.style.display = "block";
+        return;
+    } else {
+        if (noResults) noResults.style.display = "none";
+    }
+
+    const wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+    const wishlistNames = wishlist.map(w => (typeof w === 'object' ? w.name : w).toLowerCase());
+
+    filtered.forEach(product => {
+        const isFav = wishlistNames.includes(product.name.toLowerCase());
+        const card = document.createElement("div");
+        card.className = "product-card animate-fade";
+
+        card.innerHTML = `
+            <div class="img-container">
+                <img src="${product.image}" 
+                     alt="${product.name}" 
+                     onclick="openDetailsModal(${product.id})" 
+                     onerror="this.src='${product.fallbackImage || 'images/bouquet.png'}'">
+                <button class="favorite-btn" 
+                        onclick="toggleFavorite(this, '${product.name}', ${product.price}, '${product.image}', '${product.unit}')" 
+                        aria-label="Add to wishlist"
+                        title="${isFav ? 'Remove from Wishlist' : 'Add to Wishlist'}">
+                    <i class="${isFav ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}" style="${isFav ? 'color:#e91e63;' : ''}"></i>
+                </button>
+            </div>
+
+            <div class="product-info">
+                <div class="category-name">${product.categoryDisplay}</div>
+                <h3 onclick="openDetailsModal(${product.id})">${product.name}</h3>
+                <p class="tagline">${product.tagline}</p>
+                
+                <div class="stars">
+                    ${createStars(product.rating)}
+                    <span>(${product.rating})</span>
+                </div>
+
+                <div class="price-row">
+                    <div class="price-container">
+                        <span class="price">₹${product.price.toFixed(2)}</span>
+                        <span class="product-unit">per ${product.unit}</span>
+                        <span class="sivakasi-rate-tag">
+                            <i class="fa-solid fa-tag"></i> Sivakasi Rate
+                        </span>
+                    </div>
+
+                    <button class="add-to-cart-btn" onclick="addToCart('${product.name}', ${product.price}, '${product.image}', '${product.unit}', ${product.id})">
+                        <i class="fa-solid fa-cart-plus"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        `;
+
+        grid.appendChild(card);
+    });
+}
+
+/* =========================================================
+   SEARCH & FILTER
+   ========================================================= */
+function setCategoryFilter(category, btn) {
+    selectedCategory = category;
+    document.querySelectorAll(".category-filters .filter-btn").forEach(b => b.classList.remove("active"));
+    if (btn) btn.classList.add("active");
+    renderProducts();
+}
+
+function filterBouquetList() {
+    const input = document.getElementById("bouquet-search");
+    searchFilter = input ? input.value : "";
+    renderProducts();
+}
+
+function focusSearch() {
+    const input = document.getElementById("bouquet-search");
+    if (input) {
+        input.focus();
+        input.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+}
+
+function openDetailsModal(id) {
+    window.location.href = `flower-details.html?id=${id}`;
+}
+
+/* =========================================================
+   CART LOGIC (UNIFIED WITH bloomflow_cart)
+   ========================================================= */
+function addToCart(name, price, image, unit, id) {
+    let cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    const itemKey = `item_${id}_${unit.replace(/\s+/g, '_')}`.toLowerCase();
+
+    const existing = cart.find(item => 
+        (item.itemKey && item.itemKey === itemKey) ||
+        (item.name && item.name.toLowerCase() === name.toLowerCase())
+    );
+
+    if (existing) {
+        existing.quantity = (existing.quantity || 1) + 1;
+        existing.itemTotal = Number(existing.price) * existing.quantity;
+    } else {
+        cart.push({
+            id: id || Date.now(),
+            productId: id || Date.now(),
+            itemKey: itemKey,
+            name: name,
+            price: Number(price),
+            unitPrice: Number(price),
+            unit: unit || "1 piece",
+            weight: unit || "1 piece",
+            image: image,
+            quantity: 1,
+            itemTotal: Number(price)
+        });
+    }
+
+    localStorage.setItem("bloomflow_cart", JSON.stringify(cart));
+    updateNavCounts();
+    renderCartUI();
+    showToast(`💐 ${name} added to cart! (₹${Number(price).toFixed(2)})`);
+}
+
+function toggleCart(isOpen) {
+    const drawer = document.getElementById("cart-drawer");
+    const overlay = document.getElementById("cart-overlay");
+    if (drawer && overlay) {
+        if (isOpen) {
+            drawer.classList.add("open");
+            overlay.classList.add("open");
+            document.body.style.overflow = "hidden";
+            renderCartUI();
+        } else {
+            drawer.classList.remove("open");
+            overlay.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    }
+}
+function openCart() { toggleCart(true); }
+function closeCart() { toggleCart(false); }
+
+function renderCartUI() {
+    const cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    const container = document.getElementById("cart-items");
+    const subtotalEl = document.getElementById("cart-subtotal");
+    const totalEl = document.getElementById("cart-total");
+    const itemCountEl = document.getElementById("cart-item-count");
+
+    const totalQty = cart.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
+    if (itemCountEl) itemCountEl.innerText = totalQty;
+
+    if (!container) return;
+
+    if (cart.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart" style="text-align: center; padding: 45px 20px;">
+                <i class="fa-solid fa-basket-shopping" style="font-size: 45px; color: #f2b8ca; margin-bottom: 15px; display:block;"></i>
+                <h4 style="font-size: 18px; color: #4a2837; margin-bottom: 8px;">🌸 Your cart is empty</h4>
+                <p style="font-size: 13px; color: #88787f;">Add beautiful bouquets or fresh flowers!</p>
+            </div>
+        `;
+        if (subtotalEl) subtotalEl.innerText = "₹0.00";
+        if (totalEl) totalEl.innerText = "₹0.00";
+        return;
+    }
+
+    let subtotal = 0;
+    container.innerHTML = cart.map((item, idx) => {
+        const itemTotal = Number(item.price) * Number(item.quantity || 1);
+        subtotal += itemTotal;
+        return `
+            <div class="cart-item">
+                <img src="${item.image}" alt="${item.name}" onerror="this.src='images/bouquet.png'">
+                <div class="cart-item-details">
+                    <h4 style="font-size:14px; font-weight:600; color:#30292d; margin-bottom: 2px;">${item.name}</h4>
+                    <span style="display:inline-block; font-size:11px; background:#fdf0f5; color:#8e4585; padding:2px 8px; border-radius:12px; font-weight:600;">${item.weight || item.unit || '1 pc'}</span>
+                    <span class="unit-price" style="display:block; font-size:12px; color:#88787f; margin-top:3px;">₹${Number(item.price).toFixed(2)} each</span>
+                    <div class="quantity-controls" style="margin-top:6px;">
+                        <button onclick="updateCartItemQty(${idx}, ${(item.quantity || 1) - 1})">-</button>
+                        <span>${item.quantity || 1}</span>
+                        <button onclick="updateCartItemQty(${idx}, ${(item.quantity || 1) + 1})">+</button>
+                    </div>
+                </div>
+                <div class="cart-item-right" style="text-align:right;">
+                    <strong style="color:#8e4585; font-size:15px;">₹${itemTotal.toFixed(2)}</strong>
+                    <i class="fa-regular fa-trash-can remove-item-btn" onclick="removeCartItem(${idx})" style="cursor:pointer; color:#bcaaa4; margin-top:10px; display:block;" title="Remove"></i>
+                </div>
+            </div>
+        `;
+    }).join("");
+
+    if (subtotalEl) subtotalEl.innerText = `₹${subtotal.toFixed(2)}`;
+    if (totalEl) totalEl.innerText = `₹${subtotal.toFixed(2)}`;
+}
+
+function updateCartItemQty(idx, qty) {
+    let cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    if (qty <= 0) {
+        cart.splice(idx, 1);
+    } else {
+        cart[idx].quantity = qty;
+        cart[idx].itemTotal = Number(cart[idx].price) * qty;
+    }
+    localStorage.setItem("bloomflow_cart", JSON.stringify(cart));
+    renderCartUI();
+    updateNavCounts();
+}
+
+function removeCartItem(idx) {
+    let cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    cart.splice(idx, 1);
+    localStorage.setItem("bloomflow_cart", JSON.stringify(cart));
+    renderCartUI();
+    updateNavCounts();
+    showToast("🌸 Item removed from cart");
+}
+
+function goToCheckout() {
+    const cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    if (cart.length === 0) {
+        showToast("Your cart is empty. Please add items to proceed!");
+        return;
+    }
+    const activeUser = JSON.parse(localStorage.getItem("bloomflow_active_user"));
+    if (!activeUser) {
+        showToast("Please log in first to continue with your order!");
+        setTimeout(() => {
+            window.location.href = "login.html?redirect=checkout.html";
+        }, 700);
+        return;
+    }
+    window.location.href = "checkout.html";
+}
+
+/* =========================================================
+   WISHLIST LOGIC
+   ========================================================= */
+function toggleFavorite(btn, name, price, image, unit) {
+    let wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+    const existingIdx = wishlist.findIndex(item => 
+        (typeof item === 'string' ? item.toLowerCase() : item.name?.toLowerCase()) === name.toLowerCase()
+    );
+    const icon = btn.querySelector("i");
+
+    if (existingIdx === -1) {
+        wishlist.push({ id: Date.now(), name: name, price: price, image: image, unit: unit || "1 piece" });
+        if (icon) {
+            icon.classList.remove("fa-regular");
+            icon.classList.add("fa-solid");
+            icon.style.color = "#e91e63";
+        }
+        showToast(`💖 ${name} added to Wishlist!`);
+    } else {
+        wishlist.splice(existingIdx, 1);
+        if (icon) {
+            icon.classList.remove("fa-solid");
+            icon.classList.add("fa-regular");
+            icon.style.color = "";
+        }
+        showToast(`🌸 ${name} removed from Wishlist.`);
+    }
+    localStorage.setItem("bloomflow_wishlist", JSON.stringify(wishlist));
+    updateNavCounts();
+}
+
+function toggleWishlist(isOpen) {
+    const drawer = document.getElementById("wishlist-drawer");
+    const overlay = document.getElementById("wishlist-overlay");
+    if (drawer && overlay) {
+        if (isOpen) {
+            drawer.classList.add("open");
+            overlay.classList.add("open");
+            document.body.style.overflow = "hidden";
+            renderWishlistUI();
+        } else {
+            drawer.classList.remove("open");
+            overlay.classList.remove("open");
+            document.body.style.overflow = "";
+        }
+    }
+}
+function openWishlist() { toggleWishlist(true); }
+function closeWishlist() { toggleWishlist(false); }
+
+function renderWishlistUI() {
+    const wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+    const container = document.getElementById("wishlist-items-container");
+    const countEl = document.getElementById("wishlist-drawer-count");
+    if (countEl) countEl.innerText = wishlist.length;
+
+    if (!container) return;
+
+    if (wishlist.length === 0) {
+        container.innerHTML = `
+            <div class="empty-cart" style="text-align: center; padding: 40px 20px;">
+                <i class="fa-regular fa-heart" style="font-size: 40px; color: #f48fb1; margin-bottom: 12px; display: block;"></i>
+                <h4 style="font-size: 16px; color: #59434d;">Your Wishlist is Empty</h4>
+                <p style="font-size: 12px; color: #8c7d83;">Tap the heart on any item to save it here!</p>
+            </div>
+        `;
+        const moveAllBtn = document.getElementById("wishlist-move-all-btn");
+        if (moveAllBtn) moveAllBtn.style.display = "none";
+        return;
+    }
+
+    const moveAllBtn = document.getElementById("wishlist-move-all-btn");
+    if (moveAllBtn) moveAllBtn.style.display = "block";
+
+    container.innerHTML = wishlist.map((item, idx) => {
+        const name = typeof item === 'object' ? item.name : item;
+        const price = typeof item === 'object' ? Number(item.price || 599) : 599;
+        const image = typeof item === 'object' ? item.image : 'images/bouquet.png';
+        const unit = typeof item === 'object' ? item.unit || '1 pc' : '1 pc';
+        return `
+            <div class="wishlist-item" style="display:flex; align-items:center; gap:12px; margin-bottom:15px; padding-bottom:15px; border-bottom:1px solid #f9e8ef;">
+                <img src="${image}" alt="${name}" style="width:60px; height:60px; border-radius:10px; object-fit:cover;" onerror="this.src='images/bouquet.png'">
+                <div style="flex:1;">
+                    <h4 style="font-size:13px; font-weight:600; color:#30292d; margin-bottom:3px;">${name}</h4>
+                    <span style="font-size:13px; color:#8e4585; font-weight:700;">₹${price.toFixed(2)} <small style="font-size:11px; color:#888;">(${unit})</small></span>
+                </div>
+                <div style="display:flex; align-items:center; gap:6px;">
+                    <button onclick="addToCart('${name}', ${price}, '${image}', '${unit}', 0)" style="padding:6px 12px; background:#8e4585; color:#fff; border:none; border-radius:20px; font-size:11px; font-weight:600; cursor:pointer;">
+                        <i class="fa-solid fa-cart-plus"></i> Add
+                    </button>
+                    <button onclick="removeWishlistItem(${idx})" style="background:transparent; border:none; color:#bbb; cursor:pointer; font-size:14px; padding:4px;">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+    }).join("");
+}
+
+function removeWishlistItem(idx) {
+    let wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+    wishlist.splice(idx, 1);
+    localStorage.setItem("bloomflow_wishlist", JSON.stringify(wishlist));
+    renderWishlistUI();
+    renderProducts();
+    updateNavCounts();
+}
+
+function addAllWishlistToCart() {
+    const wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+    if (wishlist.length === 0) return;
+
+    let cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+
+    wishlist.forEach(item => {
+        const name = typeof item === 'object' ? item.name : item;
+        const price = typeof item === 'object' ? Number(item.price || 599) : 599;
+        const image = typeof item === 'object' ? item.image : 'images/bouquet.png';
+        const unit = typeof item === 'object' ? item.unit || '1 pc' : '1 pc';
+
+        const existing = cart.find(c => c.name.toLowerCase() === name.toLowerCase());
+        if (existing) {
+            existing.quantity = (existing.quantity || 1) + 1;
+            existing.itemTotal = Number(existing.price) * existing.quantity;
+        } else {
+            cart.push({
+                id: Date.now(),
+                productId: Date.now(),
+                itemKey: `item_${name.toLowerCase().replace(/\s+/g, '_')}`,
+                name: name,
+                price: price,
+                unitPrice: price,
+                unit: unit,
+                weight: unit,
+                image: image,
+                quantity: 1,
+                itemTotal: price
+            });
+        }
+    });
+
+    localStorage.setItem("bloomflow_cart", JSON.stringify(cart));
+    localStorage.setItem("bloomflow_wishlist", JSON.stringify([]));
+    updateNavCounts();
+    renderCartUI();
+    closeWishlist();
+    openCart();
+    showToast(`🌸 All items moved to cart!`);
+}
+
+/* =========================================================
+   NAVBAR COUNTS & AUTH
+   ========================================================= */
+function updateNavCounts() {
+    const cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    const count = cart.reduce((sum, item) => sum + Number(item.quantity || 1), 0);
+    const badge = document.getElementById("cart-count");
+    if (badge) {
+        badge.innerText = count;
+        badge.style.display = count > 0 ? "inline-flex" : "none";
+    }
+
+    const wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+    const wishBadge = document.getElementById("wishlist-count");
+    if (wishBadge) {
+        wishBadge.innerText = wishlist.length;
+        wishBadge.style.display = wishlist.length > 0 ? "inline-flex" : "none";
+    }
+}
+
+function updateNavbarAuth() {
+    try {
+        const activeUser = JSON.parse(localStorage.getItem("bloomflow_active_user"));
+        const loginBtn = document.getElementById("nav-login-btn");
+        if (activeUser && loginBtn) {
+            const firstName = activeUser.name ? activeUser.name.split(" ")[0] : "Account";
+            loginBtn.href = "profile.html";
+            loginBtn.innerHTML = `<i class="fa-regular fa-circle-user"></i> ${firstName}`;
+        }
+    } catch (e) {}
+}
+
+function showToast(msg) {
+    const toast = document.getElementById("toast");
+    const msgEl = document.getElementById("toast-message");
+    if (toast && msgEl) {
+        msgEl.innerText = msg;
+        toast.classList.add("show");
+        setTimeout(() => { toast.classList.remove("show"); }, 3000);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    renderProducts();
+    updateNavCounts();
+    updateNavbarAuth();
+});
+
+window.addEventListener("storage", function (e) {
+    if (e.key === "bloomflow_cart") {
+        updateNavCounts();
+        renderCartUI();
+    }
+    if (e.key === "bloomflow_wishlist") {
+        updateNavCounts();
+        renderWishlistUI();
+        renderProducts();
+    }
+});
+</script>
+
+</body>
+</html>

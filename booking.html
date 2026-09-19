@@ -1,0 +1,2405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BloomFlow | Event Booking</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background:
+                radial-gradient(circle at 10% 15%, rgba(181,109,127,0.05), transparent 25%),
+                radial-gradient(circle at 90% 75%, rgba(181,109,127,0.05), transparent 25%),
+                #fffaf8;
+            color: #41383d;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+            z-index: 1000;
+            background: rgba(255,250,248,0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(181,109,127,0.08);
+            box-shadow: 0 4px 25px rgba(70,40,50,0.07);
+        }
+
+        .navbar {
+            width: min(94%, 1400px);
+            height: 76px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+
+            color: #7d4562;
+            font-size: 24px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: #b56d7f;
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            color: #5c5056;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #a6537c;
+        }
+
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+
+            left: 0;
+            bottom: -8px;
+
+            width: 100%;
+            height: 2px;
+
+            background: #b56d7f;
+            border-radius: 10px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+        .nav-icon {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+            background: transparent;
+
+            color: #5c5056;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .nav-icon:hover {
+            color: #a6537c;
+            transform: translateY(-2px);
+        }
+
+        .login-btn {
+            padding: 9px 20px;
+
+            color: white;
+            text-decoration: none;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            background: linear-gradient(135deg,#b56d7f,#7e4165);
+            border-radius: 25px;
+
+            box-shadow: 0 7px 18px rgba(126,65,101,0.18);
+
+            transition: 0.3s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 23px rgba(126,65,101,0.25);
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .booking-hero {
+            min-height: 390px;
+            margin-top: 76px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            color: white;
+
+            padding: 70px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(45,27,35,0.57),
+                    rgba(45,27,35,0.67)
+                ),
+                url("images/hero_flower_shop.png");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            width: min(100%, 850px);
+        }
+
+        .hero-small {
+            margin-bottom: 10px;
+
+            color: #f7dce5;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .hero-content h1 {
+            margin-bottom: 12px;
+
+            color: white;
+            font-size: clamp(34px,5vw,48px);
+            font-weight: 700;
+            letter-spacing: -1px;
+
+            text-shadow: 0 5px 20px rgba(0,0,0,0.25);
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #f7eef1;
+            font-size: 14px;
+        }
+
+        .hero-points {
+            margin-top: 20px;
+
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 22px;
+
+            list-style: none;
+        }
+
+        .hero-points li {
+            font-size: 12px;
+            color: white;
+        }
+
+        .hero-points i {
+            margin-right: 6px;
+            color: #f2b8ca;
+        }
+
+
+        /* =====================================================
+           INTRO
+        ===================================================== */
+
+        .booking-intro {
+            width: min(92%, 1000px);
+            margin: 48px auto 30px;
+
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: block;
+
+            margin-bottom: 7px;
+
+            color: #b56d7f;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .booking-intro h2 {
+            margin-bottom: 8px;
+
+            color: #30292d;
+            font-size: clamp(25px,4vw,32px);
+            font-weight: 700;
+        }
+
+        .booking-intro p {
+            max-width: 650px;
+            margin: auto;
+
+            color: #81777d;
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           MAIN WORKSPACE
+        ===================================================== */
+
+        .booking-workspace {
+            width: min(92%, 1380px);
+            margin: 35px auto 80px;
+
+            display: grid;
+            grid-template-columns: minmax(0,1.55fr) minmax(320px,0.85fr);
+            gap: 30px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           FORM PANEL
+        ===================================================== */
+
+        .booking-form-panel,
+        .estimator-panel {
+            position: relative;
+
+            background: white;
+
+            border: 1px solid #eadde1;
+            border-radius: 22px;
+
+            box-shadow: 0 12px 40px rgba(57,35,43,0.07);
+        }
+
+        .booking-form-panel {
+            padding: 35px;
+            overflow: hidden;
+        }
+
+        .booking-form-panel::before,
+        .estimator-panel::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 4px;
+
+            background: linear-gradient(
+                90deg,
+                #b56d7f,
+                #d69aaa,
+                #91485e
+            );
+        }
+
+
+        /* =====================================================
+           FORM SECTION
+        ===================================================== */
+
+        .form-section {
+            margin-bottom: 35px;
+            padding-bottom: 32px;
+
+            border-bottom: 1px solid #eee6e8;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+
+            margin-bottom: 22px;
+
+            color: #30292d;
+            font-size: 18px;
+            font-weight: 650;
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            color: #b56d7f;
+            background: #f8e8ed;
+
+            border: 1px solid rgba(181,109,127,0.12);
+            border-radius: 50%;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           FORM GRID
+        ===================================================== */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-grid .form-group {
+            margin-bottom: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+
+            color: #51484d;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .required {
+            color: #b56d7f;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+
+            padding: 12px 14px;
+
+            border: 1px solid #e3d8dc;
+            border-radius: 10px;
+
+            outline: none;
+
+            background: #fffdfd;
+            color: #30292d;
+
+            font-family: inherit;
+            font-size: 12.5px;
+
+            transition: 0.25s;
+        }
+
+        input,
+        select {
+            min-height: 47px;
+        }
+
+        textarea {
+            min-height: 105px;
+            resize: vertical;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #aaa0a5;
+        }
+
+        input:hover,
+        select:hover,
+        textarea:hover {
+            border-color: #d4c1c8;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #b56d7f;
+
+            background: white;
+
+            box-shadow:
+                0 0 0 4px rgba(181,109,127,0.08);
+        }
+
+
+        /* =====================================================
+           THEME CARDS
+        ===================================================== */
+
+        .theme-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 15px;
+        }
+
+        .theme-card {
+            position: relative;
+
+            min-height: 145px;
+
+            padding: 20px 15px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            background: #fffafa;
+
+            border: 1px solid #eadfe2;
+            border-radius: 15px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .theme-card:hover {
+            transform: translateY(-3px);
+            border-color: #c58a9b;
+            box-shadow: 0 10px 25px rgba(181,109,127,0.09);
+        }
+
+        .theme-card.active {
+            background: linear-gradient(145deg,#ffffff,#fff5f8);
+
+            border: 2px solid #b56d7f;
+
+            box-shadow:
+                0 10px 25px rgba(181,109,127,0.12);
+        }
+
+        .theme-card.active::after {
+            content: "✓";
+
+            position: absolute;
+            top: 9px;
+            right: 9px;
+
+            width: 22px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            background: #b56d7f;
+
+            border-radius: 50%;
+
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .theme-card i {
+            margin-bottom: 8px;
+
+            color: #bda2aa;
+            font-size: 24px;
+
+            transition: 0.3s;
+        }
+
+        .theme-card:hover i,
+        .theme-card.active i {
+            color: #b56d7f;
+            transform: scale(1.08);
+        }
+
+        .theme-card h4 {
+            margin-bottom: 4px;
+
+            color: #30292d;
+            font-size: 13.5px;
+        }
+
+        .theme-card p {
+            color: #81777d;
+            font-size: 10.5px;
+        }
+
+
+        /* =====================================================
+           COLOUR PALETTE
+        ===================================================== */
+
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 10px;
+        }
+
+        .swatch-option {
+            position: relative;
+
+            padding: 7px;
+
+            background: white;
+
+            border: 1px solid #e8dde0;
+            border-radius: 12px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .swatch-option:hover {
+            transform: translateY(-3px);
+        }
+
+        .swatch-option.active {
+            border: 2px solid #b56d7f;
+            box-shadow: 0 7px 20px rgba(181,109,127,0.1);
+        }
+
+        .swatch-option.active::after {
+            content: "✓";
+
+            position: absolute;
+            top: 5px;
+            right: 5px;
+
+            width: 19px;
+            height: 19px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            background: #b56d7f;
+
+            border-radius: 50%;
+
+            font-size: 9px;
+        }
+
+        .swatch-preview {
+            height: 45px;
+            margin-bottom: 7px;
+
+            border-radius: 8px;
+        }
+
+        .swatch-option span {
+            color: #62585d;
+            font-size: 9.5px;
+            font-weight: 600;
+        }
+
+
+        /* =====================================================
+           DECORATION
+        ===================================================== */
+
+        .decor-grid {
+            display: grid;
+            grid-template-columns: repeat(2,minmax(0,1fr));
+            gap: 11px;
+        }
+
+        .decor-card {
+            min-height: 57px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            padding: 12px;
+
+            background: #fffafa;
+
+            border: 1px solid #eadfe2;
+            border-radius: 11px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .decor-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .decor-card.active {
+            background: #fff5f8;
+            border-color: #b56d7f;
+        }
+
+        .decor-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .decor-label i {
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            color: #a7979d;
+            background: #f3edef;
+
+            border-radius: 8px;
+
+            font-size: 12px;
+        }
+
+        .decor-card.active .decor-label i {
+            color: #b56d7f;
+            background: #f8e8ed;
+        }
+
+        .decor-label span {
+            color: #5b5358;
+            font-size: 11.5px;
+            font-weight: 500;
+        }
+
+        .decor-card.active .decor-label span {
+            color: #30292d;
+            font-weight: 650;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border: 1.5px solid #d4c9cd;
+            border-radius: 6px;
+        }
+
+        .decor-card.active .checkbox {
+            color: white;
+            background: #b56d7f;
+            border-color: #b56d7f;
+        }
+
+        .checkbox i {
+            display: none;
+            font-size: 9px;
+        }
+
+        .decor-card.active .checkbox i {
+            display: block;
+        }
+
+
+        /* =====================================================
+           ESTIMATOR
+        ===================================================== */
+
+        .estimator-panel {
+            position: sticky;
+            top: 100px;
+
+            padding: 28px;
+
+            overflow: hidden;
+        }
+
+        .estimator-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 22px;
+
+            color: #30292d;
+            font-size: 18px;
+            font-weight: 650;
+        }
+
+        .estimator-title i {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #b56d7f;
+            background: #f8e8ed;
+
+            border-radius: 10px;
+        }
+
+        .estimate-box {
+            padding: 17px;
+
+            background: #fff8fa;
+            border: 1px solid #f0dfe4;
+            border-radius: 13px;
+
+            margin-bottom: 18px;
+        }
+
+        .estimate-label {
+            color: #887a80;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .estimate-price {
+            margin-top: 3px;
+
+            color: #a6537c;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .estimate-note {
+            color: #8a7c82;
+            font-size: 10px;
+        }
+
+        .estimate-rows {
+            padding-bottom: 15px;
+            margin-bottom: 18px;
+
+            border-bottom: 1px dashed #d9cdd1;
+        }
+
+        .estimate-row {
+            min-height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+
+            color: #71676c;
+            font-size: 11.5px;
+        }
+
+        .estimate-row strong {
+            color: #40383c;
+            font-weight: 650;
+        }
+
+        .estimate-row.total {
+            margin-top: 10px;
+            padding-top: 14px;
+
+            border-top: 1px solid #eee6e8;
+
+            color: #30292d;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .estimate-row.total strong {
+            color: #b56d7f;
+            font-size: 20px;
+        }
+
+        .notice {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+
+            padding: 12px;
+
+            margin-bottom: 20px;
+
+            color: #756b70;
+            background: #fff8fa;
+
+            border-left: 3px solid #b56d7f;
+            border-radius: 9px;
+
+            font-size: 10px;
+            line-height: 1.6;
+        }
+
+        .notice i {
+            margin-top: 2px;
+            color: #b56d7f;
+        }
+
+
+        /* =====================================================
+           SUBMIT
+        ===================================================== */
+
+        .submit-btn {
+            width: 100%;
+            min-height: 53px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            border: none;
+            border-radius: 12px;
+
+            color: white;
+            background: linear-gradient(135deg,#b56d7f,#91485e);
+
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 650;
+
+            cursor: pointer;
+
+            box-shadow: 0 10px 25px rgba(181,109,127,0.22);
+
+            transition: 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow: 0 14px 30px rgba(181,109,127,0.3);
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .modal {
+            position: fixed;
+            inset: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: rgba(35,24,29,0.58);
+            backdrop-filter: blur(7px);
+
+            z-index: 9999;
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition: 0.3s;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            width: min(100%,460px);
+
+            padding: 35px 30px;
+
+            text-align: center;
+
+            background: white;
+
+            border-radius: 22px;
+
+            box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+
+            transform: translateY(25px) scale(0.95);
+
+            transition: 0.4s;
+        }
+
+        .modal.show .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .success-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #b56d7f;
+            background: #f9e8ed;
+
+            border-radius: 50%;
+
+            font-size: 28px;
+        }
+
+        .modal-card h2 {
+            margin-bottom: 9px;
+
+            color: #30292d;
+            font-size: 23px;
+        }
+
+        .modal-card p {
+            margin-bottom: 20px;
+
+            color: #756b70;
+            font-size: 12.5px;
+        }
+
+        .booking-id {
+            padding: 14px;
+
+            margin-bottom: 20px;
+
+            color: #b56d7f;
+            background: #fff8fa;
+
+            border: 1px dashed #d9a9b7;
+            border-radius: 11px;
+
+            font-size: 17px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .booking-id small {
+            display: block;
+
+            margin-bottom: 3px;
+
+            color: #887a80;
+            font-size: 9px;
+            letter-spacing: 1px;
+        }
+
+        .close-btn {
+            width: 100%;
+            min-height: 47px;
+
+            border: none;
+            border-radius: 11px;
+
+            color: white;
+            background: #b56d7f;
+
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media(max-width:1100px) {
+
+            .booking-workspace {
+                grid-template-columns: minmax(0,1.3fr) minmax(290px,0.85fr);
+                gap: 22px;
+            }
+
+            .booking-form-panel {
+                padding: 28px;
+            }
+
+            .estimator-panel {
+                padding: 24px;
+            }
+
+            .swatch-grid {
+                grid-template-columns: repeat(3,1fr);
+            }
+        }
+
+
+        @media(max-width:850px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .booking-workspace {
+                grid-template-columns: 1fr;
+            }
+
+            .estimator-panel {
+                position: relative;
+                top: auto;
+            }
+
+            .booking-hero {
+                min-height: 350px;
+            }
+        }
+
+
+        @media(max-width:600px) {
+
+            .navbar {
+                width: 92%;
+            }
+
+            .logo {
+                font-size: 21px;
+            }
+
+            .nav-actions {
+                gap: 5px;
+            }
+
+            .login-btn {
+                padding: 8px 14px;
+            }
+
+            .booking-hero {
+                min-height: 315px;
+                padding: 50px 18px;
+            }
+
+            .hero-content h1 {
+                font-size: 31px;
+            }
+
+            .hero-content p {
+                font-size: 12px;
+            }
+
+            .hero-points {
+                gap: 9px 15px;
+            }
+
+            .hero-points li {
+                font-size: 10px;
+            }
+
+            .booking-intro {
+                margin-top: 35px;
+            }
+
+            .booking-workspace {
+                width: 94%;
+                margin-top: 25px;
+            }
+
+            .booking-form-panel {
+                padding: 23px 17px;
+                border-radius: 18px;
+            }
+
+            .estimator-panel {
+                padding: 22px 17px;
+                border-radius: 18px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .theme-grid,
+            .decor-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .swatch-grid {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .modal-card {
+                padding: 30px 20px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="#" class="logo">
+            <i class="fa-solid fa-seedling"></i>
+            BloomFlow
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="flowers.html">🌸 Flowers</a></li>
+            <li><a href="bouquets.html">💐 Bouquets</a></li>
+            <li><a href="home.html#why">✨ Why Us</a></li>
+            <li><a href="#footer">About</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+
+            <button class="nav-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="booking-hero">
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            BloomFlow Events
+        </div>
+
+        <h1>
+            Create Your Perfect Celebration
+        </h1>
+
+        <p>
+            Tell us your vision and let BloomFlow transform
+            your special occasion into a beautiful floral experience.
+        </p>
+
+        <ul class="hero-points">
+
+            <li>
+                <i class="fa-solid fa-check"></i>
+                Personalized Design
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check"></i>
+                Fresh Flowers
+            </li>
+
+            <li>
+                <i class="fa-solid fa-check"></i>
+                Professional Service
+            </li>
+
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INTRO
+===================================================== -->
+
+<section class="booking-intro">
+
+    <span class="eyebrow">
+        Plan With BloomFlow
+    </span>
+
+    <h2>
+        Book Your Floral Event
+    </h2>
+
+    <p>
+        Choose your event details, preferred theme, colours and
+        decorations. We'll create a floral experience that matches
+        your celebration perfectly.
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="booking-workspace">
+
+
+<!-- =====================================================
+     LEFT FORM
+===================================================== -->
+
+<div class="booking-form-panel">
+
+<form id="bookingForm">
+
+
+<!-- CUSTOMER DETAILS -->
+
+<section class="form-section">
+
+    <h3 class="section-title">
+
+        <span class="section-number">01</span>
+
+        Your Details
+
+    </h3>
+
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>
+                Full Name <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your full name"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Phone Number <span class="required">*</span>
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Email Address <span class="required">*</span>
+            </label>
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Event Type <span class="required">*</span>
+            </label>
+
+            <select id="eventType" required>
+
+                <option value="">Select event</option>
+
+                <option value="Wedding">
+                    Wedding
+                </option>
+
+                <option value="Birthday">
+                    Birthday
+                </option>
+
+                <option value="Engagement">
+                    Engagement
+                </option>
+
+                <option value="Reception">
+                    Reception
+                </option>
+
+                <option value="Baby Shower">
+                    Baby Shower
+                </option>
+
+                <option value="Other">
+                    Other Event
+                </option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- EVENT DETAILS -->
+
+<section class="form-section">
+
+    <h3 class="section-title">
+
+        <span class="section-number">02</span>
+
+        Event Details
+
+    </h3>
+
+
+    <div class="form-grid">
+
+        <div class="form-group">
+
+            <label>
+                Event Date <span class="required">*</span>
+            </label>
+
+            <input
+                type="date"
+                id="eventDate"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Number of Guests <span class="required">*</span>
+            </label>
+
+            <input
+                type="number"
+                id="guests"
+                min="1"
+                value="50"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Event Location <span class="required">*</span>
+            </label>
+
+            <input
+                type="text"
+                id="location"
+                placeholder="Enter event location"
+                required
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Event Time
+            </label>
+
+            <input
+                type="time"
+                id="eventTime"
+            >
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- THEME -->
+
+<section class="form-section">
+
+    <h3 class="section-title">
+
+        <span class="section-number">03</span>
+
+        Choose Your Theme
+
+    </h3>
+
+
+    <div class="theme-grid">
+
+
+        <div
+            class="theme-card active"
+            data-theme="Romantic"
+            data-price="5000"
+        >
+
+            <i class="fa-solid fa-heart"></i>
+
+            <h4>Romantic</h4>
+
+            <p>
+                Soft flowers & elegant ambience
+            </p>
+
+        </div>
+
+
+        <div
+            class="theme-card"
+            data-theme="Royal"
+            data-price="8000"
+        >
+
+            <i class="fa-solid fa-crown"></i>
+
+            <h4>Royal</h4>
+
+            <p>
+                Grand and luxurious floral styling
+            </p>
+
+        </div>
+
+
+        <div
+            class="theme-card"
+            data-theme="Garden"
+            data-price="6500"
+        >
+
+            <i class="fa-solid fa-leaf"></i>
+
+            <h4>Garden</h4>
+
+            <p>
+                Fresh natural garden atmosphere
+            </p>
+
+        </div>
+
+
+        <div
+            class="theme-card"
+            data-theme="Minimal"
+            data-price="4000"
+        >
+
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+            <h4>Minimal</h4>
+
+            <p>
+                Simple, modern & sophisticated
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- COLOURS -->
+
+<section class="form-section">
+
+    <h3 class="section-title">
+
+        <span class="section-number">04</span>
+
+        Select Colour Palette
+
+    </h3>
+
+
+    <div class="swatch-grid">
+
+
+        <div
+            class="swatch-option active"
+            data-color="Blush Pink"
+            data-price="1500"
+        >
+
+            <div
+                class="swatch-preview"
+                style="background:#f3c5cf;"
+            ></div>
+
+            <span>Blush Pink</span>
+
+        </div>
+
+
+        <div
+            class="swatch-option"
+            data-color="Lavender"
+            data-price="1800"
+        >
+
+            <div
+                class="swatch-preview"
+                style="background:#cbb9df;"
+            ></div>
+
+            <span>Lavender</span>
+
+        </div>
+
+
+        <div
+            class="swatch-option"
+            data-color="Peach"
+            data-price="1400"
+        >
+
+            <div
+                class="swatch-preview"
+                style="background:#f2b39e;"
+            ></div>
+
+            <span>Peach</span>
+
+        </div>
+
+
+        <div
+            class="swatch-option"
+            data-color="White"
+            data-price="1200"
+        >
+
+            <div
+                class="swatch-preview"
+                style="background:#f5f1ed;"
+            ></div>
+
+            <span>Classic White</span>
+
+        </div>
+
+
+        <div
+            class="swatch-option"
+            data-color="Red"
+            data-price="2000"
+        >
+
+            <div
+                class="swatch-preview"
+                style="background:#bd6570;"
+            ></div>
+
+            <span>Passion Red</span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- DECORATIONS -->
+
+<section class="form-section">
+
+    <h3 class="section-title">
+
+        <span class="section-number">05</span>
+
+        Add Decorations
+
+    </h3>
+
+
+    <div class="decor-grid">
+
+
+        <div
+            class="decor-card"
+            data-name="Floral Arch"
+            data-price="5000"
+        >
+
+            <div class="decor-label">
+
+                <i class="fa-solid fa-archway"></i>
+
+                <span>Floral Arch</span>
+
+            </div>
+
+            <div class="checkbox">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="decor-card"
+            data-name="Table Centrepieces"
+            data-price="3000"
+        >
+
+            <div class="decor-label">
+
+                <i class="fa-solid fa-table"></i>
+
+                <span>Table Centrepieces</span>
+
+            </div>
+
+            <div class="checkbox">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="decor-card"
+            data-name="Flower Backdrop"
+            data-price="4500"
+        >
+
+            <div class="decor-label">
+
+                <i class="fa-solid fa-image"></i>
+
+                <span>Flower Backdrop</span>
+
+            </div>
+
+            <div class="checkbox">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="decor-card"
+            data-name="Entrance Decoration"
+            data-price="2500"
+        >
+
+            <div class="decor-label">
+
+                <i class="fa-solid fa-door-open"></i>
+
+                <span>Entrance Decoration</span>
+
+            </div>
+
+            <div class="checkbox">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="decor-card"
+            data-name="Stage Decoration"
+            data-price="6000"
+        >
+
+            <div class="decor-label">
+
+                <i class="fa-solid fa-champagne-glasses"></i>
+
+                <span>Stage Decoration</span>
+
+            </div>
+
+            <div class="checkbox">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="decor-card"
+            data-name="Hanging Flowers"
+            data-price="3500"
+        >
+
+            <div class="decor-label">
+
+                <i class="fa-solid fa-spa"></i>
+
+                <span>Hanging Flowers</span>
+
+            </div>
+
+            <div class="checkbox">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- MESSAGE -->
+
+<section class="form-section">
+
+    <h3 class="section-title">
+
+        <span class="section-number">06</span>
+
+        Special Requests
+
+    </h3>
+
+
+    <div class="form-group">
+
+        <label>
+            Tell us about your vision
+        </label>
+
+        <textarea
+            id="message"
+            placeholder="Describe your preferred flowers, arrangement style, special requirements..."
+        ></textarea>
+
+    </div>
+
+</section>
+
+
+</form>
+
+</div>
+
+
+
+<!-- =====================================================
+     RIGHT ESTIMATOR
+===================================================== -->
+
+<aside class="estimator-panel">
+
+
+    <h3 class="estimator-title">
+
+        <i class="fa-solid fa-calculator"></i>
+
+        Booking Estimate
+
+    </h3>
+
+
+    <div class="estimate-box">
+
+        <div class="estimate-label">
+            Estimated Starting Price
+        </div>
+
+        <div class="estimate-price" id="totalPrice">
+            ₹6,500
+        </div>
+
+        <div class="estimate-note">
+            Final price may vary based on requirements.
+        </div>
+
+    </div>
+
+
+    <div class="estimate-rows">
+
+
+        <div class="estimate-row">
+
+            <span>Event Type</span>
+
+            <strong id="summaryEvent">
+                Not selected
+            </strong>
+
+        </div>
+
+
+        <div class="estimate-row">
+
+            <span>Theme</span>
+
+            <strong id="summaryTheme">
+                Romantic
+            </strong>
+
+        </div>
+
+
+        <div class="estimate-row">
+
+            <span>Colour</span>
+
+            <strong id="summaryColor">
+                Blush Pink
+            </strong>
+
+        </div>
+
+
+        <div class="estimate-row">
+
+            <span>Guests</span>
+
+            <strong id="summaryGuests">
+                50
+            </strong>
+
+        </div>
+
+
+        <div class="estimate-row">
+
+            <span>Decorations</span>
+
+            <strong id="summaryDecor">
+                0 selected
+            </strong>
+
+        </div>
+
+
+        <div class="estimate-row total">
+
+            <span>Estimated Total</span>
+
+            <strong id="summaryTotal">
+                ₹6,500
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="notice">
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        <span>
+            This is an approximate estimate.
+            Our BloomFlow team will contact you
+            to confirm the final quotation.
+        </span>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="submit-btn"
+        id="submitBooking"
+    >
+
+        <i class="fa-solid fa-calendar-check"></i>
+
+        Submit Booking Request
+
+    </button>
+
+
+</aside>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     SUCCESS MODAL
+===================================================== -->
+
+<div class="modal" id="successModal">
+
+    <div class="modal-card">
+
+        <div class="success-icon">
+
+            <i class="fa-solid fa-check"></i>
+
+        </div>
+
+        <h2>
+            Booking Request Sent!
+        </h2>
+
+        <p>
+            Thank you for choosing BloomFlow.
+            Our team will contact you shortly to
+            confirm your event details.
+        </p>
+
+
+        <div class="booking-id">
+
+            <small>
+                YOUR CONSULTATION ID
+            </small>
+
+            <span id="bookingId">
+                BF-000000
+            </span>
+
+        </div>
+
+
+        <button
+            class="close-btn"
+            id="closeModal"
+        >
+            Done
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+    /* =====================================================
+       VARIABLES
+    ===================================================== */
+
+    let selectedThemePrice = 5000;
+    let selectedColorPrice = 1500;
+    let selectedDecorPrice = 0;
+
+
+    /* =====================================================
+       THEME SELECTION
+    ===================================================== */
+
+    const themeCards =
+        document.querySelectorAll(".theme-card");
+
+    themeCards.forEach(card => {
+
+        card.addEventListener("click", function() {
+
+            themeCards.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            selectedThemePrice =
+                Number(this.dataset.price);
+
+            document.getElementById("summaryTheme")
+                .textContent = this.dataset.theme;
+
+            calculateTotal();
+
+        });
+
+    });
+
+
+    /* =====================================================
+       COLOUR SELECTION
+    ===================================================== */
+
+    const swatches =
+        document.querySelectorAll(".swatch-option");
+
+    swatches.forEach(swatch => {
+
+        swatch.addEventListener("click", function() {
+
+            swatches.forEach(item => {
+                item.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+            selectedColorPrice =
+                Number(this.dataset.price);
+
+            document.getElementById("summaryColor")
+                .textContent = this.dataset.color;
+
+            calculateTotal();
+
+        });
+
+    });
+
+
+    /* =====================================================
+       DECORATION SELECTION
+    ===================================================== */
+
+    const decorCards =
+        document.querySelectorAll(".decor-card");
+
+    decorCards.forEach(card => {
+
+        card.addEventListener("click", function() {
+
+            const price =
+                Number(this.dataset.price);
+
+            if (this.classList.contains("active")) {
+
+                this.classList.remove("active");
+
+                selectedDecorPrice -= price;
+
+            } else {
+
+                this.classList.add("active");
+
+                selectedDecorPrice += price;
+
+            }
+
+            updateDecorationSummary();
+
+            calculateTotal();
+
+        });
+
+    });
+
+
+    /* =====================================================
+       DECORATION SUMMARY
+    ===================================================== */
+
+    function updateDecorationSummary() {
+
+        const selected =
+            document.querySelectorAll(
+                ".decor-card.active"
+            ).length;
+
+        document.getElementById("summaryDecor")
+            .textContent =
+            selected + " selected";
+
+    }
+
+
+    /* =====================================================
+       EVENT TYPE
+    ===================================================== */
+
+    document.getElementById("eventType")
+        .addEventListener("change", function() {
+
+            document.getElementById("summaryEvent")
+                .textContent =
+                this.value || "Not selected";
+
+        });
+
+
+    /* =====================================================
+       GUEST COUNT
+    ===================================================== */
+
+    document.getElementById("guests")
+        .addEventListener("input", function() {
+
+            document.getElementById("summaryGuests")
+                .textContent =
+                this.value || "0";
+
+            calculateTotal();
+
+        });
+
+
+    /* =====================================================
+       CALCULATE TOTAL
+    ===================================================== */
+
+    function calculateTotal() {
+
+        const guests =
+            Number(
+                document.getElementById("guests").value
+            ) || 0;
+
+
+        /*
+           Base guest charge
+           Every 10 guests = ₹500
+        */
+
+        const guestCharge =
+            Math.ceil(guests / 10) * 500;
+
+
+        const total =
+            selectedThemePrice +
+            selectedColorPrice +
+            selectedDecorPrice +
+            guestCharge;
+
+
+        document.getElementById("totalPrice")
+            .textContent =
+            "₹" + total.toLocaleString("en-IN");
+
+
+        document.getElementById("summaryTotal")
+            .textContent =
+            "₹" + total.toLocaleString("en-IN");
+
+    }
+
+
+    /* =====================================================
+       SUBMIT BOOKING (MongoDB Backend + Fallback)
+    ===================================================== */
+
+    document.getElementById("submitBooking")
+        .addEventListener("click", async function() {
+
+            const form = document.getElementById("bookingForm");
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const customerName = document.getElementById("name") ? document.getElementById("name").value.trim() : "Customer";
+            const customerPhone = document.getElementById("phone") ? document.getElementById("phone").value.trim() : "";
+            const customerEmail = document.getElementById("email") ? document.getElementById("email").value.trim() : "customer@bloomflow.com";
+            const eventType = document.getElementById("eventType") ? document.getElementById("eventType").value : "Wedding";
+            const eventDate = document.getElementById("eventDate") ? document.getElementById("eventDate").value : new Date().toISOString();
+            const guestCount = document.getElementById("guests") ? document.getElementById("guests").value : 50;
+            const venueAddress = document.getElementById("location") ? document.getElementById("location").value.trim() : "Sivakasi";
+            const eventTime = document.getElementById("eventTime") ? document.getElementById("eventTime").value : "Morning";
+            const budgetRange = document.getElementById("totalPrice") ? document.getElementById("totalPrice").textContent : "₹25,000";
+
+            let consultationId = "BF-" + Math.floor(100000 + Math.random() * 900000);
+
+            // 1. Send to MongoDB Backend
+            if (window.BloomAPI && window.BloomAPI.bookings) {
+                try {
+                    const res = await window.BloomAPI.bookings.create({
+                        customerName,
+                        customerEmail,
+                        customerPhone,
+                        eventType,
+                        eventDate,
+                        eventTime,
+                        venueAddress,
+                        guestCount,
+                        budgetRange
+                    });
+
+                    if (res.ok && res.data && res.data.data) {
+                        consultationId = res.data.data.bookingId || consultationId;
+                        console.log("🌸 Event Booking created in MongoDB:", res.data.data);
+                    }
+                } catch (apiErr) {
+                    console.warn("Booking MongoDB fallback:", apiErr);
+                }
+            }
+
+            // 2. Save in localStorage for offline history
+            try {
+                let bookings = JSON.parse(localStorage.getItem('bloomflow_bookings')) || [];
+                bookings.push({
+                    id: consultationId,
+                    customerName,
+                    customerEmail,
+                    customerPhone,
+                    eventType,
+                    eventDate,
+                    venueAddress,
+                    budgetRange,
+                    date: new Date().toLocaleDateString()
+                });
+                localStorage.setItem('bloomflow_bookings', JSON.stringify(bookings));
+            } catch (e) {}
+
+            document.getElementById("bookingId").textContent = consultationId;
+
+            /* Show Modal */
+            document.getElementById("successModal").classList.add("show");
+
+        });
+
+
+    /* =====================================================
+       CLOSE MODAL
+    ===================================================== */
+
+    document.getElementById("closeModal")
+        .addEventListener("click", function() {
+
+            document.getElementById("successModal")
+                .classList.remove("show");
+
+        });
+
+
+    /* Close when clicking outside */
+
+    document.getElementById("successModal")
+        .addEventListener("click", function(event) {
+
+            if (event.target === this) {
+
+                this.classList.remove("show");
+
+            }
+
+        });
+
+
+    /* Initial calculation */
+
+    calculateTotal();
+
+</script>
+
+<!-- Bootstrap 5 JS Bundle & API Bridge -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+
+</body>
+</html>

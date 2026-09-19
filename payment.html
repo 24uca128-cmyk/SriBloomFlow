@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | Secure Google Pay & UPI Payment</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="payment.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <header>
+        <nav class="navbar">
+            <!-- Professional SRI BloomFlow Logo Emblem -->
+            <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+                <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff758c" />
+                            <stop offset="50%" stop-color="#b56d7f" />
+                            <stop offset="100%" stop-color="#7e3b56" />
+                        </linearGradient>
+                        <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe699" />
+                            <stop offset="50%" stop-color="#f5a623" />
+                            <stop offset="100%" stop-color="#c97a2b" />
+                        </linearGradient>
+                        <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                    <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                    <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                    <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                    <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                    <circle cx="22" cy="22" r="2" fill="#ffffff" />
+                </svg>
+                <div class="sri-logo-text">
+                    <span class="sri-logo-prefix">SRI</span>
+                    <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+                </div>
+            </a>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="flowers.html">🌸 Flowers</a></li>
+                <li><a href="bouquets.html">💐 Bouquets</a></li>
+                <li><a href="checkout.html">🛒 Checkout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ================= PAYMENT WORKSPACE ================= -->
+    <main class="payment-container">
+        
+        <!-- Left: Payment Options & Active Panel -->
+        <section class="card-details-panel">
+            <h2>Select Payment Method</h2>
+            <p class="subtitle">Complete your flower order securely via Google Pay, UPI, Card or Cash on Delivery.</p>
+            
+            <!-- Modern Tabs -->
+            <div class="payment-tabs">
+                <button type="button" class="pay-tab-btn active" id="tab-btn-upi" onclick="switchPaymentTab('upi')">
+                    <i class="fa-brands fa-google-pay" style="color: #1a73e8; font-size: 20px;"></i>
+                    <span>Google Pay / UPI</span>
+                    <span class="tab-badge">Instant</span>
+                </button>
+                <button type="button" class="pay-tab-btn" id="tab-btn-card" onclick="switchPaymentTab('card')">
+                    <i class="fa-regular fa-credit-card" style="color: #b56d7f;"></i>
+                    <span>Debit / Credit Card</span>
+                </button>
+                <button type="button" class="pay-tab-btn" id="tab-btn-cod" onclick="switchPaymentTab('cod')">
+                    <i class="fa-solid fa-hand-holding-dollar" style="color: #d97706;"></i>
+                    <span>Cash on Delivery</span>
+                </button>
+            </div>
+
+            <!-- ================= TAB 1: GOOGLE PAY & UPI ================= -->
+            <div id="panel-upi" class="upi-gateway-container">
+                
+                <!-- GPay Mobile Hero -->
+                <div class="gpay-hero-card">
+                    <div class="gpay-header-row">
+                        <div class="gpay-title-group">
+                            <div class="gpay-logo-badge">
+                                <i class="fa-brands fa-google" style="color: #4285f4;"></i>
+                                <span style="color: #ea4335;">P</span><span style="color: #fbbc05;">a</span><span style="color: #34a853;">y</span>
+                            </div>
+                            <span style="font-size: 13px; font-weight: 600; color: #1a73e8;">Direct App Launch</span>
+                        </div>
+                        <span id="gpay-amount-badge" style="font-size: 15px; font-weight: 800; color: #1557b0; background: #e8f0fe; padding: 4px 12px; border-radius: 20px;">₹0</span>
+                    </div>
+
+                    <!-- Direct Google Pay Button (Deep Link to GPay App) -->
+                    <button type="button" class="gpay-direct-launch-btn" id="gpay-launch-btn" onclick="launchGooglePay()">
+                        <i class="fa-brands fa-google-pay"></i>
+                        <span id="gpay-btn-label">Pay with Google Pay</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 14px; opacity: 0.8;"></i>
+                    </button>
+
+                    <!-- Secondary UPI Apps (PhonePe, Paytm, Any UPI) -->
+                    <div class="other-upi-apps">
+                        <span class="other-upi-title"><i class="fa-solid fa-mobile-screen"></i> Other Installed UPI Apps:</span>
+                        <div class="upi-apps-flex">
+                            <button type="button" class="app-launch-chip phonepe" onclick="launchUPIApp('phonepe')" title="Open PhonePe">
+                                <i class="fa-solid fa-bolt"></i>
+                                <span>PhonePe</span>
+                            </button>
+                            <button type="button" class="app-launch-chip paytm" onclick="launchUPIApp('paytm')" title="Open Paytm">
+                                <i class="fa-solid fa-wallet"></i>
+                                <span>Paytm</span>
+                            </button>
+                            <button type="button" class="app-launch-chip generic-upi" onclick="launchUPIApp('upi')" title="Open Any UPI App">
+                                <i class="fa-solid fa-qrcode"></i>
+                                <span>Any UPI</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desktop / Tablet Scan to Pay QR Code -->
+                <div class="upi-qr-card">
+                    <h4>Scan to Pay with Google Pay / Any UPI</h4>
+                    <p class="qr-desc">Open Google Pay, PhonePe, or Paytm on your phone and scan this code:</p>
+                    
+                    <div class="qr-image-container">
+                        <img id="dynamic-upi-qr" src="" alt="Google Pay QR Code">
+                        <div class="qr-center-logo">
+                            <i class="fa-brands fa-google-pay"></i>
+                        </div>
+                    </div>
+
+                    <!-- Store UPI ID Display with Copy -->
+                    <div>
+                        <div class="upi-id-pill-box">
+                            <span class="label">Payee UPI:</span>
+                            <strong class="id-text" id="store-upi-display">bloomflow@upi</strong>
+                            <button type="button" class="copy-id-btn" onclick="copyUPIId()">
+                                <i class="fa-regular fa-copy"></i>
+                                <span id="copy-btn-text">Copy</span>
+                            </button>
+                        </div>
+                        <a href="javascript:void(0)" class="edit-store-upi-link" onclick="promptChangeStoreUPI()">
+                            <i class="fa-solid fa-pen-to-square"></i> Change Store GPay UPI ID
+                        </a>
+                    </div>
+                </div>
+
+                <!-- UPI Confirmation & UTR Form -->
+                <div class="upi-confirmation-card">
+                    <h4>
+                        <i class="fa-solid fa-circle-check"></i>
+                        Confirm Payment & Place Order
+                    </h4>
+                    <p style="font-size: 12.5px; color: #64748b; margin-bottom: 14px;">
+                        Once you finish paying in Google Pay / UPI, enter the 12-digit UTR/Ref No. (optional) and click complete:
+                    </p>
+                    
+                    <div class="utr-input-group">
+                        <label for="upi-ref-no">12-Digit UPI Transaction ID / UTR (Optional)</label>
+                        <input type="text" id="upi-ref-no" placeholder="e.g. 423589214789" maxlength="20">
+                    </div>
+
+                    <button type="button" class="confirm-upi-order-btn" id="confirm-upi-btn" onclick="completeUPIOrder()">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span id="confirm-upi-btn-text">I Have Paid via Google Pay • Complete Order</span>
+                        <div class="spinner" id="upi-btn-spinner" style="display: none; border-color: white; border-top-color: transparent;"></div>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ================= TAB 2: CREDIT / DEBIT CARD ================= -->
+            <div id="panel-card" style="display: none;">
+                <!-- Credit Card Flip Wrapper -->
+                <div class="credit-card-wrapper">
+                    <div class="flip-card" id="credit-card">
+                        
+                        <!-- Card Front -->
+                        <div class="card-face card-front">
+                            <div class="card-header-row">
+                                <i class="fa-solid fa-microchip card-chip"></i>
+                                <span class="card-network">Visa</span>
+                            </div>
+                            <div class="card-number-display" id="card-num-disp">•••• •••• •••• ••••</div>
+                            <div class="card-footer-row">
+                                <div>
+                                    <span class="label">Cardholder</span>
+                                    <span class="val" id="card-holder-disp">FULL NAME</span>
+                                </div>
+                                <div>
+                                    <span class="label">Expires</span>
+                                    <span class="val" id="card-expiry-disp">MM/YY</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Card Back -->
+                        <div class="card-face card-back">
+                            <div class="card-magnetic-strip"></div>
+                            <div class="signature-strip-row">
+                                <div class="signature-strip"></div>
+                                <span class="cvv-val" id="card-cvv-disp">•••</span>
+                            </div>
+                            <div class="card-info-row">
+                                <span>Secure Bank Card • For Demo Use Only</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Fields Form -->
+                <form id="payment-form" onsubmit="processCardPayment(event)">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <span style="font-size: 13px; color: #666; font-weight: 500;">Card Payment Details</span>
+                        <button type="button" onclick="fillDemoCard()" class="btn btn-sm btn-outline-secondary" style="font-size: 12px; border-radius: 20px; padding: 4px 12px;">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Fill Test Card
+                        </button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="card-holder-input">Cardholder Name *</label>
+                        <input type="text" id="card-holder-input" placeholder="e.g. Priya Sundaram" oninput="updateCardholder(this.value)">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="card-number-input">Card Number *</label>
+                        <input type="text" id="card-number-input" placeholder="4532 8921 4032 7789" maxlength="19" oninput="updateCardNumber(this)">
+                    </div>
+
+                    <div class="form-group-2">
+                        <div class="form-group">
+                            <label for="card-expiry-input">Expiration Date *</label>
+                            <input type="text" id="card-expiry-input" placeholder="MM/YY" maxlength="5" oninput="updateExpiry(this)">
+                        </div>
+                        <div class="form-group">
+                            <label for="card-cvv-input">CVV *</label>
+                            <input type="password" id="card-cvv-input" placeholder="123" maxlength="3" onfocus="flipCard(true)" onblur="flipCard(false)" oninput="updateCVV(this.value)">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="pay-btn" id="pay-btn">
+                        <span id="btn-text">Pay Now ₹0.00</span>
+                        <div class="spinner" id="btn-spinner" style="display: none;"></div>
+                    </button>
+                </form>
+            </div>
+
+            <!-- ================= TAB 3: CASH ON DELIVERY ================= -->
+            <div id="panel-cod" style="display: none;">
+                <div class="cod-card">
+                    <div class="cod-icon-circle">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <h3>Pay Cash or UPI on Delivery</h3>
+                    <p>
+                        Your fresh flower order will be hand-delivered to your doorstep in Sivakasi. You can pay cash or scan the delivery executive's Google Pay QR code upon arrival.
+                    </p>
+                    <button type="button" class="confirm-cod-btn" id="confirm-cod-btn" onclick="completeCODOrder()">
+                        <i class="fa-solid fa-check-circle"></i>
+                        <span id="cod-btn-label">Place Cash on Delivery Order</span>
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Right: Summary details -->
+        <section class="payment-summary-panel">
+            <h3>Invoice Breakdown</h3>
+            <div class="summary-details-box" id="checkout-summary-details">
+                <!-- Loaded dynamically -->
+            </div>
+            
+            <div class="payment-security-notice" style="margin-top: 20px;">
+                <i class="fa-solid fa-shield-halved"></i>
+                <div>
+                    <h4>100% Secure Transaction</h4>
+                    <p>Direct Google Pay UPI integration. No card or sensitive bank credentials stored.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer id="footer">
+        <h2>SRI BloomFlow</h2>
+        <p>Fresh Blooms & Bouquets Delivered Across Sivakasi.</p>
+        <p class="copy">© 2026 SRI BloomFlow Flower Shop. All Rights Reserved.</p>
+    </footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        let checkoutMeta = null;
+        let generatedOrderId = '';
+        let generatedTrackingId = '';
+        let currentStoreUPI = localStorage.getItem('bloomflow_store_upi_id') || 'bloomflow@upi';
+        let merchantName = 'SRI BloomFlow';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initPaymentIds();
+            loadPaymentData();
+            updateStoreUPIDisplay();
+            generateDynamicUPIQR();
+        });
+
+        function initPaymentIds() {
+            const randomDigits = Math.floor(100000 + Math.random() * 900000);
+            generatedOrderId = `BF-${randomDigits.toString().slice(-5)}`;
+            generatedTrackingId = `TRK-BF-${randomDigits}`;
+        }
+
+        // Switch between tabs: UPI / Card / COD
+        function switchPaymentTab(tab) {
+            document.querySelectorAll('.pay-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('panel-upi').style.display = 'none';
+            document.getElementById('panel-card').style.display = 'none';
+            document.getElementById('panel-cod').style.display = 'none';
+
+            if (tab === 'upi') {
+                document.getElementById('tab-btn-upi').classList.add('active');
+                document.getElementById('panel-upi').style.display = 'flex';
+                generateDynamicUPIQR();
+            } else if (tab === 'card') {
+                document.getElementById('tab-btn-card').classList.add('active');
+                document.getElementById('panel-card').style.display = 'block';
+            } else if (tab === 'cod') {
+                document.getElementById('tab-btn-cod').classList.add('active');
+                document.getElementById('panel-cod').style.display = 'block';
+            }
+        }
+
+        // Load pricing meta values with resilient fallback
+        function loadPaymentData() {
+            checkoutMeta = JSON.parse(localStorage.getItem('bloomflow_temp_checkout'));
+            
+            // If no temp checkout, build from active cart or default
+            if (!checkoutMeta) {
+                const cart = JSON.parse(localStorage.getItem('bloomflow_cart')) || [];
+                const activeUser = JSON.parse(localStorage.getItem('bloomflow_active_user'));
+                
+                if (cart.length > 0) {
+                    const subtotal = cart.reduce((sum, item) => sum + (Number(item.price) * Number(item.quantity || 1)), 0);
+                    checkoutMeta = {
+                        recipientName: activeUser ? activeUser.name : 'Customer',
+                        phone: '+91 98765 43210',
+                        email: activeUser ? activeUser.email : 'customer@bloomflow.com',
+                        deliveryAddress: 'Main Road, Sivakasi',
+                        city: 'Sivakasi',
+                        deliveryDate: new Date().toLocaleDateString(),
+                        subtotal: subtotal,
+                        deliveryFee: 0,
+                        tax: 0,
+                        total: subtotal,
+                        items: cart
+                    };
+                } else {
+                    // Default test order
+                    checkoutMeta = {
+                        recipientName: activeUser ? activeUser.name : 'Priya Sundaram',
+                        phone: '+91 98765 43210',
+                        email: activeUser ? activeUser.email : 'priya@bloomflow.com',
+                        deliveryAddress: '12 Car Street, Sivakasi',
+                        city: 'Sivakasi',
+                        deliveryDate: new Date().toLocaleDateString(),
+                        subtotal: 240,
+                        deliveryFee: 0,
+                        tax: 0,
+                        total: 240,
+                        items: [
+                            { id: 1, name: 'Mallipoo', price: 120, quantity: 2, unit: '100g' }
+                        ]
+                    };
+                }
+            }
+
+            const formattedTotal = `₹${Number(checkoutMeta.total || 0).toLocaleString('en-IN')}`;
+
+            // Set button total in INR
+            const payBtnText = document.getElementById('pay-btn')?.querySelector('#btn-text');
+            if (payBtnText) payBtnText.textContent = `Pay with Card • ${formattedTotal}`;
+
+            const gpayAmountBadge = document.getElementById('gpay-amount-badge');
+            if (gpayAmountBadge) gpayAmountBadge.textContent = formattedTotal;
+
+            const gpayBtnLabel = document.getElementById('gpay-btn-label');
+            if (gpayBtnLabel) gpayBtnLabel.textContent = `Pay with Google Pay • ${formattedTotal}`;
+
+            const confirmUpiBtnText = document.getElementById('confirm-upi-btn-text');
+            if (confirmUpiBtnText) confirmUpiBtnText.textContent = `I Have Paid via Google Pay • Complete Order (${formattedTotal})`;
+
+            const codBtnLabel = document.getElementById('cod-btn-label');
+            if (codBtnLabel) codBtnLabel.textContent = `Place Cash on Delivery Order • ${formattedTotal}`;
+
+            // Render right summary invoice
+            const summaryContainer = document.getElementById('checkout-summary-details');
+            if (summaryContainer) {
+                summaryContainer.innerHTML = `
+                    <div class="summary-row">
+                        <span>Recipient</span>
+                        <span>${checkoutMeta.recipientName}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Address</span>
+                        <span>${checkoutMeta.deliveryAddress}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Scheduled Date</span>
+                        <span>${checkoutMeta.deliveryDate}</span>
+                    </div>
+                    <hr class="summary-divider">
+                    <div class="summary-row font-bold">
+                        <span>Items Subtotal</span>
+                        <span>₹${Number(checkoutMeta.subtotal || checkoutMeta.total).toLocaleString('en-IN')}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Charge</span>
+                        <span style="color:#2ec4b6; font-weight:600;">FREE</span>
+                    </div>
+                    <div class="summary-row font-total">
+                        <span>Total Payable</span>
+                        <span>₹${Number(checkoutMeta.total).toLocaleString('en-IN')}</span>
+                    </div>
+                `;
+            }
+        }
+
+        // =========================================================
+        // GOOGLE PAY & UPI DEEP-LINKING ENGINES
+        // =========================================================
+
+        function buildUPIString() {
+            const amount = Number(checkoutMeta ? checkoutMeta.total : 0).toFixed(2);
+            const orderRef = generatedOrderId;
+            const note = `Order ${orderRef} SRI BloomFlow`;
+            
+            // Standard NPCI UPI URI Scheme
+            return `upi://pay?pa=${encodeURIComponent(currentStoreUPI)}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}&tr=${encodeURIComponent(orderRef)}`;
+        }
+
+        // Launches Original Google Pay App directly on mobile
+        function launchGooglePay() {
+            const upiUrl = buildUPIString();
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            
+            // On mobile devices, trigger native UPI protocol
+            window.location.href = upiUrl;
+
+            // Optional fallback prompt for desktop users
+            if (!isMobile) {
+                setTimeout(() => {
+                    const fallback = confirm("Google Pay App is supported directly on Android/iOS mobile devices.\n\nOn computer/laptop, please scan the QR code with your Google Pay app on your phone!\n\nWould you like to copy the UPI ID?");
+                    if (fallback) copyUPIId();
+                }, 1000);
+            }
+        }
+
+        // Launches specific UPI App or Generic Intent
+        function launchUPIApp(app) {
+            const upiUrl = buildUPIString();
+            if (app === 'phonepe') {
+                window.location.href = upiUrl;
+            } else if (app === 'paytm') {
+                window.location.href = upiUrl;
+            } else {
+                window.location.href = upiUrl;
+            }
+        }
+
+        // Generates Crisp QR Code for Desktop / Laptop users
+        function generateDynamicUPIQR() {
+            const qrImg = document.getElementById('dynamic-upi-qr');
+            if (!qrImg) return;
+
+            const upiUrl = buildUPIString();
+            const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${encodeURIComponent(upiUrl)}&bgcolor=ffffff&color=1a202c&margin=8`;
+            qrImg.src = qrApiUrl;
+        }
+
+        function updateStoreUPIDisplay() {
+            const display = document.getElementById('store-upi-display');
+            if (display) display.textContent = currentStoreUPI;
+        }
+
+        function copyUPIId() {
+            navigator.clipboard.writeText(currentStoreUPI).then(() => {
+                const text = document.getElementById('copy-btn-text');
+                if (text) {
+                    text.textContent = 'Copied! ✓';
+                    setTimeout(() => { text.textContent = 'Copy'; }, 2000);
+                }
+            }).catch(() => {
+                alert("UPI ID: " + currentStoreUPI);
+            });
+        }
+
+        function promptChangeStoreUPI() {
+            const newUpi = prompt("Enter your personal or business Google Pay / UPI ID:\n(e.g. 9876543210@okaxis, yourname@okhdfcbank, bloomflow@upi)", currentStoreUPI);
+            if (newUpi && newUpi.trim()) {
+                currentStoreUPI = newUpi.trim();
+                localStorage.setItem('bloomflow_store_upi_id', currentStoreUPI);
+                updateStoreUPIDisplay();
+                generateDynamicUPIQR();
+                alert(`✅ Store UPI ID successfully updated to: ${currentStoreUPI}\nGoogle Pay buttons & QR codes will now direct payments to this account.`);
+            }
+        }
+
+        // =========================================================
+        // ORDER COMPLETION (UPI, CARD, COD)
+        // =========================================================
+
+        async function completeUPIOrder() {
+            const utr = document.getElementById('upi-ref-no')?.value.trim() || '';
+            const btn = document.getElementById('confirm-upi-btn');
+            const btnText = document.getElementById('confirm-upi-btn-text');
+            const spinner = document.getElementById('upi-btn-spinner');
+
+            btn.disabled = true;
+            if (btnText) btnText.style.display = 'none';
+            if (spinner) spinner.style.display = 'block';
+
+            await finalizeOrderPlacement('UPI', 'Completed', `Paid via Google Pay / UPI (Payee: ${currentStoreUPI}) ${utr ? 'UTR: ' + utr : ''}`);
+        }
+
+        async function completeCODOrder() {
+            const btn = document.getElementById('confirm-cod-btn');
+            const label = document.getElementById('cod-btn-label');
+            btn.disabled = true;
+            if (label) label.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Placing Order...';
+
+            await finalizeOrderPlacement('COD', 'Pending', 'Cash on Delivery selected');
+        }
+
+        async function processCardPayment(e) {
+            e.preventDefault();
+
+            const payBtn = document.getElementById('pay-btn');
+            const btnText = document.getElementById('btn-text');
+            const spinner = document.getElementById('btn-spinner');
+
+            const inputs = document.querySelectorAll('#panel-card input');
+            inputs.forEach(input => input.disabled = true);
+            payBtn.disabled = true;
+
+            btnText.style.display = 'none';
+            spinner.style.display = 'block';
+
+            await finalizeOrderPlacement('CARD', 'Completed', 'Online Card Payment');
+        }
+
+        async function finalizeOrderPlacement(method, status, notes) {
+            try {
+                let orderId = generatedOrderId;
+                let trackingId = generatedTrackingId;
+
+                const activeUser = JSON.parse(localStorage.getItem('bloomflow_active_user'));
+                const email = activeUser ? activeUser.email : (checkoutMeta.email || 'customer@bloomflow.com');
+                const customerName = checkoutMeta.recipientName || (activeUser ? activeUser.name : 'Customer');
+                const customerPhone = checkoutMeta.phone || '+91 9876543210';
+
+                // 1. Sync to MongoDB Server
+                if (window.BloomAPI && window.BloomAPI.orders) {
+                    try {
+                        const mongoRes = await window.BloomAPI.orders.create({
+                            customerName,
+                            customerEmail: email,
+                            customerPhone,
+                            trackingId,
+                            deliveryAddress: {
+                                street: checkoutMeta.deliveryAddress || 'Sivakasi Main Road',
+                                city: checkoutMeta.city || 'Sivakasi'
+                            },
+                            items: (checkoutMeta.items || []).map(item => ({
+                                productId: String(item.id || item.name),
+                                name: item.name,
+                                price: Number(item.price),
+                                quantity: Number(item.quantity || 1),
+                                unit: item.unit || '100g',
+                                image: item.image || '',
+                                itemTotal: Number(item.price) * Number(item.quantity || 1)
+                            })),
+                            totalAmount: Number(checkoutMeta.subtotal || checkoutMeta.total),
+                            deliveryFee: Number(checkoutMeta.deliveryFee || 0),
+                            grandTotal: Number(checkoutMeta.total),
+                            paymentMethod: method,
+                            paymentStatus: status,
+                            orderNotes: notes || ''
+                        });
+
+                        if (mongoRes.ok && mongoRes.data && mongoRes.data.data) {
+                            orderId = mongoRes.data.data.orderNumber || orderId;
+                            trackingId = mongoRes.data.data.trackingId || trackingId;
+                        }
+                    } catch (apiErr) {
+                        console.warn("MongoDB order sync fallback:", apiErr);
+                    }
+                }
+
+                // 2. Save order to LocalStorage
+                const orderRecord = {
+                    orderId,
+                    trackingId,
+                    date: new Date().toISOString().split('T')[0],
+                    recipientName: checkoutMeta.recipientName,
+                    deliveryAddress: checkoutMeta.deliveryAddress,
+                    deliveryDate: checkoutMeta.deliveryDate,
+                    total: checkoutMeta.total,
+                    items: checkoutMeta.items,
+                    status: (method === 'COD') ? 'Pending' : 'Confirmed',
+                    paymentMethod: method,
+                    paymentStatus: status,
+                    userEmail: email
+                };
+
+                let orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+                orders.push(orderRecord);
+                localStorage.setItem('bloomflow_orders', JSON.stringify(orders));
+
+                // 3. Admin Notification
+                try {
+                    const newNotif = {
+                        id: 'notif_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+                        type: 'order_placed',
+                        title: `New Order via ${method === 'UPI' ? 'Google Pay' : method}`,
+                        message: `Order #${orderId} for ₹${Number(checkoutMeta.total).toLocaleString('en-IN')} received from ${customerName}.`,
+                        orderId: orderId,
+                        trackingId: trackingId,
+                        customerName: customerName,
+                        amount: checkoutMeta.total,
+                        timestamp: new Date().toISOString(),
+                        read: false
+                    };
+                    let adminNotifs = JSON.parse(localStorage.getItem('bloomflow_admin_notifications')) || [];
+                    adminNotifs.unshift(newNotif);
+                    localStorage.setItem('bloomflow_admin_notifications', JSON.stringify(adminNotifs));
+                } catch (notifErr) {
+                    console.warn("Failed to store admin notification:", notifErr);
+                }
+
+                // Clear shopping cart
+                localStorage.removeItem('bloomflow_cart');
+                localStorage.removeItem('bloomflow_temp_checkout');
+
+                // Redirect to order-success.html
+                setTimeout(() => {
+                    window.location.href = `order-success.html?orderId=${encodeURIComponent(orderId)}&trackingId=${encodeURIComponent(trackingId)}`;
+                }, 700);
+
+            } catch (err) {
+                console.error(err);
+                window.location.href = `order-success.html?orderId=${encodeURIComponent(generatedOrderId)}&trackingId=${encodeURIComponent(generatedTrackingId)}`;
+            }
+        }
+
+        // =========================================================
+        // CARD INTERACTION HELPERS
+        // =========================================================
+
+        function fillDemoCard() {
+            document.getElementById('card-holder-input').value = 'PRIYA SUNDARAM';
+            document.getElementById('card-number-input').value = '4532 8921 4032 7789';
+            document.getElementById('card-expiry-input').value = '08/29';
+            document.getElementById('card-cvv-input').value = '888';
+
+            updateCardholder('PRIYA SUNDARAM');
+            document.getElementById('card-num-disp').textContent = '4532 8921 4032 7789';
+            document.getElementById('card-expiry-disp').textContent = '08/29';
+            document.getElementById('card-cvv-disp').textContent = '•••';
+        }
+
+        function updateCardholder(val) {
+            document.getElementById('card-holder-disp').textContent = val.toUpperCase() || 'FULL NAME';
+        }
+
+        function updateCardNumber(input) {
+            let val = input.value.replace(/\D/g, '');
+            let formatted = val.match(/.{1,4}/g);
+            input.value = formatted ? formatted.join(' ') : '';
+            document.getElementById('card-num-disp').textContent = input.value || '•••• •••• •••• ••••';
+        }
+
+        function updateExpiry(input) {
+            let val = input.value.replace(/\D/g, '');
+            if (val.length >= 2) {
+                input.value = val.slice(0, 2) + '/' + val.slice(2, 4);
+            } else {
+                input.value = val;
+            }
+            document.getElementById('card-expiry-disp').textContent = input.value || 'MM/YY';
+        }
+
+        function updateCVV(val) {
+            document.getElementById('card-cvv-disp').textContent = val.replace(/./g, '•') || '•••';
+        }
+
+        function flipCard(shouldFlip) {
+            const card = document.getElementById('credit-card');
+            if (shouldFlip) {
+                card.classList.add('flipped');
+            } else {
+                card.classList.remove('flipped');
+            }
+        }
+    </script>
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

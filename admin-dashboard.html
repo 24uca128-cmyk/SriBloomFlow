@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | Admin Console</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="admin-dashboard.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleMobileSidebar()"></div>
+
+    <!-- ================= DASHBOARD LAYOUT ================= -->
+    <div class="dashboard-wrapper">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <a href="admin-dashboard.html" class="sidebar-logo">
+                <svg viewBox="0 0 44 44" fill="none" style="width: 36px; height: 36px; flex-shrink: 0;" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sriRoseAdmin" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff758c" />
+                            <stop offset="50%" stop-color="#ff4081" />
+                            <stop offset="100%" stop-color="#8e3a59" />
+                        </linearGradient>
+                        <linearGradient id="sriGoldAdmin" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe699" />
+                            <stop offset="50%" stop-color="#f5a623" />
+                            <stop offset="100%" stop-color="#c97a2b" />
+                        </linearGradient>
+                    </defs>
+                    <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseAdmin)" stroke-width="1.6" />
+                    <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseAdmin)" />
+                    <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldAdmin)" />
+                    <circle cx="22" cy="22" r="2" fill="#ffffff" />
+                </svg>
+                <div class="logo-text-group">
+                    <span class="logo-brand-title"><span style="color:#d48b48; font-weight:800;">SRI</span> Bloom<span style="color:#b56d7f;">Flow</span></span>
+                    <span class="logo-brand-badge">Florist Console</span>
+                </div>
+            </a>
+            
+            <nav class="sidebar-menu">
+                <span class="menu-category-label">Management</span>
+                <button class="menu-item active" onclick="switchSection('analytics')" id="menu-btn-analytics">
+                    <i class="fa-solid fa-chart-line"></i> Analytics Hub
+                </button>
+                <button class="menu-item" onclick="switchSection('catalog')" id="menu-btn-catalog">
+                    <i class="fa-solid fa-boxes-stacked"></i> Catalog Manager
+                </button>
+                <button class="menu-item" onclick="switchSection('orders')" id="menu-btn-orders">
+                    <i class="fa-solid fa-receipt"></i> Orders Queue
+                </button>
+
+                <hr class="menu-divider">
+                
+                <span class="menu-category-label">Storefront</span>
+                <a href="home.html" target="_blank" class="menu-item storefront-link">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Storefront
+                </a>
+
+                <button class="menu-item logout-btn" onclick="logoutAdmin()">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Console
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Workspace -->
+        <main class="workspace">
+            
+            <!-- Header bar -->
+            <header class="workspace-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle-btn" onclick="toggleMobileSidebar()" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="header-title-group">
+                        <h3 id="workspace-title">Console Overview</h3>
+                        <div class="live-date-badge">
+                            <i class="fa-regular fa-calendar"></i>
+                            <span id="live-date-str">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Admin Notification Bell with live count and dropdown -->
+                    <div class="admin-notif-wrapper">
+                        <button type="button" class="admin-notif-btn" id="admin-notif-btn" onclick="toggleAdminNotifDropdown()" title="Store & Order Notifications" aria-label="Notifications">
+                            <i class="fa-regular fa-bell"></i>
+                            <span class="notif-badge-bubble" id="admin-notif-count" style="display: none;">0</span>
+                        </button>
+                        <div class="admin-notif-dropdown" id="admin-notif-dropdown">
+                            <div class="notif-dropdown-header">
+                                <div style="display:flex; align-items:center; gap:8px;">
+                                    <i class="fa-solid fa-bell" style="color:var(--primary);"></i>
+                                    <strong style="font-size:13.5px; color:#2b1d22;">Order & Store Alerts</strong>
+                                </div>
+                                <button type="button" onclick="markAllAdminNotifsRead()" class="btn-clear-notifs">Mark all read</button>
+                            </div>
+                            <div class="notif-dropdown-body" id="admin-notif-list">
+                                <div style="padding: 20px; text-align: center; color: #94a3b8; font-size: 12.5px;">
+                                    <i class="fa-regular fa-bell-slash" style="font-size: 20px; display: block; margin-bottom: 6px;"></i>
+                                    No new notifications
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="home.html" target="_blank" class="btn-visit-store d-none d-md-inline-flex">
+                        <i class="fa-solid fa-store"></i> Live Store
+                    </a>
+                    <div class="admin-session-details">
+                        <div class="admin-avatar">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div class="admin-info-text">
+                            <span class="admin-role">Administrator</span>
+                            <strong class="admin-name" id="admin-name-display">Admin</strong>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- ================= 1. SECTION: ANALYTICS ================= -->
+            <section class="section-panel active" id="sec-analytics">
+                <div class="panel-header-bar">
+                    <div class="panel-title-area">
+                        <h2>Performance Overview</h2>
+                        <p class="panel-subtitle">Real-time revenue metrics, order fulfillment pace, and inventory health.</p>
+                    </div>
+                    <button class="btn-visit-store" onclick="loadDashboardData()" style="border-radius:10px; cursor:pointer;">
+                        <i class="fa-solid fa-arrows-rotate"></i> Refresh
+                    </button>
+                </div>
+
+                <!-- 4 KPI Metrics Grid -->
+                <div class="metrics-grid">
+                    <div class="metric-card card-sales">
+                        <div class="metric-icon bg-sales"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+                        <div class="metric-info">
+                            <span class="label">Gross Sales</span>
+                            <h3 id="stat-sales">₹0.00</h3>
+                            <span class="subtext">All completed & recorded sales</span>
+                        </div>
+                    </div>
+                    <div class="metric-card card-orders">
+                        <div class="metric-icon bg-orders"><i class="fa-solid fa-cart-shopping"></i></div>
+                        <div class="metric-info">
+                            <span class="label">Total Orders</span>
+                            <h3 id="stat-orders">0</h3>
+                            <span class="subtext">Lifetime customer purchases</span>
+                        </div>
+                    </div>
+                    <div class="metric-card card-pending">
+                        <div class="metric-icon bg-pending"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <div class="metric-info">
+                            <span class="label">Pending Fulfillment</span>
+                            <h3 id="stat-pending">0</h3>
+                            <span class="subtext">Awaiting packing or shipping</span>
+                        </div>
+                    </div>
+                    <div class="metric-card card-products">
+                        <div class="metric-icon bg-products"><i class="fa-solid fa-fan"></i></div>
+                        <div class="metric-info">
+                            <span class="label">Catalog Stems</span>
+                            <h3 id="stat-products">0</h3>
+                            <span class="subtext">Active flowers & products</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Analytics Tables Split Row -->
+                <div class="analytics-tables-row">
+                    <!-- Left: Recent Purchases -->
+                    <div class="table-card">
+                        <div class="card-header-flex">
+                            <h3><i class="fa-solid fa-bag-shopping" style="color:var(--primary);"></i> Recent Customer Purchases</h3>
+                            <button class="btn-card-action" onclick="switchSection('orders')">
+                                View All Orders <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="table-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Order ID</th>
+                                        <th>Recipient</th>
+                                        <th>Items</th>
+                                        <th>Amount</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="recent-orders-list">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right: Quick Catalog Category Breakdown -->
+                    <div class="table-card">
+                        <div class="card-header-flex">
+                            <h3><i class="fa-solid fa-chart-pie" style="color:var(--gold);"></i> Catalog Distribution</h3>
+                            <button class="btn-card-action" onclick="switchSection('catalog')">
+                                Manage <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div class="category-summary-list" id="category-summary-list">
+                            <!-- Populated dynamically -->
+                        </div>
+                        <div class="quick-action-box">
+                            <button class="quick-action-btn" onclick="toggleProductModal(true, null)">
+                                <i class="fa-solid fa-plus"></i> New Product
+                            </button>
+                            <button class="quick-action-btn" onclick="switchSection('orders')">
+                                <i class="fa-solid fa-truck-fast"></i> Process Orders
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ================= 2. SECTION: CATALOG MANAGER ================= -->
+            <section class="section-panel" id="sec-catalog">
+                <div class="panel-header-bar">
+                    <div class="panel-title-area">
+                        <h2>Flower Catalog Management</h2>
+                        <p class="panel-subtitle">Create, modify, update prices, and organize all fresh flower varieties and garlands.</p>
+                    </div>
+                    <button class="add-product-btn" onclick="toggleProductModal(true, null)">
+                        <i class="fa-solid fa-plus"></i> Add New Product
+                    </button>
+                </div>
+
+                <!-- Catalog Toolbar (Category Pills + Instant Search) -->
+                <div class="toolbar-bar">
+                    <div class="filter-pills-group" id="catalog-category-pills">
+                        <button class="filter-pill active" onclick="setCatalogCategoryFilter('all', this)">All Items</button>
+                        <button class="filter-pill" onclick="setCatalogCategoryFilter('flowers', this)">🌸 Loose Flowers</button>
+                        <button class="filter-pill" onclick="setCatalogCategoryFilter('garlands', this)">📿 Garlands & Maalai</button>
+                        <button class="filter-pill" onclick="setCatalogCategoryFilter('bouquets', this)">💐 Handcrafted Bouquets</button>
+                        <button class="filter-pill" onclick="setCatalogCategoryFilter('aaram', this)">🪷 Sacred Aaram</button>
+                    </div>
+
+                    <div class="search-input-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="catalog-search-input" class="search-input" placeholder="Search product name or tag..." oninput="filterCatalogTable()">
+                    </div>
+                </div>
+
+                <!-- Products Table -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product Details</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Rating</th>
+                                <th>Badge</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="catalog-products-list">
+                            <!-- Dynamic Catalog Stems -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ================= 3. SECTION: ORDERS QUEUE ================= -->
+            <section class="section-panel" id="sec-orders">
+                <div class="panel-header-bar">
+                    <div class="panel-title-area">
+                        <h2>E-Commerce Orders Queue</h2>
+                        <p class="panel-subtitle">Track customer orders, review cart items, and dispatch deliveries.</p>
+                    </div>
+                </div>
+
+                <!-- Orders Toolbar (Status Pills + Search) -->
+                <div class="toolbar-bar">
+                    <div class="filter-pills-group" id="order-status-pills">
+                        <button class="filter-pill active" onclick="setOrderStatusFilter('all', this)">All Orders</button>
+                        <button class="filter-pill" onclick="setOrderStatusFilter('Pending', this)">⏳ Pending</button>
+                        <button class="filter-pill" onclick="setOrderStatusFilter('Confirmed', this)">✔️ Confirmed</button>
+                        <button class="filter-pill" onclick="setOrderStatusFilter('Processing', this)">🔄 Processing</button>
+                        <button class="filter-pill" onclick="setOrderStatusFilter('Shipped', this)">🚚 Out for Delivery</button>
+                        <button class="filter-pill" onclick="setOrderStatusFilter('Delivered', this)">✅ Delivered</button>
+                        <button class="filter-pill" onclick="setOrderStatusFilter('Cancelled', this)">❌ Cancelled</button>
+                    </div>
+
+                    <div class="search-input-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="order-search-input" class="search-input" placeholder="Search Order ID or Recipient..." oninput="filterOrdersTable()">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Recipient & Address</th>
+                                <th>Items Ordered</th>
+                                <th>Total</th>
+                                <th>Status Dispatch</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-queue-list">
+                            <!-- Dynamic Orders list -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- ================= ADD / EDIT PRODUCT MODAL ================= -->
+    <div class="modal-overlay" id="product-modal">
+        <div class="modal-card">
+            <div class="modal-header-flex">
+                <h3 id="modal-title">Add New Product</h3>
+                <button type="button" class="modal-close-btn" onclick="toggleProductModal(false)" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <form id="product-form" onsubmit="handleSaveProduct(event)">
+                <input type="hidden" id="prod-id">
+                
+                <div class="form-group-2">
+                    <div class="form-group">
+                        <label for="prod-name">Product Name *</label>
+                        <input type="text" id="prod-name" placeholder="e.g. Traditional Jasmine Aaram" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-category">Category *</label>
+                        <select id="prod-category" required>
+                            <option value="flowers">🌸 Fresh Loose Flowers</option>
+                            <option value="garlands">📿 Flower Garlands & Maalai</option>
+                            <option value="bouquets">💐 Handcrafted Bouquets</option>
+                            <option value="aaram">🪷 Sacred Wedding Aaram</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group-2">
+                    <div class="form-group">
+                        <label for="prod-price">Price (₹) *</label>
+                        <input type="number" id="prod-price" placeholder="450.00" step="1" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-image">Image Selection *</label>
+                        <select id="prod-image" onchange="onModalImageChange(this.value)" required>
+                            <optgroup label="🌸 Loose Flowers">
+                                <option value="images/jas.jpg">images/jas.jpg (Mallipoo)</option>
+                                <option value="images/mullai.jpg">images/mullai.jpg (Mullai)</option>
+                                <option value="images/jathimalli.jpg">images/jathimalli.jpg (Jathi Malli)</option>
+                                <option value="images/kanagambaram.jpg">images/kanagambaram.jpg (Kanakambaram)</option>
+                                <option value="images/samanthi.jpg">images/samanthi.jpg (Samanthi / Sevvanthi)</option>
+                                <option value="images/rose.jpg">images/rose.jpg (Paneer Rose)</option>
+                                <option value="images/redrose.jpg">images/redrose.jpg (Red Rose)</option>
+                                <option value="images/pinkrose.jpg">images/pinkrose.jpg (Pink Rose)</option>
+                                <option value="images/yellowrose.jpg">images/yellowrose.jpg (Yellow Rose)</option>
+                                <option value="images/Lotus.jpg">images/Lotus.jpg (Lotus)</option>
+                                <option value="images/arali.jpg">images/arali.jpg (Arali)</option>
+                                <option value="images/sampangi.jpg">images/sampangi.jpg (Sampangi / Tuberose)</option>
+                                <option value="images/marikolunthu.jpg">images/marikolunthu.jpg (Marikolunthu)</option>
+                                <option value="images/marigold.jpg">images/marigold.jpg (Marigold)</option>
+                            </optgroup>
+                            <optgroup label="📿 Garlands & Maalai">
+                                <option value="images/rose maalai.jpg">images/rose maalai.jpg (Rose Maalai)</option>
+                                <option value="images/samanthi maalai.jpg">images/samanthi maalai.jpg (Samanthi Maalai)</option>
+                                <option value="images/mullai maalai.jpg">images/mullai maalai.jpg (Mullai Maalai)</option>
+                                <option value="images/tulasi maalai.jpg">images/tulasi maalai.jpg (Tulasi Maalai)</option>
+                                <option value="images/sampangi maalai.jpg">images/sampangi maalai.jpg (Sampangi Maalai)</option>
+                                <option value="images/marigold maalai.jpg">images/marigold maalai.jpg (Marigold Maalai)</option>
+                                <option value="images/Lotus maalai.jpg">images/Lotus maalai.jpg (Lotus Maalai)</option>
+                            </optgroup>
+                            <optgroup label="💐 Handcrafted Bouquets">
+                                <option value="images/redrosebouquet.jpg">images/redrosebouquet.jpg (Red Rose Bouquet)</option>
+                                <option value="images/pinkrosebouquet.jpg">images/pinkrosebouquet.jpg (Pink Rose Bouquet)</option>
+                                <option value="images/yellowrosebouquet.jpg">images/yellowrosebouquet.jpg (Yellow Rose Bouquet)</option>
+                                <option value="images/mixedrosebouquet.jpg">images/mixedrosebouquet.jpg (Mixed Rose Bouquet)</option>
+                                <option value="images/orangerosebouquet.jpg">images/orangerosebouquet.jpg (Orange Rose Bouquet)</option>
+                                <option value="images/redwhiterosebouquet.jpg">images/redwhiterosebouquet.jpg (Red & White Rose Bouquet)</option>
+                                <option value="images/bouquet_pastel_roses.jpg">images/bouquet_pastel_roses.jpg (Pastel Dream Rose Bouquet)</option>
+                                <option value="images/bouquet_pink_lily.jpg">images/bouquet_pink_lily.jpg (Blush Pink Lily Charm Bouquet)</option>
+                                <option value="images/bouquet_white_bridal.jpg">images/bouquet_white_bridal.jpg (Royal White Bridal Lily Bouquet)</option>
+                                <option value="images/bouquet_purple_orchid.jpg">images/bouquet_purple_orchid.jpg (Purple Orchid Luxury Bouquet)</option>
+                                <option value="images/mixedgerberabouquet.jpg">images/mixedgerberabouquet.jpg (Mixed Gerbera Bouquet)</option>
+                                <option value="images/pinkgerberabouquet.jpg">images/pinkgerberabouquet.jpg (Pink Gerbera Bouquet)</option>
+                                <option value="images/redgerberabouquet.jpg">images/redgerberabouquet.jpg (Red Gerbera Bouquet)</option>
+                                <option value="images/yellowgerberabouquet.jpg">images/yellowgerberabouquet.jpg (Yellow Gerbera Bouquet)</option>
+                            </optgroup>
+                            <optgroup label="🪷 Sacred Wedding Aaram">
+                                <option value="images/jasmineaaram.jpg">images/jasmineaaram.jpg (Traditional Jasmine Aaram)</option>
+                                <option value="images/mullaiaaram.jpg">images/mullaiaaram.jpg (Royal Mullai Aaram)</option>
+                                <option value="images/rosepetalsaaram.jpg">images/rosepetalsaaram.jpg (Rose Petals Wedding Aaram)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Live Image Preview -->
+                <div class="image-preview-wrapper">
+                    <img id="modal-img-preview" src="images/jas.jpg" alt="Preview" class="preview-thumb" onerror="this.src='images/flower-placeholder.jpg'">
+                    <div>
+                        <strong style="font-size:13px; color:#2b1d22; display:block;" id="modal-preview-name">Selected Image Preview</strong>
+                        <span class="preview-hint">This image will be showcased across storefront catalog cards.</span>
+                    </div>
+                </div>
+
+                <div class="form-group-2">
+                    <div class="form-group">
+                        <label for="prod-rating">Customer Rating (1 - 5) *</label>
+                        <input type="number" id="prod-rating" placeholder="4.9" min="1" max="5" step="0.1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="prod-badge">Featured Badge (e.g. Best Seller, Festive)</label>
+                        <input type="text" id="prod-badge" placeholder="Best Seller">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="prod-tagline">Short Tagline Description *</label>
+                    <input type="text" id="prod-tagline" placeholder="Freshly harvested Sivakasi blooms." required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="cancel-btn" onclick="toggleProductModal(false)">Cancel</button>
+                    <button type="submit" class="save-btn"><i class="fa-solid fa-check"></i> Save Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- ================= ORDER DETAILS MODAL ================= -->
+    <div class="modal-overlay" id="order-details-modal">
+        <div class="modal-card modal-card-large">
+            <div class="modal-header-flex">
+                <div>
+                    <h3 id="modal-order-id-title">Order Details</h3>
+                    <span class="preview-hint" id="modal-order-date">Placed on: --</span>
+                </div>
+                <button type="button" class="modal-close-btn" onclick="closeOrderDetailsModal()" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Customer & Delivery Summary -->
+            <div class="order-detail-grid">
+                <div class="detail-info-block">
+                    <div class="detail-label">Recipient Customer</div>
+                    <div class="detail-val" id="modal-order-recipient">--</div>
+                    <small id="modal-order-email" style="color:var(--text-muted); font-size:11.5px;"></small>
+                </div>
+                <div class="detail-info-block">
+                    <div class="detail-label">Delivery Address</div>
+                    <div class="detail-val" id="modal-order-address">--</div>
+                    <small id="modal-order-deldate" style="color:var(--gold); font-weight:600; font-size:11.5px;"></small>
+                </div>
+                <div class="detail-info-block">
+                    <div class="detail-label">Payment Information</div>
+                    <div class="detail-val" id="modal-order-payment">--</div>
+                </div>
+                <div class="detail-info-block">
+                    <div class="detail-label">Fulfillment Status</div>
+                    <div id="modal-order-status-badge">--</div>
+                </div>
+            </div>
+
+            <!-- Order Gift Note (if present) -->
+            <div id="modal-gift-note-wrapper" style="display:none; margin-bottom:16px; padding:12px 16px; background:#fff8e6; border-left:4px solid #f59e0b; border-radius:8px;">
+                <div style="font-size:11.5px; font-weight:700; color:#b45309; text-transform:uppercase;">Personalized Gift Note</div>
+                <p id="modal-order-giftnote" style="margin:4px 0 0; font-size:13px; color:#451a03; font-style:italic;"></p>
+            </div>
+
+            <!-- Ordered Items List -->
+            <h4 style="font-size:14px; font-weight:700; color:#2b1d22; margin-bottom:10px;">Ordered Flowers & Items</h4>
+            <div class="order-items-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Unit Price</th>
+                            <th>Qty</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modal-order-items-tbody">
+                        <!-- Populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:16px; padding-top:14px; border-top:1.5px solid var(--border-color);">
+                <div style="display:flex; align-items:center; gap:10px;">
+                    <label for="modal-quick-status" style="font-size:13px; font-weight:700; color:#57484e;">Change Status:</label>
+                    <select id="modal-quick-status" class="status-select" onchange="onModalStatusChange(this.value)">
+                        <option value="Pending">Pending</option>
+                        <option value="Confirmed">Confirmed</option>
+                        <option value="Processing">Processing</option>
+                        <option value="Shipped">Out for Delivery</option>
+                        <option value="Delivered">Delivered</option>
+                        <option value="Cancelled">❌ Cancelled</option>
+                    </select>
+                </div>
+                <div style="text-align:right;">
+                    <span style="font-size:12px; color:var(--text-muted); display:block;">Grand Total</span>
+                    <h3 id="modal-order-grandtotal" style="font-size:22px; font-weight:800; color:#10b981; margin:0;">₹0.00</h3>
+                </div>
+            </div>
+
+            <div class="modal-actions" style="display:flex; justify-content:space-between; align-items:center;">
+                <button type="button" class="btn-admin-cancel-order" id="btn-admin-cancel-order" onclick="adminCancelCurrentOrder()">
+                    <i class="fa-solid fa-ban"></i> Cancel Order & Refund
+                </button>
+                <button type="button" class="cancel-btn" onclick="closeOrderDetailsModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FLOATING TOAST CONTAINER ================= -->
+    <div id="toast-container"></div>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+        // Default items fallback with Sivakasi market rates
+        const defaultProducts = [
+            { id: 1, name: "Mallipoo (Jasmine)", category: "flowers", price: 120, image: "images/jas.jpg", rating: 4.9, badge: "Best Seller", tagline: "Fresh, highly fragrant local jasmine flowers." },
+            { id: 2, name: "Mullai Poo", category: "flowers", price: 110, image: "images/mullai.jpg", rating: 4.8, badge: "Traditional", tagline: "Fresh local Mullai flowers with sweet fragrance." },
+            { id: 3, name: "Jathi Malli", category: "flowers", price: 130, image: "images/jathimalli.jpg", rating: 4.9, badge: "Highly Fragrant", tagline: "Fresh peach-tinted local jasmine buds." },
+            { id: 4, name: "Kanakambaram", category: "flowers", price: 140, image: "images/kanagambaram.jpg", rating: 4.8, badge: "Vibrant", tagline: "Bright orange Kanakambaram flowers." },
+            { id: 13, name: "Rose Maalai", category: "garlands", price: 650, image: "images/rose maalai.jpg", rating: 4.9, badge: "Grand Wedding", tagline: "Exquisite Rose Maalai crafted with premium fresh roses." },
+            { id: 14, name: "Samanthi Maalai", category: "garlands", price: 400, image: "images/samanthi maalai.jpg", rating: 4.8, badge: "Auspicious", tagline: "Festive and auspicious yellow Samanthi Maalai." },
+            { id: 101, name: "Pastel Dream Rose Bouquet", category: "bouquets", price: 699, image: "images/bouquet_pastel_roses.jpg", rating: 4.9, badge: "Luxury Pick", tagline: "Soft pastel blush and peach roses." },
+            { id: 108, name: "Red Rose Bouquet", category: "bouquets", price: 599, image: "images/redrosebouquet.jpg", rating: 4.9, badge: "Romantic", tagline: "Handpicked deep crimson red roses." },
+            { id: 118, name: "Traditional Jasmine Aaram", category: "aaram", price: 850, image: "images/jasmineaaram.jpg", rating: 4.9, badge: "Sacred", tagline: "Divine traditional jasmine wedding aaram." }
+        ];
+
+        // State variables for reactive filtering
+        let allProductsCache = [];
+        let allOrdersCache = [];
+        let activeCatalogCategory = 'all';
+        let activeOrderStatus = 'all';
+        let currentInspectedOrderId = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            validateAdminSession();
+            initLiveDate();
+            loadDashboardData();
+        });
+
+        // Initialize header live date
+        function initLiveDate() {
+            const dateElem = document.getElementById('live-date-str');
+            if (dateElem) {
+                const now = new Date();
+                dateElem.textContent = now.toLocaleDateString('en-IN', {
+                    weekday: 'short',
+                    day: 'numeric',
+                    month: 'short',
+                    year: 'numeric'
+                });
+            }
+        }
+
+        // Block unauthorized entry & set admin name
+        function validateAdminSession() {
+            const activeUser = JSON.parse(localStorage.getItem('bloomflow_active_user'));
+            if (!activeUser || activeUser.isAdmin !== true) {
+                alert("Unauthorized Access! Redirecting to secure login.");
+                window.location.href = "admin-login.html";
+                return;
+            }
+
+            const nameDisplay = document.getElementById('admin-name-display');
+            if (nameDisplay) {
+                nameDisplay.textContent = activeUser.name || 'Administrator';
+            }
+        }
+
+        // Load all metrics and databases (MongoDB Backend + Fallback)
+        async function loadDashboardData() {
+            let products = [];
+            let orders = [];
+
+            // 1. Try Backend & MongoDB Analytics & Collections
+            if (window.BloomAPI) {
+                try {
+                    const [statsRes, productsRes, ordersRes] = await Promise.all([
+                        window.BloomAPI.admin.getStats(),
+                        window.BloomAPI.products.getAll(),
+                        window.BloomAPI.orders.getAll()
+                    ]);
+
+                    if (productsRes.ok && productsRes.data && productsRes.data.data) {
+                        products = productsRes.data.data;
+                    }
+
+                    if (ordersRes.ok && ordersRes.data && ordersRes.data.data) {
+                        orders = ordersRes.data.data.map(o => ({
+                            orderId: o.orderNumber || o._id,
+                            recipientName: o.customerName || 'Customer',
+                            deliveryAddress: o.deliveryAddress ? `${o.deliveryAddress.street || ''}, ${o.deliveryAddress.city || 'Sivakasi'}` : 'Sivakasi',
+                            deliveryDate: o.deliveryDate || '',
+                            date: new Date(o.createdAt || Date.now()).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+                            total: o.grandTotal || o.totalAmount || 0,
+                            subtotal: o.subtotal || o.grandTotal || 0,
+                            status: o.orderStatus || 'Pending',
+                            paymentMethod: o.paymentMethod || 'Cash on Delivery',
+                            paymentStatus: o.paymentStatus || 'Pending',
+                            items: o.items || [],
+                            giftNote: o.orderNotes || o.giftNote || '',
+                            userEmail: o.customerEmail || ''
+                        }));
+                    }
+                } catch (apiErr) {
+                    console.warn("Admin MongoDB dashboard sync fallback:", apiErr);
+                }
+            }
+
+            // 2. Fallback to LocalStorage if needed
+            if (products.length === 0) {
+                products = JSON.parse(localStorage.getItem('bloomflow_products')) || defaultProducts;
+            }
+            if (orders.length === 0) {
+                orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+            }
+
+            allProductsCache = products;
+            allOrdersCache = orders;
+
+            // Compute KPIs
+            const salesTotal = orders.reduce((sum, o) => sum + (Number(o.total) || 0), 0);
+            const pendingOrdersCount = orders.filter(o => (o.status || '').toLowerCase() === 'pending' || (o.status || '').toLowerCase() === 'processing').length;
+
+            // Update stats indicators
+            document.getElementById('stat-sales').textContent = `₹${salesTotal.toLocaleString('en-IN')}`;
+            document.getElementById('stat-orders').textContent = orders.length;
+            document.getElementById('stat-pending').textContent = pendingOrdersCount;
+            document.getElementById('stat-products').textContent = products.length;
+
+            // Render tables & components
+            renderRecentOrders(orders);
+            renderCategoryBreakdown(products);
+            renderCatalogManager(products);
+            renderOrdersQueue(orders);
+            loadAdminNotifications();
+        }
+
+        // Section switcher
+        function switchSection(secId) {
+            document.querySelectorAll('.menu-item').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.section-panel').forEach(panel => panel.classList.remove('active'));
+
+            const targetMenuBtn = document.getElementById(`menu-btn-${secId}`);
+            if (targetMenuBtn) targetMenuBtn.classList.add('active');
+
+            const targetSection = document.getElementById(`sec-${secId}`);
+            if (targetSection) targetSection.classList.add('active');
+
+            const titleMap = {
+                'analytics': 'Analytics Hub',
+                'catalog': 'Catalog Manager',
+                'orders': 'Orders Queue'
+            };
+            const pageTitle = document.getElementById('workspace-title');
+            if (pageTitle && titleMap[secId]) {
+                pageTitle.textContent = titleMap[secId];
+            }
+
+            // Close mobile sidebar if open
+            closeMobileSidebar();
+        }
+
+        // Render Recent Purchases Table (in Analytics Hub)
+        function renderRecentOrders(orders) {
+            const container = document.getElementById('recent-orders-list');
+            container.innerHTML = '';
+            
+            const recent = orders.slice(-6).reverse();
+            if (recent.length === 0) {
+                container.innerHTML = `<tr><td colspan="6" class="empty-state"><i class="fa-solid fa-receipt"></i><p>No customer orders logged yet.</p></td></tr>`;
+                return;
+            }
+
+            recent.forEach(o => {
+                const statusClass = getStatusClass(o.status);
+                const itemsCount = (o.items && o.items.length) ? `${o.items.length} item${o.items.length > 1 ? 's' : ''}` : '1 package';
+
+                container.innerHTML += `
+                    <tr>
+                        <td><strong>${o.orderId}</strong></td>
+                        <td>${escapeHtml(o.recipientName || 'Customer')}</td>
+                        <td><span style="font-size:12px; color:#6b5d63;">${itemsCount}</span></td>
+                        <td><strong>₹${Number(o.total || 0).toLocaleString('en-IN')}</strong></td>
+                        <td><span class="status-badge ${statusClass}">${escapeHtml(o.status || 'Pending')}</span></td>
+                        <td>
+                            <button class="btn-icon-action btn-view-order" onclick="openOrderDetailsModal('${o.orderId}')">
+                                <i class="fa-regular fa-eye"></i> View
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Render Category Breakdown (in Analytics Hub)
+        function renderCategoryBreakdown(products) {
+            const container = document.getElementById('category-summary-list');
+            if (!container) return;
+
+            const counts = {
+                flowers: 0,
+                garlands: 0,
+                bouquets: 0,
+                aaram: 0
+            };
+
+            products.forEach(p => {
+                const cat = (p.category || '').toLowerCase();
+                if (counts[cat] !== undefined) {
+                    counts[cat]++;
+                } else if (cat.includes('garland')) {
+                    counts.garlands++;
+                } else if (cat.includes('bouquet')) {
+                    counts.bouquets++;
+                } else if (cat.includes('aaram')) {
+                    counts.aaram++;
+                } else {
+                    counts.flowers++;
+                }
+            });
+
+            const categoriesConfig = [
+                { key: 'flowers', name: 'Fresh Loose Flowers', icon: '🌸', count: counts.flowers },
+                { key: 'garlands', name: 'Flower Garlands & Maalai', icon: '📿', count: counts.garlands },
+                { key: 'bouquets', name: 'Handcrafted Bouquets', icon: '💐', count: counts.bouquets },
+                { key: 'aaram', name: 'Sacred Wedding Aaram', icon: '🪷', count: counts.aaram }
+            ];
+
+            container.innerHTML = categoriesConfig.map(cat => `
+                <div class="cat-item-bar">
+                    <div class="cat-item-left">
+                        <span class="cat-item-icon">${cat.icon}</span>
+                        <span>${cat.name}</span>
+                    </div>
+                    <span class="cat-item-badge">${cat.count} items</span>
+                </div>
+            `).join('');
+        }
+
+        // Render Catalog Manager Table
+        function renderCatalogManager(products) {
+            const container = document.getElementById('catalog-products-list');
+            container.innerHTML = '';
+
+            if (products.length === 0) {
+                container.innerHTML = `<tr><td colspan="7" class="empty-state"><i class="fa-solid fa-seedling"></i><p>No flower items found matching criteria.</p></td></tr>`;
+                return;
+            }
+
+            products.forEach(p => {
+                const catLabel = getCategoryLabel(p.category);
+                container.innerHTML += `
+                    <tr>
+                        <td>
+                            <img src="${p.image}" class="table-thumb" alt="${escapeHtml(p.name)}" onerror="this.src='images/flower-placeholder.jpg'">
+                        </td>
+                        <td>
+                            <strong style="color:#2b1d22; font-size:14px;">${escapeHtml(p.name)}</strong>
+                            <div style="font-size:11.5px; color:#87787e; margin-top:2px;">${escapeHtml(p.tagline || '')}</div>
+                        </td>
+                        <td><span class="category-tag">${catLabel}</span></td>
+                        <td><strong style="color:var(--primary); font-size:14px;">₹${Number(p.price || 0).toFixed(2)}</strong></td>
+                        <td><i class="fa-solid fa-star" style="color:#f59e0b; font-size:12px;"></i> ${p.rating || 4.8}</td>
+                        <td>${p.badge ? `<span class="badge">${escapeHtml(p.badge)}</span>` : '<span style="color:#b8acb2;">-</span>'}</td>
+                        <td>
+                            <div class="action-btn-group">
+                                <button class="btn-icon-action btn-edit" onclick="toggleProductModal(true, ${p.id})">
+                                    <i class="fa-solid fa-pen-to-square"></i> Edit
+                                </button>
+                                <button class="btn-icon-action btn-delete" onclick="handleDeleteProduct(${p.id})">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // Render Orders Queue Table
+        function renderOrdersQueue(orders) {
+            const container = document.getElementById('orders-queue-list');
+            container.innerHTML = '';
+
+            if (orders.length === 0) {
+                container.innerHTML = `<tr><td colspan="7" class="empty-state"><i class="fa-solid fa-box-open"></i><p>No customer orders in this queue.</p></td></tr>`;
+                return;
+            }
+
+            orders.slice().reverse().forEach(o => {
+                let itemsSummary = 'Flower Order';
+                if (o.items && o.items.length > 0) {
+                    const firstItem = o.items[0].name || 'Flower item';
+                    itemsSummary = o.items.length === 1 
+                        ? `${firstItem} (x${o.items[0].quantity || o.items[0].qty || 1})`
+                        : `${firstItem} + ${o.items.length - 1} more item${o.items.length > 2 ? 's' : ''}`;
+                }
+
+                container.innerHTML += `
+                    <tr>
+                        <td><strong style="color:var(--primary);">${o.orderId}</strong></td>
+                        <td>
+                            <span style="font-size:13px; font-weight:600; display:block;">${o.date}</span>
+                            ${o.deliveryDate ? `<small style="font-size:11px; color:#d48b48;">Deliver: ${escapeHtml(o.deliveryDate)}</small>` : ''}
+                        </td>
+                        <td>
+                            <strong style="font-size:13.5px; display:block; color:#2b1d22;">${escapeHtml(o.recipientName || 'Customer')}</strong>
+                            <small style="font-size:11.5px; color:#87787e;">${escapeHtml(o.deliveryAddress || 'Sivakasi')}</small>
+                        </td>
+                        <td><span style="font-size:12.5px; color:#4a3b42;">${escapeHtml(itemsSummary)}</span></td>
+                        <td><strong style="font-size:14px; color:#10b981;">₹${Number(o.total || 0).toLocaleString('en-IN')}</strong></td>
+                        <td>
+                            <select class="status-select ${o.status === 'Cancelled' ? 'select-cancelled' : ''}" onchange="updateOrderStatus('${o.orderId}', this.value)">
+                                <option value="Pending" ${o.status === 'Pending' ? 'selected' : ''}>⏳ Pending</option>
+                                <option value="Confirmed" ${o.status === 'Confirmed' ? 'selected' : ''}>✔️ Confirmed</option>
+                                <option value="Processing" ${o.status === 'Processing' ? 'selected' : ''}>🔄 Processing</option>
+                                <option value="Shipped" ${o.status === 'Shipped' || o.status === 'Out for Delivery' ? 'selected' : ''}>🚚 Out for Delivery</option>
+                                <option value="Delivered" ${o.status === 'Delivered' ? 'selected' : ''}>✅ Delivered</option>
+                                <option value="Cancelled" ${o.status === 'Cancelled' ? 'selected' : ''}>❌ Cancelled</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button class="btn-icon-action btn-view-order" onclick="openOrderDetailsModal('${o.orderId}')">
+                                <i class="fa-regular fa-eye"></i> Details
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        // ================= FILTERING & SEARCH =================
+
+        // Filter Catalog by category tab
+        function setCatalogCategoryFilter(category, buttonElem) {
+            activeCatalogCategory = category;
+            document.querySelectorAll('#catalog-category-pills .filter-pill').forEach(btn => btn.classList.remove('active'));
+            if (buttonElem) buttonElem.classList.add('active');
+            filterCatalogTable();
+        }
+
+        // Search + Category filtering on Catalog
+        function filterCatalogTable() {
+            const query = (document.getElementById('catalog-search-input').value || '').trim().toLowerCase();
+            
+            const filtered = allProductsCache.filter(p => {
+                const matchesCategory = activeCatalogCategory === 'all' || (p.category || '').toLowerCase() === activeCatalogCategory;
+                const matchesSearch = !query || 
+                    (p.name && p.name.toLowerCase().includes(query)) ||
+                    (p.tagline && p.tagline.toLowerCase().includes(query)) ||
+                    (p.badge && p.badge.toLowerCase().includes(query));
+                return matchesCategory && matchesSearch;
+            });
+
+            renderCatalogManager(filtered);
+        }
+
+        // Filter Orders by status tab
+        function setOrderStatusFilter(status, buttonElem) {
+            activeOrderStatus = status;
+            document.querySelectorAll('#order-status-pills .filter-pill').forEach(btn => btn.classList.remove('active'));
+            if (buttonElem) buttonElem.classList.add('active');
+            filterOrdersTable();
+        }
+
+        // Search + Status filtering on Orders
+        function filterOrdersTable() {
+            const query = (document.getElementById('order-search-input').value || '').trim().toLowerCase();
+
+            const filtered = allOrdersCache.filter(o => {
+                let matchesStatus = true;
+                if (activeOrderStatus !== 'all') {
+                    if (activeOrderStatus === 'Shipped') {
+                        matchesStatus = o.status === 'Shipped' || o.status === 'Out for Delivery';
+                    } else if (activeOrderStatus.toLowerCase() === 'cancelled') {
+                        matchesStatus = (o.status || '').toLowerCase() === 'cancelled';
+                    } else {
+                        matchesStatus = (o.status || '').toLowerCase() === activeOrderStatus.toLowerCase();
+                    }
+                }
+
+                const matchesSearch = !query ||
+                    (o.orderId && o.orderId.toLowerCase().includes(query)) ||
+                    (o.recipientName && o.recipientName.toLowerCase().includes(query)) ||
+                    (o.deliveryAddress && o.deliveryAddress.toLowerCase().includes(query));
+
+                return matchesStatus && matchesSearch;
+            });
+
+            renderOrdersQueue(filtered);
+        }
+
+        // ================= ORDER DETAILS MODAL =================
+
+        function openOrderDetailsModal(orderId) {
+            currentInspectedOrderId = orderId;
+            const order = allOrdersCache.find(o => o.orderId === orderId);
+            if (!order) return;
+
+            document.getElementById('modal-order-id-title').textContent = `Order #${order.orderId}`;
+            document.getElementById('modal-order-date').textContent = `Order Placed: ${order.date || 'Recently'}`;
+            document.getElementById('modal-order-recipient').textContent = order.recipientName || 'Customer';
+            document.getElementById('modal-order-email').textContent = order.userEmail || '';
+            document.getElementById('modal-order-address').textContent = order.deliveryAddress || 'Sivakasi';
+            document.getElementById('modal-order-deldate').textContent = order.deliveryDate ? `Scheduled: ${order.deliveryDate}` : '';
+            document.getElementById('modal-order-payment').textContent = `${order.paymentMethod || 'Cash on Delivery'} (${order.paymentStatus || 'Pending'})`;
+            
+            const statusBadgeWrap = document.getElementById('modal-order-status-badge');
+            statusBadgeWrap.innerHTML = `<span class="status-badge ${getStatusClass(order.status)}">${escapeHtml(order.status || 'Pending')}</span>`;
+
+            // Gift note
+            const giftNoteWrap = document.getElementById('modal-gift-note-wrapper');
+            const giftNoteText = document.getElementById('modal-order-giftnote');
+            if (order.giftNote && order.giftNote.trim()) {
+                giftNoteText.textContent = `"${order.giftNote}"`;
+                giftNoteWrap.style.display = 'block';
+            } else {
+                giftNoteWrap.style.display = 'none';
+            }
+
+            // Ordered items table
+            const tbody = document.getElementById('modal-order-items-tbody');
+            tbody.innerHTML = '';
+            const items = order.items || [];
+            
+            if (items.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#999; padding:15px;">Standard Flower Arrangement Package</td></tr>`;
+            } else {
+                items.forEach(item => {
+                    const price = Number(item.price || 0);
+                    const qty = Number(item.quantity || item.qty || 1);
+                    const itemSubtotal = price * qty;
+                    const imgUrl = item.image || 'images/jas.jpg';
+
+                    tbody.innerHTML += `
+                        <tr>
+                            <td>
+                                <div style="display:flex; align-items:center; gap:10px;">
+                                    <img src="${imgUrl}" class="table-thumb" alt="${escapeHtml(item.name || '')}" onerror="this.src='images/flower-placeholder.jpg'">
+                                    <div>
+                                        <strong style="font-size:13.5px; color:#2b1d22;">${escapeHtml(item.name || 'Flower Item')}</strong>
+                                        ${item.unit ? `<span style="font-size:11px; color:#87787e; display:block;">${escapeHtml(item.unit)}</span>` : ''}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>₹${price.toFixed(2)}</td>
+                            <td><strong>${qty}</strong></td>
+                            <td><strong style="color:var(--primary);">₹${itemSubtotal.toFixed(2)}</strong></td>
+                        </tr>
+                    `;
+                });
+            }
+
+            document.getElementById('modal-order-grandtotal').textContent = `₹${Number(order.total || 0).toLocaleString('en-IN')}`;
+            
+            // Set select inside modal
+            const modalSelect = document.getElementById('modal-quick-status');
+            if (modalSelect) {
+                if (order.status === 'Cancelled') {
+                    modalSelect.value = 'Cancelled';
+                } else if (order.status === 'Out for Delivery') {
+                    modalSelect.value = 'Shipped';
+                } else {
+                    modalSelect.value = order.status || 'Pending';
+                }
+            }
+
+            // Configure Cancel button in modal
+            const cancelBtn = document.getElementById('btn-admin-cancel-order');
+            if (cancelBtn) {
+                if ((order.status || '').toLowerCase() === 'cancelled') {
+                    cancelBtn.disabled = true;
+                    cancelBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Already Cancelled';
+                    cancelBtn.style.opacity = '0.6';
+                    cancelBtn.style.cursor = 'not-allowed';
+                } else {
+                    cancelBtn.disabled = false;
+                    cancelBtn.innerHTML = '<i class="fa-solid fa-ban"></i> Cancel Order & Refund';
+                    cancelBtn.style.opacity = '1';
+                    cancelBtn.style.cursor = 'pointer';
+                }
+            }
+
+            const modal = document.getElementById('order-details-modal');
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeOrderDetailsModal() {
+            const modal = document.getElementById('order-details-modal');
+            modal.classList.remove('show');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                currentInspectedOrderId = null;
+            }, 250);
+        }
+
+        function onModalStatusChange(newStatus) {
+            if (currentInspectedOrderId) {
+                updateOrderStatus(currentInspectedOrderId, newStatus);
+                const order = allOrdersCache.find(o => o.orderId === currentInspectedOrderId);
+                if (order) {
+                    order.status = newStatus;
+                    const statusBadgeWrap = document.getElementById('modal-order-status-badge');
+                    if (statusBadgeWrap) statusBadgeWrap.innerHTML = `<span class="status-badge ${getStatusClass(newStatus)}">${escapeHtml(newStatus)}</span>`;
+                }
+
+                // Update cancel button state if changed to Cancelled
+                const cancelBtn = document.getElementById('btn-admin-cancel-order');
+                if (cancelBtn && newStatus === 'Cancelled') {
+                    cancelBtn.disabled = true;
+                    cancelBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Already Cancelled';
+                    cancelBtn.style.opacity = '0.6';
+                }
+            }
+        }
+
+        // Admin Cancel Order Action
+        async function adminCancelCurrentOrder() {
+            if (!currentInspectedOrderId) return;
+            const confirmed = confirm(`Are you sure you want to cancel order #${currentInspectedOrderId}?\n\nIf the customer paid online via UPI/Card, an instant refund will be recorded.`);
+            if (!confirmed) return;
+
+            if (window.BloomAPI && window.BloomAPI.orders) {
+                try {
+                    await window.BloomAPI.orders.cancel(currentInspectedOrderId, "Cancelled by Florist Admin via Console");
+                } catch (e) {
+                    console.warn("API order cancel fallback:", e);
+                }
+            }
+
+            // Sync localStorage
+            let orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || allOrdersCache;
+            const oIndex = orders.findIndex(o => o.orderId === currentInspectedOrderId);
+            if (oIndex !== -1) {
+                orders[oIndex].status = 'Cancelled';
+                orders[oIndex].paymentStatus = (orders[oIndex].paymentMethod === 'COD') ? 'Cancelled' : 'Refunded';
+                localStorage.setItem('bloomflow_orders', JSON.stringify(orders));
+            }
+
+            // Sync in-memory cache
+            const cIndex = allOrdersCache.findIndex(o => o.orderId === currentInspectedOrderId);
+            if (cIndex !== -1) {
+                allOrdersCache[cIndex].status = 'Cancelled';
+                allOrdersCache[cIndex].paymentStatus = (allOrdersCache[cIndex].paymentMethod === 'COD') ? 'Cancelled' : 'Refunded';
+            }
+
+            // Update modal UI
+            const statusBadgeWrap = document.getElementById('modal-order-status-badge');
+            if (statusBadgeWrap) statusBadgeWrap.innerHTML = `<span class="status-badge status-cancelled">Cancelled</span>`;
+            const modalSelect = document.getElementById('modal-quick-status');
+            if (modalSelect) modalSelect.value = 'Cancelled';
+            const cancelBtn = document.getElementById('btn-admin-cancel-order');
+            if (cancelBtn) {
+                cancelBtn.disabled = true;
+                cancelBtn.innerHTML = '<i class="fa-solid fa-circle-xmark"></i> Already Cancelled';
+                cancelBtn.style.opacity = '0.6';
+            }
+
+            // Re-render
+            filterOrdersTable();
+            renderRecentOrders(allOrdersCache);
+            showToast(`Order #${currentInspectedOrderId} cancelled successfully!`, 'info');
+            loadAdminNotifications();
+        }
+
+        // ================= STATUS UPDATES =================
+
+        async function updateOrderStatus(orderId, newStatus) {
+            // 1. Sync with MongoDB API
+            if (window.BloomAPI && window.BloomAPI.orders) {
+                try {
+                    await window.BloomAPI.orders.updateStatus(orderId, newStatus);
+                } catch (e) {
+                    console.warn("MongoDB order status sync fallback:", e);
+                }
+            }
+
+            // 2. Sync with LocalStorage
+            let orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || allOrdersCache;
+            const index = orders.findIndex(o => o.orderId === orderId);
+            if (index !== -1) {
+                orders[index].status = newStatus;
+                localStorage.setItem('bloomflow_orders', JSON.stringify(orders));
+            }
+
+            // Update local memory cache
+            const cacheIndex = allOrdersCache.findIndex(o => o.orderId === orderId);
+            if (cacheIndex !== -1) {
+                allOrdersCache[cacheIndex].status = newStatus;
+            }
+
+            // Re-render
+            const pendingOrdersCount = allOrdersCache.filter(o => (o.status || '').toLowerCase() === 'pending' || (o.status || '').toLowerCase() === 'processing').length;
+            document.getElementById('stat-pending').textContent = pendingOrdersCount;
+            renderRecentOrders(allOrdersCache);
+            filterOrdersTable();
+
+            showToast(`Order #${orderId} status updated to "${newStatus}"`, 'success');
+        }
+
+        // ================= ADD / EDIT PRODUCT =================
+
+        function onModalImageChange(imgSrc) {
+            const preview = document.getElementById('modal-img-preview');
+            const previewName = document.getElementById('modal-preview-name');
+            if (preview) preview.src = imgSrc;
+            if (previewName) {
+                const filename = imgSrc.split('/').pop();
+                previewName.textContent = filename || 'Selected Image Preview';
+            }
+        }
+
+        async function toggleProductModal(show, productId = null) {
+            const modal = document.getElementById('product-modal');
+            const form = document.getElementById('product-form');
+            const modalTitle = document.getElementById('modal-title');
+
+            if (!show) {
+                modal.classList.remove('show');
+                setTimeout(() => modal.style.display = 'none', 250);
+                return;
+            }
+
+            form.reset();
+            document.getElementById('prod-id').value = '';
+
+            if (productId !== null) {
+                // EDIT MODE
+                modalTitle.textContent = "Edit Flower Item Details";
+                let product = null;
+
+                if (window.BloomAPI && window.BloomAPI.products) {
+                    try {
+                        const res = await window.BloomAPI.products.getById(productId);
+                        if (res.ok && res.data && res.data.data) {
+                            product = res.data.data;
+                        }
+                    } catch (e) {}
+                }
+
+                if (!product) {
+                    product = allProductsCache.find(p => p.id === productId);
+                }
+                
+                if (product) {
+                    document.getElementById('prod-id').value = product.id;
+                    document.getElementById('prod-name').value = product.name || '';
+                    document.getElementById('prod-category').value = product.category || 'flowers';
+                    document.getElementById('prod-price').value = product.price || '';
+                    document.getElementById('prod-image').value = product.image || 'images/jas.jpg';
+                    document.getElementById('prod-rating').value = product.rating || 4.9;
+                    document.getElementById('prod-badge').value = product.badge || '';
+                    document.getElementById('prod-tagline').value = product.tagline || '';
+                    onModalImageChange(product.image || 'images/jas.jpg');
+                }
+            } else {
+                // ADD MODE
+                modalTitle.textContent = "Add New Flower Item";
+                document.getElementById('prod-image').value = 'images/jas.jpg';
+                onModalImageChange('images/jas.jpg');
+            }
+
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        // Save (Push/Modify) product handler
+        async function handleSaveProduct(e) {
+            e.preventDefault();
+
+            const idVal = document.getElementById('prod-id').value;
+            const name = document.getElementById('prod-name').value.trim();
+            const category = document.getElementById('prod-category').value;
+            const price = parseFloat(document.getElementById('prod-price').value) || 0;
+            const image = document.getElementById('prod-image').value;
+            const rating = parseFloat(document.getElementById('prod-rating').value) || 4.8;
+            const badge = document.getElementById('prod-badge').value.trim();
+            const tagline = document.getElementById('prod-tagline').value.trim();
+
+            const productData = { name, category, price, image, rating, badge, tagline };
+
+            // 1. Sync with MongoDB
+            if (window.BloomAPI && window.BloomAPI.products) {
+                try {
+                    if (idVal) {
+                        await window.BloomAPI.products.update(idVal, productData);
+                    } else {
+                        await window.BloomAPI.products.create(productData);
+                    }
+                } catch (apiErr) {
+                    console.warn("Product save MongoDB fallback:", apiErr);
+                }
+            }
+
+            // 2. Save in localStorage fallback
+            let products = JSON.parse(localStorage.getItem('bloomflow_products')) || defaultProducts;
+            if (idVal) {
+                const index = products.findIndex(p => p.id === parseInt(idVal));
+                if (index !== -1) {
+                    products[index] = { id: parseInt(idVal), ...productData };
+                }
+                showToast(`Product "${name}" updated successfully!`, 'success');
+            } else {
+                const nextId = products.length > 0 ? Math.max(...products.map(p => p.id)) + 1 : 1;
+                products.push({ id: nextId, ...productData });
+                showToast(`New product "${name}" added to catalog!`, 'success');
+            }
+            localStorage.setItem('bloomflow_products', JSON.stringify(products));
+
+            toggleProductModal(false);
+            loadDashboardData();
+        }
+
+        // Delete product handler
+        async function handleDeleteProduct(productId) {
+            const product = allProductsCache.find(p => p.id === productId);
+            const prodName = product ? product.name : 'this flower item';
+            
+            if (!confirm(`Are you sure you want to remove "${prodName}" from the catalog?`)) return;
+
+            if (window.BloomAPI && window.BloomAPI.products) {
+                try {
+                    await window.BloomAPI.products.delete(productId);
+                } catch (e) {}
+            }
+
+            let products = JSON.parse(localStorage.getItem('bloomflow_products')) || defaultProducts;
+            products = products.filter(p => p.id !== productId);
+            localStorage.setItem('bloomflow_products', JSON.stringify(products));
+            
+            showToast(`Product removed from catalog.`, 'info');
+            loadDashboardData();
+        }
+
+        // ================= HELPERS & UTILITIES =================
+
+        function getStatusClass(status) {
+            const s = (status || '').toLowerCase();
+            if (s === 'delivered') return 'status-delivered';
+            if (s === 'shipped' || s === 'out for delivery') return 'status-shipped';
+            if (s === 'processing') return 'status-processing';
+            if (s === 'confirmed') return 'status-confirmed';
+            if (s === 'cancelled') return 'status-cancelled';
+            return 'status-pending';
+        }
+
+        // ================= NOTIFICATIONS CENTER =================
+        let adminNotifications = [];
+
+        async function loadAdminNotifications() {
+            try {
+                let notifs = [];
+                if (window.BloomAPI && window.BloomAPI.notifications) {
+                    try {
+                        const res = await window.BloomAPI.notifications.getAll({ recipient: 'admin' });
+                        if (res.ok && res.data && res.data.data) {
+                            notifs = res.data.data;
+                        }
+                    } catch (e) {
+                        console.warn("Backend notifications fallback:", e);
+                    }
+                }
+
+                // Fallback or merge with localStorage
+                const localNotifs = JSON.parse(localStorage.getItem('bloomflow_admin_notifications')) || [];
+                const combined = [...notifs];
+                localNotifs.forEach(ln => {
+                    if (!combined.some(c => (c.orderId && c.orderId === ln.orderId && c.type === ln.type) || (c._id && c._id === ln.id))) {
+                        combined.push(ln);
+                    }
+                });
+
+                adminNotifications = combined.sort((a, b) => new Date(b.createdAt || b.timestamp || 0) - new Date(a.createdAt || a.timestamp || 0));
+
+                // Update badge
+                const unread = adminNotifications.filter(n => !n.read).length;
+                const countBadge = document.getElementById('admin-notif-count');
+                if (countBadge) {
+                    if (unread > 0) {
+                        countBadge.textContent = unread > 9 ? '9+' : unread;
+                        countBadge.style.display = 'flex';
+                    } else {
+                        countBadge.style.display = 'none';
+                    }
+                }
+
+                renderAdminNotificationsList();
+            } catch (err) {
+                console.error("Failed to load notifications:", err);
+            }
+        }
+
+        function renderAdminNotificationsList() {
+            const container = document.getElementById('admin-notif-list');
+            if (!container) return;
+
+            if (adminNotifications.length === 0) {
+                container.innerHTML = `
+                    <div style="padding: 24px; text-align: center; color: #94a3b8; font-size: 13px;">
+                        <i class="fa-regular fa-bell-slash" style="font-size: 24px; display: block; margin-bottom: 8px; color:#cbd5e1;"></i>
+                        No notifications yet
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = adminNotifications.slice(0, 15).map(n => {
+                const isUnread = !n.read;
+                const isCancelled = (n.type === 'order_cancelled');
+                const iconClass = isCancelled ? 'fa-ban' : 'fa-bag-shopping';
+                const iconColor = isCancelled ? '#dc2626' : '#b56d7f';
+                const bgClass = isCancelled ? '#fee2e2' : '#fce7f3';
+                const dateObj = new Date(n.createdAt || n.timestamp || Date.now());
+                const timeStr = isNaN(dateObj) ? 'Recent' : dateObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+                return `
+                    <div class="admin-notif-item ${isUnread ? 'unread' : ''}" onclick="inspectOrderFromNotif('${n.orderId || ''}')">
+                        <div class="notif-item-icon" style="background:${bgClass}; color:${iconColor};">
+                            <i class="fa-solid ${iconClass}"></i>
+                        </div>
+                        <div class="notif-item-content">
+                            <div class="notif-item-top">
+                                <strong class="notif-item-title">${escapeHtml(n.title)}</strong>
+                                <span class="notif-item-time">${timeStr}</span>
+                            </div>
+                            <p class="notif-item-msg">${escapeHtml(n.message)}</p>
+                        </div>
+                        ${isUnread ? '<span class="unread-dot"></span>' : ''}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleAdminNotifDropdown() {
+            const dropdown = document.getElementById('admin-notif-dropdown');
+            if (dropdown) {
+                dropdown.classList.toggle('show');
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const wrapper = document.querySelector('.admin-notif-wrapper');
+            const dropdown = document.getElementById('admin-notif-dropdown');
+            if (wrapper && dropdown && !wrapper.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+
+        async function markAllAdminNotifsRead() {
+            if (window.BloomAPI && window.BloomAPI.notifications) {
+                try {
+                    await window.BloomAPI.notifications.markAllRead({ recipient: 'admin' });
+                } catch (e) {}
+            }
+
+            let localNotifs = JSON.parse(localStorage.getItem('bloomflow_admin_notifications')) || [];
+            localNotifs.forEach(n => n.read = true);
+            localStorage.setItem('bloomflow_admin_notifications', JSON.stringify(localNotifs));
+
+            adminNotifications.forEach(n => n.read = true);
+            const countBadge = document.getElementById('admin-notif-count');
+            if (countBadge) countBadge.style.display = 'none';
+            renderAdminNotificationsList();
+            showToast('All notifications marked as read', 'success');
+        }
+
+        function inspectOrderFromNotif(orderId) {
+            if (!orderId) return;
+            const dropdown = document.getElementById('admin-notif-dropdown');
+            if (dropdown) dropdown.classList.remove('show');
+            switchSection('orders');
+            openOrderDetailsModal(orderId);
+        }
+
+        function getCategoryLabel(category) {
+            const cat = (category || '').toLowerCase();
+            if (cat === 'garlands') return '📿 Garlands & Maalai';
+            if (cat === 'bouquets') return '💐 Bouquets';
+            if (cat === 'aaram') return '🪷 Sacred Aaram';
+            return '🌸 Loose Flowers';
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            toast.className = `toast-msg ${type}`;
+            
+            let icon = 'fa-circle-info';
+            if (type === 'success') icon = 'fa-circle-check';
+            if (type === 'error') icon = 'fa-triangle-exclamation';
+
+            toast.innerHTML = `<i class="fa-solid ${icon}"></i> <span>${escapeHtml(message)}</span>`;
+            container.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+
+        function toggleMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            if (sidebar) sidebar.classList.toggle('open');
+            if (backdrop) backdrop.classList.toggle('active');
+        }
+
+        function closeMobileSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const backdrop = document.getElementById('sidebar-backdrop');
+            if (sidebar) sidebar.classList.remove('open');
+            if (backdrop) backdrop.classList.remove('active');
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>"']/g, function (m) {
+                return ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                })[m];
+            });
+        }
+
+        // Exit Admin session
+        function logoutAdmin() {
+            if (window.BloomAPI && window.BloomAPI.auth) {
+                window.BloomAPI.auth.logout();
+            } else {
+                localStorage.removeItem('bloomflow_active_user');
+                window.location.href = "home.html";
+            }
+        }
+    </script>
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

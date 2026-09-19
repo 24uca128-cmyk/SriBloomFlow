@@ -1,0 +1,22 @@
+# robots.txt for SRI BloomFlow Flower Shop
+User-agent: *
+Allow: /
+Allow: /home.html
+Allow: /flowers.html
+Allow: /bouquets.html
+Allow: /categories.html
+Allow: /customize-bouquet.html
+Allow: /flower-details.html
+Allow: /images/
+
+# Disallow private and checkout paths
+Disallow: /admin
+Disallow: /admin-dashboard.html
+Disallow: /admin-login.html
+Disallow: /api/
+Disallow: /checkout.html
+Disallow: /payment.html
+Disallow: /profile.html
+
+# XML Sitemap Location
+Sitemap: https://sri-bloomflow.onrender.com/sitemap.xml

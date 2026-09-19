@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Flowers & Sacred Maalai in Sivakasi | SRI BloomFlow</title>
+    <meta name="description" content="Buy fresh farm flowers, Mallipoo jasmine, Mullai, Samanthi, and hand-knotted sacred pooja garlands in Sivakasi with custom grams & kg selection.">
+    <meta name="keywords" content="buy flowers sivakasi, mallipoo online, jasmine sivakasi, fresh garlands, pooja maalai, fresh flowers per gram">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#d81b60">
+    <link rel="canonical" href="https://sri-bloomflow.onrender.com/flowers.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Fresh Flowers & Sacred Maalai in Sivakasi | SRI BloomFlow">
+    <meta property="og:description" content="Buy fresh flowers, loose pooja blooms, and traditional garlands with exact gram/kg selection.">
+    <meta property="og:image" content="https://sri-bloomflow.onrender.com/images/jas.jpg">
+
+    <link rel="stylesheet" href="flowers.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header>
+    <nav class="navbar">
+
+        <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+        <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+            <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff758c" />
+                        <stop offset="50%" stop-color="#b56d7f" />
+                        <stop offset="100%" stop-color="#7e3b56" />
+                    </linearGradient>
+                    <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffe699" />
+                        <stop offset="50%" stop-color="#f5a623" />
+                        <stop offset="100%" stop-color="#c97a2b" />
+                    </linearGradient>
+                    <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                    </filter>
+                </defs>
+                <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                <circle cx="22" cy="22" r="2" fill="#ffffff" />
+            </svg>
+            <div class="sri-logo-text">
+                <span class="sri-brand-sri">SRI</span>
+                <span class="sri-brand-bloom">Bloom</span><span class="sri-brand-flow">Flow</span>
+            </div>
+        </a>
+
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="flowers.html" class="active">🌸 Flowers</a></li>
+            <li><a href="bouquets.html">💐 Bouquets</a></li>
+            <li><a href="#footer">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions" style="display:flex; align-items:center; gap:12px;">
+            <button class="nav-icon-btn" onclick="focusSearch()" title="Search Flowers">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+            <button class="nav-icon-btn wishlist-button" onclick="openWishlist()" title="View Wishlist" style="position: relative;">
+                <i class="fa-regular fa-heart"></i>
+                <span id="wishlist-count" class="cart-badge" style="position: absolute; top: -6px; right: -6px; background: #e91e63; color: #fff; font-size: 10px; font-weight: 700; border-radius: 50%; min-width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; padding: 0 4px;">0</span>
+            </button>
+
+            <button class="nav-icon-btn cart-button" onclick="openCart()" title="View Cart" style="position: relative;">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-count">0</span>
+            </button>
+
+            <a href="login.html" class="login-btn desktop-login-btn">
+                👤 Login
+            </a>
+
+            <!-- Mobile Hamburger Toggle Button -->
+            <button class="mobile-menu-toggle" id="mobileMenuBtn" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" style="display:none; background:transparent; border:none; color:#3d3035; font-size:22px; cursor:pointer; padding:6px;">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+    </nav>
+</header>
+
+<!-- ================= MOBILE NAVIGATION DRAWER ================= -->
+<div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileMenu()"></div>
+<div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-nav-header">
+        <div class="sri-logo-text">
+            <span class="sri-brand-sri">SRI</span>
+            <span class="sri-brand-bloom" style="color:#1f2937;">Bloom</span><span class="sri-brand-flow">Flow</span>
+        </div>
+        <button class="mobile-nav-close" onclick="closeMobileMenu()" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+    <div class="mobile-nav-body">
+        <a href="home.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+            <i class="fa-solid fa-house"></i> Home
+        </a>
+        <a href="flowers.html" class="mobile-nav-link active" onclick="closeMobileMenu()">
+            <i class="fa-solid fa-spa"></i> Fresh Flowers (Grams/Kg)
+        </a>
+        <a href="bouquets.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+            <i class="fa-solid fa-fan"></i> Handcrafted Bouquets
+        </a>
+        <a href="categories.html" class="mobile-nav-link" onclick="closeMobileMenu()">
+            <i class="fa-solid fa-layer-group"></i> All Categories
+        </a>
+        <a href="#footer" class="mobile-nav-link" onclick="closeMobileMenu()">
+            <i class="fa-solid fa-phone"></i> Contact & Address
+        </a>
+        <div class="mobile-drawer-divider"></div>
+        <a href="login.html" class="mobile-nav-link mobile-nav-btn-highlight">
+            <i class="fa-solid fa-user"></i> Login / My Account
+        </a>
+    </div>
+</div>
+
+<!-- ================= MOBILE BOTTOM APP BAR ================= -->
+<nav class="mobile-bottom-nav">
+    <a href="home.html" class="bottom-nav-item">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+    </a>
+    <a href="flowers.html" class="bottom-nav-item active">
+        <i class="fa-solid fa-spa"></i>
+        <span>Flowers</span>
+    </a>
+    <a href="bouquets.html" class="bottom-nav-item">
+        <i class="fa-solid fa-fan"></i>
+        <span>Bouquets</span>
+    </a>
+    <a href="javascript:void(0)" onclick="openCart()" class="bottom-nav-item" style="position: relative;">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="bottom-badge" id="bottom-cart-count">0</span>
+        <span>Cart</span>
+    </a>
+    <a href="profile.html" class="bottom-nav-item">
+        <i class="fa-solid fa-circle-user"></i>
+        <span>Account</span>
+    </a>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+<section class="flowers-hero">
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <span class="hero-small">
+            🌿 DIRECT FROM SIVAKASI FLOWER FIELDS
+        </span>
+
+        <h1>
+            🌸 Fresh Flowers & Sacred Maalai
+        </h1>
+
+        <p>
+            Choose loose flowers in Grams & Kilograms or select garlands in quantities.
+            Direct from farm to your celebrations with SRI BloomFlow!
+        </p>
+
+        <a href="#flower-shop" class="hero-btn">
+            Explore Flowers & Garlands
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
+    </div>
+</section>
+
+
+<!-- ================= SHOP ================= -->
+<main id="flower-shop">
+    <section class="shop-section">
+
+        <!-- SECTION TITLE -->
+        <div class="section-heading">
+            <span>🌿 OUR COMPLETE FRESH COLLECTION</span>
+            <h2>
+                Fresh Flowers & Sacred Maalai
+            </h2>
+            <p>
+                Select weight in Grams or Kg for loose flowers, count for garlands, and order authentic fresh flowers.
+            </p>
+        </div>
+
+        <!-- ================= SEARCH ================= -->
+        <div class="shop-tools">
+            <div class="search-container">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    id="flower-search"
+                    placeholder="Search fresh jasmine, roses, samanthi, maalai..."
+                    oninput="handleFlowerSearch(this.value)"
+                    autocomplete="off"
+                >
+                <button
+                    type="button"
+                    id="clear-search-btn"
+                    class="clear-search-btn"
+                    onclick="clearSearch()"
+                    title="Clear search"
+                    style="display: none;"
+                >
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ================= FILTERS ================= -->
+        <div class="category-filters">
+            <button class="filter-btn active" data-category="all">
+                🌟 All Items
+            </button>
+
+            <button class="filter-btn" data-category="flowers">
+                🌿 Loose Flowers (g/kg)
+            </button>
+
+            <button class="filter-btn" data-category="maalai">
+                📿 Flower Garlands (Count)
+            </button>
+        </div>
+
+        <!-- ================= PRODUCTS ================= -->
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be dynamically loaded by flowers.js -->
+        </div>
+
+        <!-- ================= NO RESULTS ================= -->
+        <div class="no-results" id="no-results" style="display:none;">
+            <i class="fa-solid fa-seedling"></i>
+            <h3>No flowers found</h3>
+            <p>Try searching another flower name or category.</p>
+        </div>
+
+    </section>
+</main>
+
+
+<!-- ================= CART OVERLAY ================= -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+
+<!-- ================= CART DRAWER ================= -->
+<aside class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+        <div>
+            <span>Your Cart</span>
+            <h3>
+                <span id="cart-item-count">0</span> Items
+            </h3>
+        </div>
+
+        <button class="close-cart" onclick="closeCart()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- CART ITEMS -->
+    <div class="cart-items" id="cart-items">
+        <div class="empty-cart">
+            <i class="fa-solid fa-basket-shopping"></i>
+            <h3>Your cart is empty</h3>
+            <p>Add some beautiful flowers to your cart.</p>
+        </div>
+    </div>
+
+    <!-- CART FOOTER -->
+    <div class="cart-footer">
+        <div class="cart-summary">
+            <span>Subtotal</span>
+            <strong id="cart-subtotal">₹0.00</strong>
+        </div>
+
+        <div class="cart-summary">
+            <span>Delivery</span>
+            <strong class="free">FREE</strong>
+        </div>
+
+        <div class="cart-total">
+            <span>Total</span>
+            <strong id="cart-total">₹0.00</strong>
+        </div>
+
+        <button class="checkout-btn" onclick="goToCheckout()">
+            Proceed to Checkout
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </div>
+</aside>
+
+<!-- ================= WISHLIST OVERLAY ================= -->
+<div class="wishlist-overlay" id="wishlist-overlay" onclick="closeWishlist()"></div>
+
+<!-- ================= WISHLIST DRAWER ================= -->
+<aside class="wishlist-drawer" id="wishlist-drawer">
+    <div class="cart-header" style="border-bottom: 1px solid #fce4ec;">
+        <div>
+            <span style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #e91e63; font-weight: 700;">Your Saved Blooms</span>
+            <h3 style="margin: 0; color: #4d3741; font-size: 18px;">
+                <span id="wishlist-drawer-count">0</span> Items in Wishlist
+            </h3>
+        </div>
+
+        <button class="close-cart" onclick="closeWishlist()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- WISHLIST ITEMS -->
+    <div class="cart-items" id="wishlist-items-container" style="flex: 1; overflow-y: auto; padding: 20px;">
+        <div class="empty-cart" style="text-align: center; padding: 50px 20px;">
+            <i class="fa-regular fa-heart" style="font-size: 48px; color: #f48fb1; margin-bottom: 15px;"></i>
+            <h3 style="font-size: 18px; color: #59434d; margin-bottom: 8px;">Your Wishlist is Empty</h3>
+            <p style="font-size: 13px; color: #8c7d83;">Tap the heart icon on any flower to save your favorites here!</p>
+        </div>
+    </div>
+
+    <!-- WISHLIST FOOTER -->
+    <div class="cart-footer" style="padding: 20px; border-top: 1px solid #fce4ec; background: #fff5f8;">
+        <button class="checkout-btn" id="wishlist-move-all-btn" onclick="addAllWishlistToCart()" style="background: #8e4585; border: none; margin-bottom: 10px;">
+            <i class="fa-solid fa-cart-plus"></i> Move All to Cart
+        </button>
+        <button onclick="closeWishlist()" style="width: 100%; padding: 10px; background: transparent; border: 1px solid #e0d0d8; border-radius: 12px; color: #666; font-size: 13px; font-weight: 600; cursor: pointer;">
+            Continue Shopping
+        </button>
+    </div>
+</aside>
+
+<!-- ================= TOAST ================= -->
+<div id="toast" class="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toast-message">Added to cart</span>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer id="footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <div class="footer-logo">
+                <span style="font-weight: 800; color: #d48b48;">SRI</span> BloomFlow
+            </div>
+            <p>
+                Fresh flowers,  bouquets, and sacred maalai for every beautiful & auspicious moment.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <a href="home.html">Home</a>
+            <a href="flowers.html">Flowers</a>
+            <a href="bouquets.html">Bouquets</a>
+        </div>
+
+        <div class="footer-links">
+            <h3>Customer Care</h3>
+            <a href="#">About Us</a>
+            <a href="#">Contact Support</a>
+            <a href="#">Delivery Information</a>
+            <a href="#">Privacy Policy</a>
+        </div>
+
+        <div class="footer-contact">
+            <h3>Direct Contact</h3>
+            <p><i class="fa-solid fa-phone"></i> +91 8526778960</p>
+            <p><i class="fa-solid fa-phone"></i> +91 9489019413</p>
+            <p><i class="fa-solid fa-location-dot"></i> Sivakasi, Tamil Nadu</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me/919489019413" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 SRI BloomFlow. All Rights Reserved.</p>
+        <p>Made with ❤️ for every beautiful occasion.</p>
+    </div>
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+<script src="flowers.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1504 @@
+/* =========================================================
+   BLOOMFLOW - FLOWER CATEGORIES PAGE
+   Professional Local Flower Shop Design
+========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fffaf8;
+    color: #333;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    transition: all 0.4s ease;
+    background: transparent;
+}
+
+.navbar {
+    width: 90%;
+    max-width: 1400px;
+    margin: auto;
+    height: 90px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    transition: all 0.4s ease;
+}
+
+
+/* ---------- SCROLLED NAVBAR ---------- */
+
+header.scrolled {
+    background: rgba(255, 250, 248, 0.96);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.06);
+}
+
+header.scrolled .navbar {
+    height: 70px;
+}
+
+header.scrolled .logo {
+    color: #2a2a2a;
+}
+
+header.scrolled .logo i {
+    color: #b56d7f;
+}
+
+header.scrolled .navbar ul li a {
+    color: #444;
+}
+
+header.scrolled .navbar ul li a.active,
+header.scrolled .navbar ul li a:hover {
+    color: #b56d7f;
+}
+
+header.scrolled .nav-icons {
+    color: #2a2a2a;
+}
+
+header.scrolled .nav-icons i:hover {
+    color: #b56d7f;
+}
+
+header.scrolled .login-btn {
+    background: #b56d7f;
+    color: white;
+}
+
+header.scrolled .login-btn:hover {
+    background: #944d61;
+    color: white;
+}
+
+
+/* ---------- LOGO ---------- */
+
+.logo,
+.sri-brand-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.logo:hover,
+.sri-brand-logo:hover {
+    transform: translateY(-1px) scale(1.02);
+}
+
+.sri-logo-emblem {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 3px 6px rgba(181, 109, 127, 0.3));
+}
+
+.sri-logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.1;
+}
+
+.sri-logo-prefix {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #b86b24;
+    background: linear-gradient(135deg, #d48b48 0%, #b86b24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
+.sri-logo-main {
+    font-size: 21px;
+    font-weight: 700;
+    color: #432835;
+    letter-spacing: -0.3px;
+}
+
+.sri-logo-accent {
+    color: #b56d7f;
+    font-weight: 700;
+}
+
+
+/* ---------- NAV LINKS ---------- */
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+
+    list-style: none;
+    gap: 34px;
+}
+
+.navbar ul li a {
+    position: relative;
+
+    color: white;
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: color 0.3s ease;
+}
+
+
+/* Underline hover animation */
+
+.navbar ul li a::after {
+    content: "";
+
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+
+    width: 0;
+    height: 2px;
+
+    background: #ffd6e0;
+
+    transform: translateX(-50%);
+
+    transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a.active::after {
+    width: 70%;
+}
+
+.navbar ul li a.active,
+.navbar ul li a:hover {
+    color: #ffd6e0;
+}
+
+
+/* ---------- NAV ICONS ---------- */
+
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    color: white;
+
+    transition: color 0.3s ease;
+}
+
+.nav-icons i {
+    cursor: pointer;
+
+    font-size: 18px;
+
+    transition: all 0.3s ease;
+}
+
+.nav-icons i:hover {
+    color: #ffd6e0;
+    transform: translateY(-2px);
+}
+
+
+/* ---------- CART BADGE ---------- */
+
+.cart-badge {
+    position: absolute;
+
+    top: -8px;
+    right: -10px;
+
+    background: #e5989b;
+    color: white;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #fffaf8;
+}
+
+header.scrolled .cart-badge {
+    background: #b56d7f;
+    border-color: white;
+}
+
+
+/* ---------- LOGIN BUTTON ---------- */
+
+.login-btn {
+    text-decoration: none;
+
+    color: white;
+    background: #b56d7f;
+
+    padding: 10px 23px;
+
+    border-radius: 30px;
+
+    font-weight: 600;
+    font-size: 14px;
+
+    transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+    background: white;
+    color: #b56d7f;
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.category-hero {
+    position: relative;
+
+    width: 100%;
+    min-height: 460px;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.40),
+            rgba(0, 0, 0, 0.52)
+        ),
+        url("images/hero_new_v2.png");
+
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    color: white;
+
+    padding: 120px 20px 70px;
+}
+
+
+/* Hero overlay */
+
+.category-hero .overlay {
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 255, 255, 0.04),
+            transparent 60%
+        );
+}
+
+
+/* Hero content */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 800px;
+
+    animation: heroAppear 0.9s ease forwards;
+}
+
+
+/* Small label */
+
+.hero-small {
+    display: inline-block;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 3px;
+
+    color: #ffdce5;
+
+    margin-bottom: 15px;
+
+    text-transform: uppercase;
+}
+
+
+/* Hero heading */
+
+.category-hero .hero-content h1 {
+    font-size: 52px;
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    margin-bottom: 16px;
+
+    letter-spacing: -0.8px;
+
+    text-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+
+/* Hero paragraph */
+
+.category-hero .hero-content p {
+    max-width: 680px;
+
+    margin: auto;
+
+    font-size: 16px;
+
+    line-height: 28px;
+
+    color: #f5f5f5;
+}
+
+
+/* =========================================================
+   CATEGORY MAIN SECTION
+========================================================= */
+
+.category {
+    width: 90%;
+    max-width: 1250px;
+
+    margin: 85px auto 100px;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+========================================================= */
+
+.category-heading {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+
+/* Small heading */
+
+.section-label {
+    display: inline-block;
+
+    color: #b56d7f;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 2.5px;
+
+    margin-bottom: 10px;
+
+    text-transform: uppercase;
+}
+
+
+/* Main heading */
+
+.category-heading h2 {
+    color: #2d3748;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+
+/* Description */
+
+.category-heading p {
+    color: #718096;
+
+    font-size: 15px;
+
+    max-width: 650px;
+
+    margin: auto;
+
+    line-height: 25px;
+}
+
+
+/* =========================================================
+   FLOWER CATEGORY GRID
+========================================================= */
+
+.category-container {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 30px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   FLOWER CARD
+========================================================= */
+
+.card {
+    background: #ffffff;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+
+    border: 1px solid #f1e7eb;
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.05);
+
+    transition: all 0.3s ease;
+}
+
+
+
+/* Card hover */
+
+.card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 14px 35px rgba(181, 109, 127, 0.15);
+}
+
+
+/* =========================================================
+   IMAGE AREA
+========================================================= */
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 230px;
+    overflow: hidden;
+    background: #fafafa;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+}
+
+/* Image zoom */
+.card:hover .image-wrapper img {
+    transform: scale(1.04);
+}
+
+
+/* =========================================================
+   FLOWER TAG
+========================================================= */
+
+.flower-tag {
+
+    position: absolute;
+
+    top: 15px;
+    left: 15px;
+
+    padding: 6px 13px;
+
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    backdrop-filter: blur(8px);
+
+    color: #9f5369;
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   CARD CONTENT
+========================================================= */
+
+.card-content {
+    padding: 17px 18px 18px;
+}
+
+
+/* Flower title */
+
+.card h3 {
+
+    color: #2d3748;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    margin-bottom: 9px;
+
+    transition: color 0.3s ease;
+}
+
+
+/* Title hover */
+
+.card:hover h3 {
+
+    color: #b56d7f;
+}
+
+
+/* Flower description */
+
+.card p {
+
+    color: #718096;
+
+    font-size: 13.5px;
+
+    line-height: 22px;
+
+    margin-bottom: 18px;
+
+    flex: 1;
+}
+
+
+/* =========================================================
+   EXPLORE LINK
+========================================================= */
+
+.explore-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #b56d7f;
+
+    font-size: 13.5px;
+    font-weight: 600;
+
+    transition:
+        gap 0.3s ease,
+        color 0.3s ease;
+}
+
+
+/* Arrow */
+
+.explore-link i {
+
+    font-size: 12px;
+
+    transition:
+        transform 0.3s ease;
+}
+
+
+/* Hover */
+
+.card:hover .explore-link {
+
+    color: #944d61;
+
+    gap: 11px;
+}
+
+.card:hover .explore-link i {
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+========================================================= */
+
+.animate-fade {
+
+    animation:
+        fadeUp 0.65s
+        cubic-bezier(0.25, 0.8, 0.25, 1)
+        both;
+}
+
+
+/* Slight stagger */
+
+.card:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.10s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.20s;
+}
+
+.card:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.card:nth-child(6) {
+    animation-delay: 0.30s;
+}
+
+.card:nth-child(7) {
+    animation-delay: 0.35s;
+}
+
+.card:nth-child(8) {
+    animation-delay: 0.40s;
+}
+
+.card:nth-child(9) {
+    animation-delay: 0.45s;
+}
+
+.card:nth-child(10) {
+    animation-delay: 0.50s;
+}
+
+.card:nth-child(11) {
+    animation-delay: 0.55s;
+}
+
+
+@keyframes fadeUp {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(30px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    background: #2f2f2f;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 70px 20px 35px;
+
+    margin-top: 110px;
+}
+
+
+footer h2 {
+
+    font-size: 32px;
+
+    margin-bottom: 12px;
+
+    color: #ffd6e0;
+
+    font-weight: 700;
+}
+
+
+footer h2 i {
+
+    margin-right: 8px;
+
+    font-size: 26px;
+}
+
+
+footer p {
+
+    color: #d6d6d6;
+
+    font-size: 14px;
+
+    line-height: 28px;
+}
+
+
+/* Social icons */
+
+.social {
+
+    margin: 30px 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+}
+
+
+.social i {
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    background: #444;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    transition:
+        all 0.3s ease;
+}
+
+
+.social i:hover {
+
+    background: #b56d7f;
+
+    transform:
+        translateY(-6px);
+}
+
+
+.copy {
+
+    margin-top: 25px;
+
+    color: #bfbfbf;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar {
+
+    width: 9px;
+}
+
+::-webkit-scrollbar-track {
+
+    background: #f7f7f7;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background: #b56d7f;
+
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: #944d61;
+}
+
+
+/* =========================================================
+   LARGE TABLETS
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+
+        width: 94%;
+    }
+
+    .navbar ul {
+
+        gap: 20px;
+    }
+
+    .navbar ul li a {
+
+        font-size: 14px;
+    }
+
+    .category {
+
+        width: 92%;
+    }
+
+    .category-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+    .image-wrapper {
+
+        height: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+
+        width: 94%;
+    }
+
+    .logo {
+
+        font-size: 25px;
+    }
+
+    .navbar ul {
+
+        gap: 13px;
+    }
+
+    .navbar ul li a {
+
+        font-size: 13px;
+    }
+
+    .nav-icons {
+
+        gap: 13px;
+    }
+
+    .login-btn {
+
+        padding: 9px 16px;
+    }
+
+
+    /* 2 columns */
+
+    .category-container {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 25px;
+    }
+
+
+    .category-hero .hero-content h1 {
+
+        font-size: 43px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------- NAVBAR ---------- */
+
+    header {
+
+        background:
+            rgba(255, 250, 248, 0.97);
+    }
+
+    .navbar {
+
+        width: 92%;
+
+        height: auto;
+
+        min-height: 70px;
+
+        padding: 14px 0;
+
+        flex-wrap: wrap;
+    }
+
+    .logo {
+
+        color: #2a2a2a;
+
+        font-size: 25px;
+    }
+
+    .logo i {
+
+        color: #b56d7f;
+    }
+
+
+    .navbar ul {
+
+        width: 100%;
+
+        order: 3;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 12px 20px;
+
+        margin-top: 15px;
+
+        padding-bottom: 5px;
+    }
+
+    .navbar ul li a {
+
+        color: #444;
+
+        font-size: 13px;
+    }
+
+    .navbar ul li a.active,
+    .navbar ul li a:hover {
+
+        color: #b56d7f;
+    }
+
+
+    .navbar ul li a::after {
+
+        background: #b56d7f;
+    }
+
+
+    .nav-icons {
+
+        color: #333;
+
+        gap: 14px;
+    }
+
+    .nav-icons i {
+
+        font-size: 17px;
+    }
+
+    .login-btn {
+
+        padding: 8px 15px;
+
+        font-size: 13px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .category-hero {
+
+        min-height: 430px;
+
+        padding:
+            150px 20px 70px;
+    }
+
+    .hero-small {
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+    .category-hero .hero-content h1 {
+
+        font-size: 34px;
+
+        line-height: 1.2;
+    }
+
+    .category-hero .hero-content p {
+
+        font-size: 14px;
+
+        line-height: 23px;
+    }
+
+
+    /* ---------- CATEGORY ---------- */
+
+    .category {
+
+        width: 90%;
+
+        margin:
+            65px auto 80px;
+    }
+
+
+    .category-heading {
+
+        margin-bottom: 35px;
+    }
+
+    .category-heading h2 {
+
+        font-size: 30px;
+    }
+
+    .category-heading p {
+
+        font-size: 13.5px;
+
+        line-height: 22px;
+    }
+
+
+    /* ---------- 2 COLUMNS ---------- */
+
+    .category-container {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+
+    /* ---------- CARD ---------- */
+
+    .card {
+
+        border-radius: 17px;
+    }
+
+
+    .image-wrapper {
+
+        height: 180px;
+    }
+
+
+    .card-content {
+
+        padding:
+            18px 17px 20px;
+    }
+    .card-content h3 {
+    margin: 0;
+
+    font-size: 19px;
+    font-weight: 600;
+
+    color: #29242a;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+    .card h3 {
+
+        font-size: 18px;
+
+        margin-bottom: 7px;
+    }
+
+
+    .card p {
+
+        font-size: 12px;
+
+        line-height: 19px;
+
+        margin-bottom: 13px;
+    }
+
+
+    .explore-link {
+
+        font-size: 12px;
+    }
+
+
+    .flower-tag {
+
+        top: 10px;
+        left: 10px;
+
+        padding:
+            5px 9px;
+
+        font-size: 9px;
+    }
+
+
+    /* ---------- FOOTER ---------- */
+
+    footer {
+
+        padding:
+            55px 20px 30px;
+
+        margin-top: 80px;
+    }
+
+    footer h2 {
+
+        font-size: 27px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+    .navbar {
+
+        width: 90%;
+    }
+
+
+    .logo {
+
+        font-size: 22px;
+    }
+
+
+    .nav-icons {
+
+        gap: 10px;
+    }
+
+
+    .nav-icons i {
+
+        font-size: 15px;
+    }
+
+
+    .login-btn {
+
+        padding:
+            7px 12px;
+
+        font-size: 12px;
+    }
+
+
+    /* ---------- HERO ---------- */
+
+    .category-hero {
+
+        min-height: 390px;
+
+        padding:
+            145px 18px 55px;
+    }
+
+
+    .category-hero .hero-content h1 {
+
+        font-size: 29px;
+    }
+
+
+    .category-hero .hero-content p {
+
+        font-size: 13px;
+
+        line-height: 21px;
+    }
+
+
+    /* ---------- ONE COLUMN ---------- */
+
+    .category-container {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 22px;
+    }
+
+
+    .image-wrapper {
+
+        height: 230px;
+    }
+
+
+    .card-content {
+
+        padding:
+            20px 21px 22px;
+    }
+
+
+    .card h3 {
+
+        font-size: 20px;
+    }
+
+
+    .card p {
+
+        font-size: 13px;
+
+        line-height: 21px;
+    }
+
+
+    .explore-link {
+
+        font-size: 13px;
+    }
+
+
+    /* ---------- SECTION ---------- */
+
+    .category-heading h2 {
+
+        font-size: 27px;
+    }
+
+
+    .category-heading p {
+
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL DEVICES
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .navbar ul {
+
+        gap: 10px 14px;
+    }
+
+    .navbar ul li a {
+
+        font-size: 12px;
+    }
+
+    .category-hero .hero-content h1 {
+
+        font-size: 26px;
+    }
+
+    .image-wrapper {
+
+        height: 210px;
+    }
+
+}
+.wishlist-btn {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.12);
+
+    transition: all 0.25s ease;
+}
+
+.wishlist-btn i {
+    font-size: 19px;
+    color: #e91e63;
+
+    transition: all 0.25s ease;
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.08);
+    background: #fff0f5;
+}
+
+.wishlist-btn.active i {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: #e91e63;
+}
+.product-bottom {
+    margin-top: 11px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+/* PRICE */
+
+.price {
+    font-size: 23px;
+
+    font-weight: 700;
+
+    color: #e91e63;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================================
+   PLUS BUTTON
+========================================= */
+
+.add-btn {
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: #fff0f5;
+
+    color: #e91e63;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.add-btn i {
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background: #e91e63;
+    color: white;
+
+    transform: scale(1.08);
+}
+
+.add-btn:active {
+    transform: scale(0.94);
+}

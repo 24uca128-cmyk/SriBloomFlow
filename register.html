@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | Premium Registration</title>
+    
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="register.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Floating Background Flowers -->
+    <div class="bg-flower flower-1">
+        <img src="images/rose.png" alt="Flower Ornament">
+    </div>
+    <div class="bg-flower flower-2">
+        <img src="images/bouquet.png" alt="Flower Ornament">
+    </div>
+    <div class="bg-flower flower-3">
+        <img src="images/sunflower.png" alt="Flower Ornament">
+    </div>
+    <div class="bg-flower flower-4">
+        <img src="images/lily.png" alt="Flower Ornament">
+    </div>
+
+    <!-- Main Card Container -->
+    <div class="container">
+        
+        <!-- Left Side: Registration form -->
+        <div class="left">
+            <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+            <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+                <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff758c" />
+                            <stop offset="50%" stop-color="#b56d7f" />
+                            <stop offset="100%" stop-color="#7e3b56" />
+                        </linearGradient>
+                        <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe699" />
+                            <stop offset="50%" stop-color="#f5a623" />
+                            <stop offset="100%" stop-color="#c97a2b" />
+                        </linearGradient>
+                        <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                        </filter>
+                    </defs>
+                    <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                    <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                    <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                    <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                    <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                    <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                    <circle cx="22" cy="22" r="2" fill="#ffffff" />
+                </svg>
+                <div class="sri-logo-text">
+                    <span class="sri-logo-prefix">SRI</span>
+                    <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+                </div>
+            </a>
+
+            <h2>✨ Create Account</h2>
+            <p class="subtitle">Join SRI BloomFlow for fresh floral orders & bouquets</p>
+
+            <form id="register-form" onsubmit="handleRegister(event)">
+                
+                <div class="form-group">
+                    <label for="reg-name">Full Name</label>
+                    <div class="input-group">
+                        <input type="text" id="reg-name" placeholder="Enter Full Name" required>
+                        <i class="fa-regular fa-user input-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <div class="input-group">
+                        <input type="email" id="reg-email" placeholder="Enter Email Address" required>
+                        <i class="fa-regular fa-envelope input-icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="reg-password" placeholder="Min. 6 characters" required minlength="6">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <i class="fa-regular fa-eye toggle-password" onclick="togglePasswordVisibility('reg-password', this)"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="reg-confirm">Confirm Password</label>
+                    <div class="input-group">
+                        <input type="password" id="reg-confirm" placeholder="Confirm Password" required minlength="6">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <i class="fa-regular fa-eye toggle-password" onclick="togglePasswordVisibility('reg-confirm', this)"></i>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-btn">
+                    <i class="fa-solid fa-user-plus"></i> Create Account
+                </button>
+
+                <p class="signup">
+                    Already have an account?
+                    <a href="login.html">Login</a>
+                </p>
+
+            </form>
+        </div>
+
+        <!-- Right Side: Decorative Image & Branding -->
+        <div class="right">
+            <div class="visual-content">
+                <img src="login_flower_new.png" alt="SRI BloomFlow Floral Collection">
+                <h3>Vibrant • Elegant • Timeless</h3>
+                <p>"Hand-crafted fresh blossoms and event styling delivered straight to your door step."</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toast-container"></div>
+
+    <script>
+        // Password toggler
+        function togglePasswordVisibility(fieldId, icon) {
+            const field = document.getElementById(fieldId);
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                field.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        // Elegant Toast notification function
+        function showToast(message, isError = false) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `toast ${isError ? 'error' : ''}`;
+            toast.innerHTML = `<i class="fa-solid ${isError ? 'fa-circle-xmark' : 'fa-circle-check'}"></i> <span>${message}</span>`;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.add('show');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    toast.remove();
+                }, 350);
+            }, 3000);
+        }
+
+        // Registration form submit handler (MongoDB Backend + Fallback)
+        async function handleRegister(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim().toLowerCase();
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm').value;
+
+            // Password matches check
+            if (password !== confirmPassword) {
+                showToast("Passwords do not match!", true);
+                return;
+            }
+
+            // 1. Try Backend & MongoDB Registration
+            if (window.BloomAPI && window.BloomAPI.auth) {
+                try {
+                    const res = await window.BloomAPI.auth.register({ name, email, password });
+                    if (res.ok && res.data && res.data.success) {
+                        showToast("✨ Account created! Redirecting to login...", false);
+                        setTimeout(() => {
+                            window.location.href = "login.html?registered=true&email=" + encodeURIComponent(email);
+                        }, 1000);
+                        return;
+                    } else if (res.status === 400 || (res.data && !res.data.success)) {
+                        showToast(res.data.message || "Registration failed.", true);
+                        return;
+                    }
+                } catch (apiErr) {
+                    console.warn("Backend register connection fallback:", apiErr);
+                }
+            }
+
+            // 2. Fallback to LocalStorage
+            try {
+                let users = JSON.parse(localStorage.getItem('bloomflow_users')) || [];
+                const userExists = users.some(u => u.email === email);
+                if (userExists) {
+                    showToast("An account with this email already exists!", true);
+                    return;
+                }
+
+                const newUser = { name, email, password };
+                users.push(newUser);
+                localStorage.setItem('bloomflow_users', JSON.stringify(users));
+
+                showToast("✨ Account created successfully! Redirecting to login...", false);
+                setTimeout(() => {
+                    window.location.href = "login.html?registered=true&email=" + encodeURIComponent(email);
+                }, 1000);
+            } catch (err) {
+                console.error(err);
+                showToast("An error occurred. Please try again.", true);
+            }
+        }
+    </script>
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+</body>
+</html>

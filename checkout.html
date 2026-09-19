@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SRI BloomFlow | Secure Checkout</title>
+
+    <link rel="stylesheet" href="checkout.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+        <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+            <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ff758c" />
+                        <stop offset="50%" stop-color="#b56d7f" />
+                        <stop offset="100%" stop-color="#7e3b56" />
+                    </linearGradient>
+                    <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffe699" />
+                        <stop offset="50%" stop-color="#f5a623" />
+                        <stop offset="100%" stop-color="#c97a2b" />
+                    </linearGradient>
+                    <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3"/>
+                    </filter>
+                </defs>
+                <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5" opacity="0.95" />
+                <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8" stroke-dasharray="2 1.5" opacity="0.7" />
+                <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z" fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z" fill="#ffffff" opacity="0.38" />
+                <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)" opacity="0.8" />
+                <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                <circle cx="22" cy="22" r="2" fill="#ffffff" />
+            </svg>
+            <div class="sri-logo-text">
+                <span class="sri-logo-prefix">SRI</span>
+                <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+            </div>
+        </a>
+
+        <ul>
+            <li>
+                <a href="home.html">Home</a>
+            </li>
+
+            <li>
+                <a href="flowers.html">🌸 Flowers</a>
+            </li>
+
+            <li>
+                <a href="bouquets.html">💐 Bouquets</a>
+            </li>
+
+            <li>
+                <a href="home.html#why">✨ Why Us</a>
+            </li>
+        </ul>
+
+        <div class="nav-icons" id="nav-icons-container">
+
+            <a href="login.html" class="login-btn">
+                👤 Login
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= CHECKOUT ================= -->
+
+<main class="checkout-container">
+
+    <!-- ================= LEFT ================= -->
+
+    <section class="checkout-form-panel">
+
+        <div class="checkout-heading">
+
+            <span class="checkout-badge">
+                <i class="fa-solid fa-shield-heart"></i>
+                Secure Checkout
+            </span>
+
+            <h1>Delivery Details</h1>
+
+            <p class="subtitle">
+                Tell us where and when you'd like your beautiful
+                BloomFlow order delivered.
+            </p>
+
+        </div>
+
+
+        <form id="checkout-form"
+              onsubmit="submitCheckout(event)">
+
+
+            <!-- Recipient -->
+
+            <div class="section-title">
+
+                <div class="section-icon">
+                    <i class="fa-regular fa-user"></i>
+                </div>
+
+                <div>
+                    <h3>Recipient Information</h3>
+                    <p>Who should receive the flowers?</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-group-2">
+
+                <div class="form-group">
+
+                    <label for="shipping-name">
+                        Recipient Name *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="shipping-name"
+                        placeholder="Full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="shipping-phone">
+                        Phone Number *
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="shipping-phone"
+                        placeholder="10-digit mobile number"
+                        pattern="[6-9][0-9]{9}"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="shipping-email">
+                    Email Address *
+                </label>
+
+                <input
+                    type="email"
+                    id="shipping-email"
+                    placeholder="For order confirmation and updates"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Delivery -->
+
+            <div class="section-title delivery-title">
+
+                <div class="section-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+
+                <div>
+                    <h3>Delivery Information</h3>
+                    <p>Where should we deliver your order?</p>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="shipping-address">
+                    Delivery Address *
+                </label>
+
+                <textarea
+                    id="shipping-address"
+                    rows="3"
+                    placeholder="House No., Street, Area, Landmark"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <div class="form-group-2">
+
+                <div class="form-group">
+
+                    <label for="shipping-city">
+                        City *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="shipping-city"
+                        placeholder="Sivakasi"
+                        value="Sivakasi"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="delivery-date">
+                        Delivery Date *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="delivery-date"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- ================= PAYMENT METHOD ================= -->
+            <div class="section-title delivery-title">
+                <div class="section-icon">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div>
+                    <h3>Payment Method *</h3>
+                    <p>Select how you would like to pay for your flowers</p>
+                </div>
+            </div>
+
+            <div class="payment-methods-grid">
+                
+                <!-- 1. Cash On Delivery -->
+                <label class="payment-method-card active" id="method-card-COD" onclick="selectPaymentMethod('COD')">
+                    <input type="radio" name="payment_method" value="COD" checked>
+                    <div class="method-card-content">
+                        <div class="method-header">
+                            <div class="method-icon-wrap cod-icon">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                            </div>
+                            <div>
+                                <h4>Cash on Delivery (COD)</h4>
+                                <p>Pay with cash or UPI upon delivery at your doorstep</p>
+                            </div>
+                        </div>
+                        <span class="method-badge">No Advance Payment</span>
+                    </div>
+                </label>
+
+                <!-- 2. UPI -->
+                <label class="payment-method-card" id="method-card-UPI" onclick="selectPaymentMethod('UPI')">
+                    <input type="radio" name="payment_method" value="UPI">
+                    <div class="method-card-content">
+                        <div class="method-header">
+                            <div class="method-icon-wrap upi-icon">
+                                <i class="fa-solid fa-qrcode"></i>
+                            </div>
+                            <div>
+                                <h4>UPI / Google Pay / PhonePe / Paytm</h4>
+                                <p>Instant scan & pay via QR Code or UPI ID</p>
+                            </div>
+                        </div>
+                        <span class="method-badge instant-badge">⚡ Instant QR</span>
+                    </div>
+                </label>
+
+                <!-- 3. Credit / Debit / ATM Card -->
+                <label class="payment-method-card" id="method-card-CARD" onclick="selectPaymentMethod('CARD')">
+                    <input type="radio" name="payment_method" value="CARD">
+                    <div class="method-card-content">
+                        <div class="method-header">
+                            <div class="method-icon-wrap card-icon">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </div>
+                            <div>
+                                <h4>Credit / Debit / ATM Card</h4>
+                                <p>Visa, MasterCard, RuPay & Maestro Cards</p>
+                            </div>
+                        </div>
+                        <span class="method-badge">100% Encrypted</span>
+                    </div>
+                </label>
+
+            </div>
+
+            <!-- Dynamic Payment Details Panels -->
+
+            <!-- UPI Details Panel with Scanable QR Code -->
+            <div id="upi-details-panel" class="payment-detail-box" style="display: none;">
+                <div class="upi-header-banner">
+                    <i class="fa-solid fa-shield-check"></i>
+                    <span>Official Sivakasi BloomFlow UPI Gateway</span>
+                </div>
+                
+                <div class="upi-content-grid">
+                    <div class="qr-code-wrapper">
+                        <div class="qr-container">
+                            <img id="upi-qr-image" src="" alt="BloomFlow UPI QR Code" class="qr-img">
+                        </div>
+                        <span class="qr-scan-instruction"><i class="fa-solid fa-camera"></i> Scan with any UPI app to pay</span>
+                    </div>
+                    
+                    <div class="upi-instructions-side">
+                        <div class="upi-id-box">
+                            <span class="upi-label">Verified Merchant UPI ID:</span>
+                            <div class="upi-copy-row">
+                                <strong id="merchant-upi-id">bloomflow@upi</strong>
+                                <button type="button" class="copy-upi-btn" onclick="copyUPIId()">
+                                    <i class="fa-regular fa-copy"></i> <span id="copy-upi-text">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="upi-apps-row">
+                            <span class="supported-title"><i class="fa-solid fa-mobile-screen-button"></i> Tap to Open Directly on Phone:</span>
+                            <div class="upi-action-grid">
+                                <button type="button" class="upi-app-btn btn-gpay" onclick="payViaUPIApp('gpay')" title="Open Google Pay">
+                                    <i class="fa-brands fa-google-pay"></i>
+                                    <span>Google Pay</span>
+                                </button>
+                                <button type="button" class="upi-app-btn btn-phonepe" onclick="payViaUPIApp('phonepe')" title="Open PhonePe">
+                                    <i class="fa-solid fa-bolt"></i>
+                                    <span>PhonePe</span>
+                                </button>
+                                <button type="button" class="upi-app-btn btn-paytm" onclick="payViaUPIApp('paytm')" title="Open Paytm">
+                                    <i class="fa-solid fa-wallet"></i>
+                                    <span>Paytm</span>
+                                </button>
+                                <button type="button" class="upi-app-btn btn-generic-upi" onclick="payViaUPIApp('upi')" title="Open Any UPI App">
+                                    <i class="fa-solid fa-qrcode"></i>
+                                    <span>Any UPI App</span>
+                                </button>
+                            </div>
+                            <div class="mobile-tap-hint">
+                                <i class="fa-solid fa-circle-info"></i> Tapping Google Pay or PhonePe on your phone directly launches the app with the exact amount.
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 14px; margin-bottom: 0;">
+                            <label for="user-upi-id" style="font-size: 11.5px; color: #555;">Or Enter your UPI ID (Optional):</label>
+                            <div style="display: flex; gap: 8px;">
+                                <input type="text" id="user-upi-id" placeholder="e.g. yourname@oksbi / 9876543210@paytm" style="font-size: 13px; padding: 8px 12px;">
+                                <button type="button" onclick="verifyUserUPI()" class="btn-verify-upi">Verify</button>
+                            </div>
+                            <span id="upi-verify-msg" style="font-size: 11.5px; color: #16a34a; display: none; margin-top: 4px; font-weight: 500;">
+                                <i class="fa-solid fa-circle-check"></i> UPI ID verified successfully!
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Details Panel -->
+            <div id="card-details-panel" class="payment-detail-box" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <span style="font-size: 13px; font-weight: 600; color: #59434d;">Enter Card Details</span>
+                    <button type="button" onclick="fillTestCard()" class="btn-test-card">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Auto-Fill Test Card
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="card-holder">Cardholder Name</label>
+                    <input type="text" id="card-holder" placeholder="Name on card">
+                </div>
+
+                <div class="form-group">
+                    <label for="card-number">Card Number</label>
+                    <input type="text" id="card-number" placeholder="4532 8921 4032 7789" maxlength="19" oninput="formatCardNum(this)">
+                </div>
+
+                <div class="form-group-2">
+                    <div class="form-group">
+                        <label for="card-expiry">Expiry Date</label>
+                        <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)">
+                    </div>
+                    <div class="form-group">
+                        <label for="card-cvv">CVV</label>
+                        <input type="password" id="card-cvv" placeholder="•••" maxlength="4">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Place Order Button -->
+
+            <button
+                type="submit"
+                class="submit-checkout-btn"
+                id="place-order-btn"
+            >
+
+                <i class="fa-solid fa-lock"></i>
+
+                <span id="place-order-text">Place Order</span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <div class="secure-note">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Your transaction is protected with 256-bit bank-grade encryption.
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- ================= RIGHT SUMMARY ================= -->
+
+    <aside class="invoice-summary-panel">
+
+        <div class="summary-header">
+
+            <div>
+
+                <span class="summary-small">
+                    YOUR ORDER
+                </span>
+
+                <h2>Order Summary</h2>
+
+            </div>
+
+            <div class="summary-icon">
+                <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+
+        </div>
+
+
+        <!-- Cart Items -->
+
+        <div
+            class="invoice-items-list"
+            id="invoice-items"
+        >
+        </div>
+
+
+        <!-- Calculation -->
+
+        <div class="invoice-calculation-box">
+
+            <div class="calc-row">
+
+                <span>Subtotal</span>
+
+                <span id="invoice-subtotal">
+                    ₹0
+                </span>
+
+            </div>
+
+
+            <div class="calc-row">
+
+                <span>Delivery Fee</span>
+
+                <span class="free-text">
+                    FREE
+                </span>
+
+            </div>
+
+
+            <div class="calc-row">
+
+                <span>Tax</span>
+
+                <span>
+                    Included
+                </span>
+
+            </div>
+
+
+            <div class="calc-row total-row">
+
+                <span>
+                    Grand Total
+                </span>
+
+                <span id="invoice-total">
+                    ₹0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Delivery -->
+
+        <div class="delivery-highlight">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <div>
+
+                <strong>
+                    Fresh Flower Delivery
+                </strong>
+
+                <span>
+                    Carefully prepared and delivered in Sivakasi
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Security -->
+
+        <div class="security-badge-row">
+
+            <div class="security-badge">
+
+                <i class="fa-solid fa-lock"></i>
+
+                Secure
+
+            </div>
+
+
+            <div class="security-badge">
+
+                <i class="fa-solid fa-leaf"></i>
+
+                Fresh
+
+            </div>
+
+
+            <div class="security-badge">
+
+                <i class="fa-solid fa-heart"></i>
+
+                Handmade
+
+            </div>
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer id="footer">
+
+    <h2>
+        <i class="fa-solid fa-seedling"></i>
+        BloomFlow
+    </h2>
+
+    <p>
+        Beautiful flowers for every beautiful occasion.
+    </p>
+
+    <div class="social">
+
+        <i class="fab fa-facebook"></i>
+
+        <i class="fab fa-instagram"></i>
+
+        <i class="fab fa-whatsapp"></i>
+
+        <i class="fab fa-twitter"></i>
+
+    </div>
+
+    <p class="copy">
+        © 2026 BloomFlow. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+/* =========================================================
+   INITIALIZE
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadNavbarSession();
+
+        loadCheckoutSummary();
+
+        setupDeliveryDate();
+
+        setupMessageCounter();
+
+    }
+);
+
+
+/* =========================================================
+   ACTIVE USER
+   ========================================================= */
+
+function loadNavbarSession() {
+
+    try {
+
+        const activeUser =
+            JSON.parse(
+                localStorage.getItem(
+                    "bloomflow_active_user"
+                )
+            );
+
+
+        const container =
+            document.getElementById(
+                "nav-icons-container"
+            );
+
+
+        if (!container) return;
+
+
+        if (activeUser) {
+
+            const firstName =
+                activeUser.name
+                    ? activeUser.name.split(" ")[0]
+                    : "Profile";
+
+
+            const email =
+                activeUser.email || "";
+
+
+            document.getElementById(
+                "shipping-name"
+            ).value =
+                activeUser.name || "";
+
+
+            document.getElementById(
+                "shipping-email"
+            ).value =
+                email;
+
+
+            container.innerHTML = `
+
+                <a
+                    href="profile.html"
+                    class="login-btn profile-nav-btn"
+                >
+
+                    <i class="fa-regular fa-circle-user"></i>
+
+                    ${escapeHTML(firstName)}
+
+                </a>
+
+                <a
+                    href="#"
+                    onclick="logoutUser(event)"
+                    class="logout-btn"
+                    title="Logout"
+                >
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                </a>
+
+            `;
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Session error:",
+            error
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   LOGOUT
+   ========================================================= */
+
+function logoutUser(event) {
+
+    event.preventDefault();
+
+    localStorage.removeItem(
+        "bloomflow_active_user"
+    );
+
+    window.location.href =
+        "home.html";
+
+}
+
+
+/* =========================================================
+   LOAD CART
+   ========================================================= */
+
+function loadCheckoutSummary() {
+
+    let cart = [];
+
+
+    try {
+
+        cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "bloomflow_cart"
+                )
+            ) || [];
+
+    } catch (error) {
+
+        cart = [];
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "invoice-items"
+        );
+
+
+    if (
+        !cart.length
+    ) {
+
+        alert(
+            "Your cart is empty!"
+        );
+
+        window.location.href =
+            "flowers.html";
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    let subtotal = 0;
+
+
+    cart.forEach(
+        function(item) {
+
+            const itemTotal =
+                Number(item.price || 0) *
+                Number(item.quantity || 1);
+
+
+            subtotal += itemTotal;
+
+
+            const itemEl =
+                document.createElement(
+                    "div"
+                );
+
+
+            itemEl.className =
+                "invoice-item-card";
+
+
+            let customDetailsHTML = "";
+
+
+            if (
+                item.isCustom &&
+                item.customDetails
+            ) {
+
+                const details =
+                    item.customDetails;
+
+
+                const flowerNames =
+                    details.flowers
+                        ? details.flowers
+                            .map(
+                                flower =>
+                                    `${flower.name} × ${flower.quantity}`
+                            )
+                            .join(", ")
+                        : "";
+
+
+                customDetailsHTML = `
+
+                    <div class="custom-details">
+
+                        <span>
+                            <i class="fa-solid fa-seedling"></i>
+                            ${escapeHTML(
+                                flowerNames
+                            )}
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-box"></i>
+                            ${escapeHTML(
+                                details.wrapping || ""
+                            )}
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-ribbon"></i>
+                            ${escapeHTML(
+                                details.ribbon || ""
+                            )}
+                        </span>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            const isPiece = item.weight && (item.weight.toLowerCase().includes('piece') || item.weight.toLowerCase().includes('maalai') || item.weight.toLowerCase().includes('bouquet'));
+            const unitIcon = isPiece ? '📿' : '⚖️';
+            const weightText = item.weight ? `${unitIcon} ${escapeHTML(item.weight)}` : (item.unit ? `${Number(item.quantity || 1)} × ${escapeHTML(item.unit)}` : `Qty: ${Number(item.quantity || 1)}`);
+
+            itemEl.innerHTML = `
+
+                <div class="item-left">
+
+                    <img
+                        src="${item.image || "images/default-flower.jpg"}"
+                        alt="${escapeHTML(item.name || "Flower")}"
+                        onerror="this.src='images/default-flower.jpg'"
+                    >
+
+                    <div class="item-info">
+
+                        <h4 style="display:flex; align-items:center; gap:6px;">
+                            <span>🌸</span>
+                            <span>${escapeHTML(item.name || "Flower")}</span>
+                        </h4>
+
+                        <span class="qty-spec" style="color:#8e4585; font-weight:600; font-size:12.5px;">
+                            ${weightText} ${item.quantity > 1 && item.weight ? `(× ${item.quantity})` : ''}
+                        </span>
+
+                        ${customDetailsHTML}
+
+                    </div>
+
+                </div>
+
+
+                <span class="item-price" style="font-weight:700; color:#8e4585;">
+
+                    ₹${itemTotal.toFixed(0)}
+
+                </span>
+
+            `;
+
+
+            container.appendChild(
+                itemEl
+            );
+
+        }
+    );
+
+
+    /*
+       BloomFlow pricing:
+       No additional tax is added here.
+       Cart price is treated as final product price.
+    */
+
+    const grandTotal =
+        subtotal;
+
+    currentGrandTotal = grandTotal;
+
+    document.getElementById(
+        "invoice-subtotal"
+    ).textContent =
+        `₹${subtotal.toFixed(0)}`;
+
+
+    document.getElementById(
+        "invoice-total"
+    ).textContent =
+        `₹${grandTotal.toFixed(0)}`;
+
+    selectPaymentMethod(selectedPayment);
+
+    /*
+       Store checkout total temporarily
+       so payment.html can use the same amount.
+    */
+
+    window.checkoutCartTotal =
+        grandTotal;
+
+}
+
+
+/* =========================================================
+   DELIVERY DATE
+   ========================================================= */
+
+function setupDeliveryDate() {
+
+    const input =
+        document.getElementById(
+            "delivery-date"
+        );
+
+
+    const today =
+        new Date();
+
+
+    const todayString =
+        today.toISOString()
+            .split("T")[0];
+
+
+    input.min =
+        todayString;
+
+
+    /*
+       If customizer already stored a delivery date,
+       use it automatically.
+    */
+
+    try {
+
+        const cart =
+            JSON.parse(
+                localStorage.getItem(
+                    "bloomflow_cart"
+                )
+            ) || [];
+
+
+        const customItem =
+            cart.find(
+                item =>
+                    item.isCustom &&
+                    item.customDetails &&
+                    item.customDetails.deliveryDate
+            );
+
+
+        if (
+            customItem &&
+            customItem.customDetails.deliveryDate
+        ) {
+
+            input.value =
+                customItem
+                    .customDetails
+                    .deliveryDate;
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}
+
+
+
+
+
+/* =========================================================
+   PAYMENT METHOD SWITCHER & DYNAMIC QR CODE
+   ========================================================= */
+
+let selectedPayment = 'COD';
+let currentGrandTotal = 0;
+
+function selectPaymentMethod(method) {
+    selectedPayment = method;
+
+    // Update active class on cards
+    document.querySelectorAll('.payment-method-card').forEach(card => card.classList.remove('active'));
+    const activeCard = document.getElementById(`method-card-${method}`);
+    if (activeCard) {
+        activeCard.classList.add('active');
+        const radio = activeCard.querySelector('input[type="radio"]');
+        if (radio) radio.checked = true;
+    }
+
+    // Toggle sub-panels
+    const upiPanel = document.getElementById('upi-details-panel');
+    const cardPanel = document.getElementById('card-details-panel');
+    const placeBtnText = document.getElementById('place-order-text');
+
+    if (upiPanel) upiPanel.style.display = (method === 'UPI') ? 'block' : 'none';
+    if (cardPanel) cardPanel.style.display = (method === 'CARD') ? 'block' : 'none';
+
+    if (placeBtnText) {
+        if (method === 'COD') {
+            placeBtnText.textContent = `Place Order (Cash on Delivery) • ₹${Number(currentGrandTotal).toLocaleString('en-IN')}`;
+        } else if (method === 'UPI') {
+            placeBtnText.textContent = `Confirm & Pay with UPI • ₹${Number(currentGrandTotal).toLocaleString('en-IN')}`;
+        } else if (method === 'CARD') {
+            placeBtnText.textContent = `Pay with Card • ₹${Number(currentGrandTotal).toLocaleString('en-IN')}`;
+        }
+    }
+
+    if (method === 'UPI') {
+        generateUPIQRCode();
+    }
+}
+
+function generateUPIQRCode() {
+    const qrImg = document.getElementById('upi-qr-image');
+    if (!qrImg) return;
+
+    const amount = (Number(currentGrandTotal) || 100).toFixed(2);
+    const storeUpi = localStorage.getItem('bloomflow_store_upi_id') || 'bloomflow@upi';
+    const upiUrl = `upi://pay?pa=${encodeURIComponent(storeUpi)}&pn=SRI%20BloomFlow&am=${amount}&cu=INR&tn=SRI%20BloomFlow%20Order`;
+    const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}&bgcolor=ffffff&color=8e4585&margin=6`;
+    
+    qrImg.src = qrApiUrl;
+}
+
+function payViaUPIApp(app) {
+    const amount = (Number(currentGrandTotal) || 100).toFixed(2);
+    const storeUpi = localStorage.getItem('bloomflow_store_upi_id') || 'bloomflow@upi';
+    const note = encodeURIComponent('SRI BloomFlow Flower Order');
+    const name = encodeURIComponent('SRI BloomFlow');
+    const upiUrl = `upi://pay?pa=${encodeURIComponent(storeUpi)}&pn=${name}&am=${amount}&cu=INR&tn=${note}`;
+    
+    // Direct launch into Google Pay / installed UPI app
+    window.location.href = upiUrl;
+    
+    if (!/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        setTimeout(() => {
+            alert("Google Pay & UPI apps launch directly on mobile devices.\n\nOn computer, please scan the QR Code on the screen using Google Pay on your phone!");
+        }, 1000);
+    }
+}
+
+function copyUPIId() {
+    const upiId = 'bloomflow@upi';
+    navigator.clipboard.writeText(upiId).then(() => {
+        const copyText = document.getElementById('copy-upi-text');
+        if (copyText) {
+            copyText.textContent = 'Copied! ✓';
+            setTimeout(() => { copyText.textContent = 'Copy'; }, 2000);
+        }
+    }).catch(() => {
+        alert("UPI ID: " + upiId);
+    });
+}
+
+function verifyUserUPI() {
+    const input = document.getElementById('user-upi-id');
+    const msg = document.getElementById('upi-verify-msg');
+    if (!input || !input.value.trim()) {
+        alert("Please enter a valid UPI ID (e.g. mobile@upi)");
+        return;
+    }
+    if (msg) {
+        msg.style.display = 'block';
+    }
+}
+
+function fillTestCard() {
+    const activeUser = JSON.parse(localStorage.getItem('bloomflow_active_user'));
+    document.getElementById('card-holder').value = activeUser ? activeUser.name.toUpperCase() : 'PRIYA SUNDARAM';
+    document.getElementById('card-number').value = '4532 8921 4032 7789';
+    document.getElementById('card-expiry').value = '08/29';
+    document.getElementById('card-cvv').value = '888';
+}
+
+function formatCardNum(input) {
+    let val = input.value.replace(/\D/g, '');
+    let formatted = val.match(/.{1,4}/g);
+    input.value = formatted ? formatted.join(' ') : '';
+}
+
+function formatExpiry(input) {
+    let val = input.value.replace(/\D/g, '');
+    if (val.length >= 2) {
+        input.value = val.slice(0, 2) + '/' + val.slice(2, 4);
+    } else {
+        input.value = val;
+    }
+}
+
+/* =========================================================
+   SUBMIT CHECKOUT & PLACE ORDER
+   ========================================================= */
+
+async function submitCheckout(event) {
+    event.preventDefault();
+
+    const name = document.getElementById("shipping-name").value.trim();
+    const phone = document.getElementById("shipping-phone").value.trim();
+    const email = document.getElementById("shipping-email").value.trim();
+    const address = document.getElementById("shipping-address").value.trim();
+    const city = document.getElementById("shipping-city").value.trim();
+    const date = document.getElementById("delivery-date").value;
+
+    if (!name || !phone || !email || !address || !city || !date) {
+        alert("Please complete all required delivery details.");
+        return;
+    }
+
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (cleanPhone.length < 10) {
+        alert("Please enter a valid 10-digit mobile number.");
+        return;
+    }
+
+    let cart = [];
+    try {
+        cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+    } catch (error) {
+        cart = [];
+    }
+
+    if (!cart.length) {
+        alert("Your cart is empty. Please select your flowers first!");
+        window.location.href = "flowers.html";
+        return;
+    }
+
+    // Validate Card fields if CARD selected
+    if (selectedPayment === 'CARD') {
+        const cardHolder = document.getElementById('card-holder').value.trim();
+        const cardNum = document.getElementById('card-number').value.trim();
+        const cardExp = document.getElementById('card-expiry').value.trim();
+        const cardCvv = document.getElementById('card-cvv').value.trim();
+
+        if (!cardHolder || !cardNum || !cardExp || !cardCvv) {
+            alert("Please fill in all credit / debit card fields, or click 'Auto-Fill Test Card'.");
+            return;
+        }
+    }
+
+    const submitBtn = document.getElementById("place-order-btn");
+    const placeBtnText = document.getElementById("place-order-text");
+    if (submitBtn) submitBtn.disabled = true;
+    if (placeBtnText) placeBtnText.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing Order...';
+
+    const subtotal = cart.reduce((sum, item) => sum + Number(item.price || 0) * Number(item.quantity || 1), 0);
+    const deliveryFee = 0;
+    const total = subtotal + deliveryFee;
+
+    // Generate Unique Order ID & Tracking ID
+    const randomDigits = Math.floor(100000 + Math.random() * 900000);
+    let orderId = `BF-${randomDigits.toString().slice(-5)}`;
+    let trackingId = `TRK-BF-${randomDigits}`;
+
+    const isOnlinePaid = (selectedPayment === 'UPI' || selectedPayment === 'CARD');
+    const paymentStatus = isOnlinePaid ? 'Completed' : 'Pending';
+
+    try {
+        // 1. Save to MongoDB via BloomAPI
+        if (window.BloomAPI && window.BloomAPI.orders) {
+            try {
+                const apiRes = await window.BloomAPI.orders.create({
+                    customerName: name,
+                    customerEmail: email,
+                    customerPhone: phone,
+                    trackingId: trackingId,
+                    deliveryAddress: {
+                        street: address,
+                        city: city,
+                        state: 'Tamil Nadu',
+                        zipCode: '626123'
+                    },
+                    items: cart.map(item => ({
+                        productId: String(item.id || item.productId || item.name),
+                        name: item.name,
+                        price: Number(item.price),
+                        quantity: Number(item.quantity || 1),
+                        unit: item.unit || '100g',
+                        image: item.image || '',
+                        itemTotal: Number(item.price) * Number(item.quantity || 1)
+                    })),
+                    totalAmount: subtotal,
+                    deliveryFee: deliveryFee,
+                    grandTotal: total,
+                    paymentMethod: selectedPayment,
+                    paymentStatus: paymentStatus,
+                    orderNotes: ''
+                });
+
+                if (apiRes.ok && apiRes.data && apiRes.data.data) {
+                    orderId = apiRes.data.data.orderNumber || orderId;
+                    trackingId = apiRes.data.data.trackingId || trackingId;
+                }
+            } catch (apiErr) {
+                console.warn("MongoDB order sync fallback:", apiErr);
+            }
+        }
+
+        // 2. Save order to localStorage
+        const orderRecord = {
+            orderId: orderId,
+            trackingId: trackingId,
+            date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+            createdAt: new Date().toISOString(),
+            recipientName: name,
+            deliveryAddress: `${address}, ${city}`,
+            deliveryDate: date,
+            subtotal: subtotal,
+            total: total,
+            paymentMethod: selectedPayment,
+            paymentStatus: paymentStatus,
+            items: cart,
+            status: 'Pending',
+            userEmail: email
+        };
+
+        let orders = JSON.parse(localStorage.getItem('bloomflow_orders')) || [];
+        orders.push(orderRecord);
+        localStorage.setItem('bloomflow_orders', JSON.stringify(orders));
+
+        // 3. Admin Notification: Order Placed
+        try {
+            const newNotif = {
+                id: 'notif_' + Date.now() + '_' + Math.floor(Math.random() * 1000),
+                type: 'order_placed',
+                title: 'New Order Received',
+                message: `Order #${orderId} (Tracking: ${trackingId}) placed by ${name} for ₹${Number(total).toLocaleString('en-IN')}.`,
+                orderId: orderId,
+                trackingId: trackingId,
+                customerName: name,
+                amount: total,
+                timestamp: new Date().toISOString(),
+                read: false
+            };
+            let adminNotifs = JSON.parse(localStorage.getItem('bloomflow_admin_notifications')) || [];
+            adminNotifs.unshift(newNotif);
+            localStorage.setItem('bloomflow_admin_notifications', JSON.stringify(adminNotifs));
+        } catch (notifErr) {
+            console.warn("Failed to store admin notification:", notifErr);
+        }
+
+        // Clear Cart
+        localStorage.removeItem('bloomflow_cart');
+        localStorage.removeItem('bloomflow_temp_checkout');
+
+        // Redirect to Order Success Screen with Tracking ID
+        setTimeout(() => {
+            window.location.href = `order-success.html?orderId=${encodeURIComponent(orderId)}&trackingId=${encodeURIComponent(trackingId)}`;
+        }, 600);
+
+    } catch (err) {
+        console.error(err);
+        window.location.href = `order-success.html?orderId=${encodeURIComponent(orderId)}&trackingId=${encodeURIComponent(trackingId)}`;
+    }
+}
+
+
+/* Pre-fill authenticated user data */
+document.addEventListener("DOMContentLoaded", function() {
+    const activeUser = JSON.parse(localStorage.getItem("bloomflow_active_user"));
+    if (activeUser) {
+        const nameInput = document.getElementById("shipping-name");
+        const emailInput = document.getElementById("shipping-email");
+        if (nameInput && !nameInput.value) nameInput.value = activeUser.name || "";
+        if (emailInput && !emailInput.value) emailInput.value = activeUser.email || "";
+    }
+});
+
+/* =========================================================
+   SECURITY HELPER
+   ========================================================= */
+
+function escapeHTML(value) {
+    return String(value || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+</script>
+
+<!-- Bootstrap 5 JS Bundle & API Bridge -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/api.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRI BloomFlow | Product Details</title>
+
+    <link rel="stylesheet" href="flower-details.css">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+     TOP BAR WITH PROFESSIONAL SRI BLOOMFLOW LOGO
+===================================================== -->
+    <header>
+        <div class="top-bar">
+            <a href="flowers.html" class="back-btn" title="Back to Flowers">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+
+            <!-- Unique Professional SRI BloomFlow Logo Emblem -->
+            <a href="home.html" class="sri-brand-logo" aria-label="SRI BloomFlow Home">
+                <svg class="sri-logo-emblem" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="sriRoseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff758c" />
+                            <stop offset="50%" stop-color="#b56d7f" />
+                            <stop offset="100%" stop-color="#7e3b56" />
+                        </linearGradient>
+                        <linearGradient id="sriGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffe699" />
+                            <stop offset="50%" stop-color="#f5a623" />
+                            <stop offset="100%" stop-color="#c97a2b" />
+                        </linearGradient>
+                        <filter id="glowEmblem" x="-20%" y="-20%" width="140%" height="140%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#b56d7f" flood-opacity="0.3" />
+                        </filter>
+                    </defs>
+                    <circle cx="22" cy="22" r="20" fill="#fff5f8" stroke="url(#sriRoseGrad)" stroke-width="1.5"
+                        opacity="0.95" />
+                    <circle cx="22" cy="22" r="17.5" fill="none" stroke="url(#sriGoldGrad)" stroke-width="0.8"
+                        stroke-dasharray="2 1.5" opacity="0.7" />
+                    <path d="M22 5 C25 13, 31 16, 39 22 C31 28, 25 31, 22 39 C19 31, 13 28, 5 22 C13 16, 19 13, 22 5 Z"
+                        fill="url(#sriRoseGrad)" filter="url(#glowEmblem)" />
+                    <path d="M22 9 C26 15, 29 18, 35 22 C29 26, 26 29, 22 35 C18 29, 15 26, 9 22 C15 18, 18 15, 22 9 Z"
+                        fill="#ffffff" opacity="0.38" />
+                    <path d="M10 10 C16 15, 18 20, 22 22 C20 18, 15 16, 10 10 Z" fill="url(#sriGoldGrad)"
+                        opacity="0.8" />
+                    <path d="M34 10 C28 15, 26 20, 22 22 C24 18, 29 16, 34 10 Z" fill="url(#sriGoldGrad)"
+                        opacity="0.8" />
+                    <path d="M34 34 C28 29, 26 24, 22 22 C24 26, 29 28, 34 34 Z" fill="url(#sriGoldGrad)"
+                        opacity="0.8" />
+                    <path d="M10 34 C16 29, 18 24, 22 22 C20 26, 15 28, 10 34 Z" fill="url(#sriGoldGrad)"
+                        opacity="0.8" />
+                    <circle cx="22" cy="22" r="4.5" fill="url(#sriGoldGrad)" />
+                    <circle cx="22" cy="22" r="2" fill="#ffffff" />
+                </svg>
+                <div class="sri-logo-text">
+                    <span class="sri-logo-prefix">SRI</span>
+                    <span class="sri-logo-main">Bloom<span class="sri-logo-accent">Flow</span></span>
+                </div>
+            </a>
+
+            <div class="top-actions">
+                <!-- Wishlist -->
+                <button class="icon-btn" onclick="toggleWishlist()" title="Wishlist">
+                    <i id="wishlistIcon" class="fa-regular fa-heart"></i>
+                </button>
+
+                <!-- Cart -->
+                <a href="flowers.html?openCart=true" class="icon-btn cart-link" title="View Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cartCount">0</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- =====================================================
+     PRODUCT DETAILS
+===================================================== -->
+    <main class="product-page">
+
+        <!-- ================= IMAGE ================= -->
+        <section class="product-image-section">
+            <div class="product-image-wrapper">
+                <img id="productImage" src="images/jas.jpg" alt="Flower">
+            </div>
+        </section>
+
+        <!-- ================= INFORMATION ================= -->
+        <section class="product-info">
+
+            <div class="small-label" id="productCategory">
+                🌿 FRESH FLOWERS
+            </div>
+
+            <h1 id="productName">
+                Mallipoo
+            </h1>
+
+            <!-- Rating -->
+            <div class="rating">
+                <span class="star">★</span>
+                <strong id="productRating">4.9</strong>
+                <span id="productReviews">(128 reviews)</span>
+            </div>
+
+            <!-- Base Price -->
+            <div class="price" id="productPrice">
+                ₹120.00
+            </div>
+
+            <!-- Unit -->
+            <div class="unit-display" id="productUnit">
+                Price for 100g
+            </div>
+
+            <!-- Stock -->
+            <div class="stock">
+                <i class="fa-solid fa-circle"></i>
+                ✨ IN STOCK • Fresh Harvest Today
+            </div>
+
+            <!-- =================================================
+             QUANTITY & WEIGHT SELECTOR
+             (Loose flowers: Grams/Kg | Garlands & Piece: Count only)
+        ================================================= -->
+            <div class="quantity-title">
+                <span id="quantityTitleText">⚖️ Select Weight / Quantity</span>
+                <span class="title-badge" id="typeInstructionBadge">Type or Select Grams / Kg</span>
+            </div>
+
+            <!-- Unit Switcher Tabs (Only visible for Loose Flowers) -->
+            <div class="unit-tabs-container" id="unitTabsContainer">
+                <button type="button" class="unit-tab-btn active" id="tabGrams" onclick="switchWeightMode('g')">
+                    🌿 Grams (g)
+                </button>
+                <button type="button" class="unit-tab-btn" id="tabKg" onclick="switchWeightMode('kg')">
+                    ⚖️ Kilograms (kg)
+                </button>
+            </div>
+
+            <!-- Interactive Weight/Quantity Input Row -->
+            <div class="weight-control-row">
+                <div class="weight-input-wrapper">
+                    <button type="button" class="weight-step-btn" onclick="stepWeight(-1)" title="Decrease">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+
+                    <input type="number" id="weightInput" class="weight-type-input" value="100" min="1" step="any"
+                        placeholder="100" oninput="onWeightInputChange(this.value)"
+                        title="Type your required quantity / weight">
+
+                    <span class="weight-unit-badge" id="currentUnitTag">g</span>
+
+                    <button type="button" class="weight-step-btn" onclick="stepWeight(1)" title="Increase">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick Select Weight/Quantity Preset Chips -->
+            <div class="quick-chips-wrapper">
+                <div class="quick-chips-label" id="quickChipsLabel">
+                    <i class="fa-solid fa-hand-pointer"></i> Quick select weight:
+                </div>
+                <div class="quick-chips-list" id="quickChipsList">
+                    <!-- Dynamically rendered based on product category/mode -->
+                </div>
+            </div>
+
+            <!-- Calculated Live Total Price Card -->
+            <div class="calc-price-card" id="calcPriceCard">
+                <div class="calc-price-info">
+                    <span class="calc-price-title">Calculated Total Price</span>
+                    <span class="calc-price-subtext" id="calculatedSummary">100g @ ₹120.00 / 100g</span>
+                </div>
+                <div class="calc-price-total" id="calculatedTotal">
+                    ₹120.00
+                </div>
+            </div>
+
+            <!-- =================================================
+             DESCRIPTION
+        ================================================= -->
+            <div class="story">
+                <h2>
+                    📜 About This Product
+                </h2>
+                <p id="productDescription">
+                    Fresh and fragrant Mallipoo, carefully selected for traditional hair adornments, pooja and special
+                    occasions.
+                </p>
+            </div>
+
+            <!-- =================================================
+             BUTTONS
+        ================================================= -->
+            <div class="action-buttons">
+                <button type="button" class="add-cart" onclick="addToCart()">
+                    <i class="fa-solid fa-cart-shopping"></i> ADD TO CART
+                </button>
+            </div>
+
+            <!-- =================================================
+             DIRECT CONTACT & PURCHASE CARD
+        ================================================= -->
+            <div class="direct-contact-card">
+                <div class="contact-header">
+                    <div class="contact-icon-pulse">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+                    <div>
+                        <span class="contact-tag">Direct Support & Custom Orders</span>
+                        <h3>PURCHASE OR DIRECT CONTACT</h3>
+                    </div>
+                </div>
+                <p class="contact-desc">
+                    Prefer to order directly or have special requirements? Reach out to SRI BloomFlow directly via call
+                    or message.
+                </p>
+                <div class="contact-action-row">
+                    <a href="tel:+918526778960" class="contact-pill-btn call-btn">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>+91 8526778960</span>
+                    </a>
+                    <a href="tel:+919489019413" class="contact-pill-btn call-btn">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>9489019413</span>
+                    </a>
+                    <a href="https://wa.me/919489019413?text=Hi%20SRI%20BloomFlow!%20I%20am%20interested%20in%20ordering%20fresh%20flowers."
+                        target="_blank" class="contact-pill-btn whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>WhatsApp Order</span>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+    <script>
+        /* =====================================================
+           FULL PRODUCT DATABASE & PARAMETER RESOLVER
+        ===================================================== */
+        const allProducts = [
+            { id: 1, slug: "mallipoo", name: "Mallipoo", image: "images/jas.jpg", price: 120, unit: "100g", category: "FRESH FLOWERS", emoji: "💮", rating: "4.9", reviews: "128", description: "Fresh and highly fragrant local jasmine flowers, harvested fresh in the morning from Sivakasi fields. Perfect for hair, pooja and auspicious ceremonies." },
+            { id: 2, slug: "mullai", name: "Mullai", image: "images/mullai.jpg", price: 100, unit: "100g", category: "FRESH FLOWERS", emoji: "🌼", rating: "4.8", reviews: "94", description: "Fresh, delicate Mullai flowers with a sweet natural fragrance, carefully hand-selected for traditional celebrations and prayers." },
+            { id: 3, slug: "samanthi", name: "Samanthi", image: "images/marigold.jpg", price: 30, unit: "100g", category: "FRESH FLOWERS", emoji: "🏵️", rating: "4.7", reviews: "82", description: "Bright yellow and golden Samanthi flowers, ideal for daily worship, festival decoration, and vibrant flower garlands." },
+            { id: 4, slug: "sevanthi", name: "Sevanthi", image: "images/sevanthi.jpg", price: 40, unit: "100g", category: "FRESH FLOWERS", emoji: "🌻", rating: "4.7", reviews: "76", description: "Vibrant and long-lasting fresh Sevanthi flowers in striking hues, suitable for stage decoration, pooja, and floral artistry." },
+            { id: 5, slug: "kanakambaram", name: "Kanakambaram Maalai", image: "images/kanakambaram.jpg", price: 350, unit: "1 piece", category: "SACRED WEDDING MAALAI", emoji: "📿", rating: "4.8", reviews: "60", description: "Exquisite hand-woven bright orange Kanakambaram Maalai garland, traditionally crafted for weddings, temple festivals, and sacred ceremonies." },
+            { id: 6, slug: "pichi", name: "Pichi", image: "images/pichi.jpg", price: 90, unit: "100g", category: "FRESH FLOWERS", emoji: "🌸", rating: "4.8", reviews: "55", description: "Soft and fragrant Pichi flowers, freshly selected for traditional hair styling and floral arrangements." },
+            { id: 7, slug: "arali", name: "Arali", image: "images/arali.jpg", price: 30, unit: "100g", category: "FRESH FLOWERS", emoji: "🌷", rating: "4.5", reviews: "48", description: "Traditional Arali flowers available in bright shades, widely used for temple rituals and deity worship." },
+            { id: 8, slug: "hibiscus", name: "Hibiscus", image: "images/hibiscus.jpg", price: 40, unit: "100g", category: "FRESH FLOWERS", emoji: "🌺", rating: "4.6", reviews: "62", description: "Fresh vibrant Hibiscus flowers, ideal for daily pooja offerings and festive decorations." },
+            { id: 9, slug: "lotus", name: "Lotus", image: "images/Lotus.jpg", price: 50, unit: "1 piece", category: "FRESH FLOWERS", emoji: "🪷", rating: "4.9", reviews: "72", description: "Sacred and majestic Lotus flower, fresh and pure, perfect for temple rituals, wedding pooja, and stage decor." },
+            { id: 10, slug: "gerbera", name: "Gerbera", image: "images/gerbera.jpg", price: 50, unit: "100g", category: "FRESH FLOWERS", emoji: "💐", rating: "4.7", reviews: "90", description: "Vivid and colourful Gerbera flowers, ideal for modern bouquets, greeting gifts, and stage floral arches." },
+            { id: 11, slug: "rose", name: "Rose", image: "images/rose.jpg", price: 40, unit: "100g", category: "FRESH FLOWERS", emoji: "🌹", rating: "4.8", reviews: "145", description: "Fresh aromatic roses with rich velvet petals, perfect for bouquets, romantic gestures, and pooja offerings." },
+            { id: 12, slug: "mallipoo-maalai", name: "Mallipoo Maalai", image: "images/mallipoo maalai.jpg", price: 450, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "📿", rating: "4.9", reviews: "86", description: "Traditionally strung Mallipoo Maalai made with dense fragrant jasmine blooms. A staple for weddings and temple offerings." },
+            { id: 13, slug: "rose-maalai", name: "Rose Maalai", image: "images/rose maalai.jpg", price: 650, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🌹", rating: "4.9", reviews: "74", description: "Exquisite Rose Maalai crafted with premium fresh roses. Elegant and eye-catching for receptions and wedding exchange." },
+            { id: 14, slug: "samanthi-maalai", name: "Samanthi Maalai", image: "images/samanthi maalai.jpg", price: 400, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🏵️", rating: "4.8", reviews: "58", description: "Festive and auspicious yellow Samanthi Maalai, handcrafted for temples, home celebrations, and grand events." },
+            { id: 15, slug: "sambangi-maalai", name: "Sambangi Maalai", image: "images/sambangi.jpg", price: 450, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🌿", rating: "4.8", reviews: "52", description: "Aromatic Sambangi (Tuberose) Maalai with enduring fresh scent, ideal for welcome ceremonies and housewarmings." },
+            { id: 16, slug: "petals-maalai", name: "Petals Maalai", image: "images/petals maalai.jpg", price: 550, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🪢", rating: "4.7", reviews: "45", description: "Delicately layered flower petal garland offering lightweight grace and vibrant contrast." },
+            { id: 17, slug: "ooty-rose-maalai", name: "Ooty Rose Maalai", image: "images/ooty rose maalai.jpg", price: 650, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🌹", rating: "4.9", reviews: "67", description: "Premium Ooty Rose Maalai made with large hybrid roses, perfect for luxury wedding moments." },
+            { id: 18, slug: "lotus-maalai", name: "Lotus Maalai", image: "images/Lotus.jpg", price: 550, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🪷", rating: "4.8", reviews: "49", description: "Divine Lotus flower garland strung with sacred purity for major temple festivals and wedding rituals." },
+            { id: 19, slug: "gerbera-maalai", name: "Gerbera Maalai", image: "images/gerbera.jpg", price: 500, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🏵️", rating: "4.7", reviews: "55", description: "Contemporary colourful Gerbera garland, bringing a modern festive vibe to any event stage." },
+            { id: 20, slug: "orchid-maalai", name: "Orchid Maalai", image: "images/orchid.jpg", price: 850, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "👑", rating: "4.9", reviews: "63", description: "Royal Orchid Maalai crafted from long-lasting exotic orchids for VIP welcomes and grand celebrations." },
+            { id: 21, slug: "vetriver-maalai", name: "Vetriver Maalai", image: "images/vetriver.jpg", price: 350, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🌿", rating: "4.6", reviews: "40", description: "Traditional Vetriver roots garland known for sacred aroma and cooling properties." },
+            { id: 22, slug: "cardamom-maalai", name: "Cardamom Maalai", image: "images/cardamom.jpg", price: 500, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "✨", rating: "4.6", reviews: "38", description: "Special handcrafted aromatic Cardamom (Elakkai) garland for traditional respects and deities." },
+            { id: 23, slug: "rose-sevanthi-maalai", name: "Rose and Sevanthi Maalai", image: "images/rose and sevanthi.jpg", price: 600, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🌹", rating: "4.8", reviews: "71", description: "Harmonious blend of red roses and golden Sevanthi blooms, providing grand visual appeal." },
+            { id: 24, slug: "mayil-maalai", name: "Mayil Maalai", image: "images/mayilmaalai.jpg", price: 750, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "🦚", rating: "4.8", reviews: "44", description: "Traditional peacock-style decorative garland designed by expert florists." },
+            { id: 25, slug: "vaadamalli-maalai", name: "Vaadamalli Maalai", image: "images/Vadamalli.webp", price: 450, unit: "1 piece", category: "FLOWER GARLANDS", emoji: "💜", rating: "4.7", reviews: "46", description: "Long-lasting purple Vaadamalli garland that stays fresh and vibrant for days." },
+            { id: 101, slug: "pastel-dream-rose-bouquet", name: "Pastel Dream Rose Bouquet", image: "images/bouquet_pastel_roses.jpg", price: 699, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌸", rating: "4.9", reviews: "142", description: "Soft blush pink roses mixed with delicate baby's breath and premium frosted Korean wrapping paper. A top-rated artisan gift." },
+            { id: 102, slug: "classic-romance-red-rose-bouquet", name: "Classic Romance Red Rose Bouquet", image: "images/bouquet_red_roses.jpg", price: 599, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌹", rating: "4.9", reviews: "185", description: "Stunning red velvet roses hand-tied with elegant silk ribbon and fresh gypsophila filler. Perfect for romance and anniversaries." },
+            { id: 103, slug: "blush-pink-lily-charm-bouquet", name: "Blush Pink Lily Charm Bouquet", image: "images/bouquet_pink_lily.jpg", price: 850, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🪷", rating: "4.9", reviews: "110", description: "Fragrant Oriental Pink Lilies paired with lush greenery and lavender wrap, filling the room with an enchanting scent." },
+            { id: 104, slug: "elegance-pink-rose-bunch", name: "Elegance Pink Rose Bunch", image: "images/bouquet_pink_roses.jpg", price: 550, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌸", rating: "4.8", reviews: "98", description: "Fresh morning roses wrapped in Korean frosted paper with love. A delightfully cheerful floral present." },
+            { id: 105, slug: "royal-white-lily-bridal-bunch", name: "Royal White Bridal Lily Bouquet", image: "images/bouquet_white_bridal.jpg", price: 899, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "💍", rating: "5.0", reviews: "130", description: "Pristine white lilies and fragrant baby blooms curated for weddings, brides, and grand milestone celebrations." },
+            { id: 106, slug: "exotic-purple-orchid-bouquet", name: "Exotic Purple Orchid Luxury Bouquet", image: "images/bouquet_purple_orchid.jpg", price: 950, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "👑", rating: "4.9", reviews: "124", description: "Premium fresh orchids wrapped in matte black and gold foil. The ultimate luxury statement bouquet." },
+            { id: 107, slug: "mixed-rose-festival-bouquet", name: "Deluxe Mixed Rose Festival Bouquet", image: "images/mixedrosebouquet.jpg", price: 650, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌹", rating: "4.8", reviews: "115", description: "Joyful blend of red, pink, yellow, and orange fresh roses with seasonal greens and satin ribbons." },
+            { id: 108, slug: "sivakasi-velvet-red-rose-bouquet", name: "Sivakasi Velvet Red Rose Bouquet", image: "images/redrosebouquet.jpg", price: 599, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌹", rating: "4.9", reviews: "160", description: "Handpicked deep crimson red roses in artisan textured red wrap. Sivakasi's all-time favorite flower gift." },
+            { id: 109, slug: "sweet-pink-romance-rose-bouquet", name: "Sweet Pink Romance Rose Bouquet", image: "images/pinkrosebouquet.jpg", price: 550, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌸", rating: "4.8", reviews: "89", description: "Tender pink roses bundled with delicate baby's breath and blush ribbons for sweet romantic moments." },
+            { id: 110, slug: "radiant-golden-yellow-rose-bouquet", name: "Radiant Golden Yellow Rose Bouquet", image: "images/yellowrosebouquet.jpg", price: 499, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌻", rating: "4.7", reviews: "75", description: "Bright yellow roses symbolizing friendship, success and joyous celebration." },
+            { id: 111, slug: "sunset-vibrant-orange-rose-bouquet", name: "Sunset Vibrant Orange Rose Bouquet", image: "images/orangerosebouquet.jpg", price: 550, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌅", rating: "4.8", reviews: "64", description: "Warm orange fresh roses wrapped with rustic craft paper and golden twine." },
+            { id: 112, slug: "red-white-love-symphony-bouquet", name: "Red & White Love Symphony Bouquet", image: "images/redwhiterosebouquet.jpg", price: 650, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌹", rating: "4.9", reviews: "102", description: "Dual-tone arrangement of rich red roses and pure white roses in harmony." },
+            { id: 113, slug: "rainbow-mixed-gerbera-bouquet", name: "Rainbow Mixed Gerbera Bouquet", image: "images/mixedgerberabouquet.jpg", price: 499, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌻", rating: "4.8", reviews: "92", description: "Cheerful medley of yellow, red, pink and orange gerbera flowers wrapped in sunny yellows." },
+            { id: 114, slug: "graceful-pink-gerbera-bouquet", name: "Graceful Pink Gerbera Bouquet", image: "images/pinkgerberabouquet.jpg", price: 450, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌸", rating: "4.7", reviews: "70", description: "Sweet pink gerberas arranged with seasonal fillers and soft wrap." },
+            { id: 115, slug: "passionate-crimson-red-gerbera-bouquet", name: "Passionate Crimson Red Gerbera Bouquet", image: "images/redgerberabouquet.jpg", price: 450, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "🌺", rating: "4.7", reviews: "66", description: "Bold red gerbera blooms in modern dual-layer packaging with dark accents." },
+            { id: 116, slug: "sunny-golden-yellow-gerbera-bouquet", name: "Sunny Golden Yellow Gerbera Bouquet", image: "images/yellowgerberabouquet.jpg", price: 450, unit: "1 Bouquet", category: "HANDCRAFTED BOUQUET", emoji: "☀️", rating: "4.7", reviews: "58", description: "Energetic yellow gerbera bouquet for congratulations and celebrations." },
+            { id: 118, slug: "traditional-jasmine-wedding-aaram", name: "Traditional Jasmine (Malli) Wedding Aaram", image: "images/jasmineaaram.jpg", price: 850, unit: "1 Aaram", category: "SACRED WEDDING AARAM", emoji: "📿", rating: "4.9", reviews: "175", description: "Dense, highly fragrant Sivakasi Mallipoo wedding aaram hand-woven for bridal auspiciousness." },
+            { id: 119, slug: "royal-mullai-sacred-flower-aaram", name: "Royal Mullai Sacred Flower Aaram", image: "images/mullaiaaram.jpg", price: 890, unit: "1 Aaram", category: "SACRED WEDDING AARAM", emoji: "📿", rating: "4.9", reviews: "132", description: "Premium fresh Mullai buds strung into an exquisite traditional auspicious aaram." },
+            { id: 120, slug: "grand-rose-petals-wedding-aaram", name: "Grand Rose Petals Wedding Aaram", image: "images/rosepetalsaaram.jpg", price: 950, unit: "1 Aaram", category: "SACRED WEDDING AARAM", emoji: "🌹", rating: "5.0", reviews: "190", description: "Luxurious layered rose petal aaram crafted specifically for grand marriage ceremonies." }
+        ];
+
+        let activeProduct = allProducts[0];
+        let currentWeightMode = 'g'; // 'g', 'kg', or 'count'
+        let currentWeightValue = 100; // default value
+
+        /* =====================================================
+           STRICT RULE:
+           - Loose flowers: Grams & Kg ONLY
+           - Garlands (Maalai), Aaram & Bouquets: Count ONLY
+        ===================================================== */
+        function isWeightBasedProduct(product) {
+            if (!product) return false;
+            const cat = (product.category || "").toUpperCase();
+            const unitStr = (product.unit || "").toLowerCase();
+            const name = (product.name || "").toLowerCase();
+
+            // Garlands, Pieces, Aaram & Bouquets are strictly COUNT based, NEVER weight based
+            if (cat.includes("GARLAND") || cat.includes("BOUQUET") || cat.includes("AARAM") ||
+                unitStr.includes("maalai") || unitStr.includes("piece") || unitStr.includes("bouquet") || unitStr.includes("aaram") ||
+                name.includes("maalai") || name.includes("garland") || name.includes("bouquet") || name.includes("aaram") || name.includes("lotus")) {
+                return false;
+            }
+
+            return true;
+        }
+
+        // Preset chips definitions
+        const PRESET_CHIPS = {
+            g: [
+                { label: "100g", val: 100 },
+                { label: "250g (¼ kg)", val: 250 },
+                { label: "500g (½ kg)", val: 500 },
+                { label: "750g (¾ kg)", val: 750 },
+                { label: "1000g (1 kg)", val: 1000 },
+                { label: "2000g (2 kg)", val: 2000 }
+            ],
+            kg: [
+                { label: "0.5 kg", val: 0.5 },
+                { label: "1.0 kg", val: 1.0 },
+                { label: "1.5 kg", val: 1.5 },
+                { label: "2.0 kg", val: 2.0 },
+                { label: "3.0 kg", val: 3.0 },
+                { label: "5.0 kg", val: 5.0 }
+            ],
+            garland: [
+                { label: "1 Piece", val: 1 },
+                { label: "2 Pieces", val: 2 },
+                { label: "3 Pieces", val: 3 },
+                { label: "5 Pieces", val: 5 },
+                { label: "10 Pieces", val: 10 }
+            ],
+            bouquet: [
+                { label: "1 Bouquet", val: 1 },
+                { label: "2 Bouquets", val: 2 },
+                { label: "3 Bouquets", val: 3 },
+                { label: "5 Bouquets", val: 5 }
+            ],
+            aaram: [
+                { label: "1 Aaram", val: 1 },
+                { label: "2 Aaram (Pair)", val: 2 },
+                { label: "3 Aaram", val: 3 },
+                { label: "5 Aaram", val: 5 }
+            ],
+            piece: [
+                { label: "1 Piece", val: 1 },
+                { label: "2 Pieces", val: 2 },
+                { label: "3 Pieces", val: 3 },
+                { label: "5 Pieces", val: 5 },
+                { label: "10 Pieces", val: 10 }
+            ]
+        };
+
+        // Resolve product from URL query parameter
+        async function loadProductDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const idParam = urlParams.get("id");
+            const flowerParam = (urlParams.get("flower") || "").toLowerCase().trim();
+
+            // 1. Try MongoDB Backend API
+            if (window.BloomAPI && window.BloomAPI.products && (idParam || flowerParam)) {
+                try {
+                    const queryTarget = idParam || flowerParam;
+                    const res = await window.BloomAPI.products.getById(queryTarget);
+                    if (res.ok && res.data && res.data.data) {
+                        const p = res.data.data;
+                        activeProduct = {
+                            id: p.id || 1,
+                            name: p.name,
+                            image: p.image,
+                            price: Number(p.price),
+                            unit: p.unit || "100g",
+                            category: p.category ? p.category.toUpperCase() : "FRESH FLOWERS",
+                            rating: String(p.rating || "4.8"),
+                            reviews: "100+",
+                            description: p.tagline || p.description || "Fresh authentic flowers directly from SRI BloomFlow."
+                        };
+                        setupProductState();
+                        renderProductUI();
+                        updateWishlistNavBadge();
+                        return;
+                    }
+                } catch (e) {
+                    console.warn("MongoDB lookup fallback:", e);
+                }
+            }
+
+            // 2. Find in built-in Catalog
+            if (idParam) {
+                const found = allProducts.find(p => String(p.id) === String(idParam));
+                if (found) activeProduct = found;
+            } else if (flowerParam) {
+                const found = allProducts.find(p =>
+                    p.slug === flowerParam ||
+                    p.name.toLowerCase() === flowerParam ||
+                    p.slug.replace(/-/g, '') === flowerParam.replace(/-/g, '')
+                );
+                if (found) activeProduct = found;
+            }
+
+            setupProductState();
+            renderProductUI();
+            updateWishlistNavBadge();
+        }
+
+        function setupProductState() {
+            if (isWeightBasedProduct(activeProduct)) {
+                currentWeightMode = 'g';
+                currentWeightValue = 100;
+            } else {
+                currentWeightMode = 'count';
+                currentWeightValue = 1;
+            }
+        }
+
+        function renderProductUI() {
+            if (!activeProduct) return;
+
+            const emojiIcon = activeProduct.emoji || (isWeightBasedProduct(activeProduct) ? '🌿' : '📿');
+
+            document.getElementById("productName").innerText = activeProduct.name;
+            document.getElementById("productImage").src = activeProduct.image;
+            document.getElementById("productImage").alt = activeProduct.name;
+            document.getElementById("productPrice").innerText = "₹" + Number(activeProduct.price).toFixed(2);
+            document.getElementById("productUnit").innerText = "Price for " + activeProduct.unit;
+            document.getElementById("productCategory").innerText = `${emojiIcon} ${activeProduct.category || "FRESH FLOWERS"}`;
+            document.getElementById("productRating").innerText = activeProduct.rating;
+            document.getElementById("productReviews").innerText = "(" + activeProduct.reviews + " reviews)";
+            document.getElementById("productDescription").innerText = activeProduct.description;
+
+            renderUnitTabs();
+            renderChips();
+            updateWeightInputUI();
+            updateCalculatedTotal();
+        }
+
+        function renderUnitTabs() {
+            const container = document.getElementById("unitTabsContainer");
+            const badge = document.getElementById("typeInstructionBadge");
+            const titleText = document.getElementById("quantityTitleText");
+            const chipsLabel = document.getElementById("quickChipsLabel");
+            if (!container) return;
+
+            if (isWeightBasedProduct(activeProduct)) {
+                container.style.display = "flex";
+                container.innerHTML = `
+            <button type="button" class="unit-tab-btn ${currentWeightMode === 'g' ? 'active' : ''}" onclick="switchWeightMode('g')">
+                🌿 Grams (g)
+            </button>
+            <button type="button" class="unit-tab-btn ${currentWeightMode === 'kg' ? 'active' : ''}" onclick="switchWeightMode('kg')">
+                ⚖️ Kilograms (kg)
+            </button>
+        `;
+                if (titleText) titleText.innerText = "⚖️ Select Weight / Quantity";
+                if (badge) badge.innerText = "Type or Select Grams / Kg";
+                if (chipsLabel) chipsLabel.innerHTML = `<i class="fa-solid fa-hand-pointer"></i> Quick select weight:`;
+            } else {
+                // STRICTLY HIDE Grams / Kg tabs for Bouquets, Garlands, Aaram and Piece items
+                container.style.display = "none";
+                const cat = (activeProduct.category || "").toUpperCase();
+                const unit = (activeProduct.unit || "").toLowerCase();
+                if (cat.includes("BOUQUET") || unit.includes("bouquet")) {
+                    if (titleText) titleText.innerText = "💐 Select Bouquet Quantity";
+                } else if (cat.includes("AARAM") || unit.includes("aaram")) {
+                    if (titleText) titleText.innerText = "📿 Select Wedding Aaram Quantity";
+                } else if (cat.includes("GARLAND") || unit.includes("maalai")) {
+                    if (titleText) titleText.innerText = "📿 Select Garland Quantity";
+                } else {
+                    if (titleText) titleText.innerText = "🪷 Select Quantity";
+                }
+                if (badge) badge.innerText = "Select Number of Items";
+                if (chipsLabel) chipsLabel.innerHTML = `<i class="fa-solid fa-hand-pointer"></i> Quick select quantity:`;
+            }
+        }
+
+        function switchWeightMode(mode) {
+            if (mode === currentWeightMode) return;
+
+            if (mode === 'kg' && currentWeightMode === 'g') {
+                currentWeightValue = Math.max(0.1, Number((currentWeightValue / 1000).toFixed(2)));
+            } else if (mode === 'g' && currentWeightMode === 'kg') {
+                currentWeightValue = Math.max(50, Math.round(currentWeightValue * 1000));
+            } else if (mode === 'count') {
+                currentWeightValue = Math.max(1, Math.round(currentWeightValue) || 1);
+            }
+
+            currentWeightMode = mode;
+            renderUnitTabs();
+            renderChips();
+            updateWeightInputUI();
+            updateCalculatedTotal();
+        }
+
+        function renderChips() {
+            const list = document.getElementById("quickChipsList");
+            if (!list) return;
+
+            let chips = [];
+            if (isWeightBasedProduct(activeProduct)) {
+                chips = PRESET_CHIPS[currentWeightMode] || PRESET_CHIPS.g;
+            } else {
+                const cat = (activeProduct.category || "").toUpperCase();
+                const unit = (activeProduct.unit || "").toLowerCase();
+                if (cat.includes("BOUQUET") || unit.includes("bouquet")) {
+                    chips = PRESET_CHIPS.bouquet;
+                } else if (cat.includes("AARAM") || unit.includes("aaram")) {
+                    chips = PRESET_CHIPS.aaram;
+                } else if (cat.includes("GARLAND") || unit.includes("maalai")) {
+                    chips = PRESET_CHIPS.garland;
+                } else {
+                    chips = PRESET_CHIPS.piece;
+                }
+            }
+
+            list.innerHTML = chips.map(chip => {
+                const isActive = Number(currentWeightValue) === Number(chip.val);
+                return `
+            <button type="button" 
+                    class="chip-btn ${isActive ? 'active' : ''}" 
+                    onclick="selectChipValue(${chip.val})">
+                ${chip.label}
+            </button>
+        `;
+            }).join("");
+        }
+
+        function selectChipValue(val) {
+            currentWeightValue = Number(val);
+            updateWeightInputUI();
+            renderChips();
+            updateCalculatedTotal();
+        }
+
+        function onWeightInputChange(val) {
+            const num = parseFloat(val);
+            if (isNaN(num) || num <= 0) {
+                currentWeightValue = currentWeightMode === 'kg' ? 0.1 : 1;
+            } else {
+                currentWeightValue = num;
+            }
+            renderChips();
+            updateCalculatedTotal();
+        }
+
+        function stepWeight(delta) {
+            if (isWeightBasedProduct(activeProduct)) {
+                if (currentWeightMode === 'g') {
+                    const step = currentWeightValue >= 500 ? 100 : 50;
+                    currentWeightValue = Math.max(50, Math.round((currentWeightValue + delta * step) / 10) * 10);
+                } else if (currentWeightMode === 'kg') {
+                    const step = 0.25;
+                    currentWeightValue = Math.max(0.25, Number((currentWeightValue + delta * step).toFixed(2)));
+                }
+            } else {
+                // Step count by 1 for Garlands, Aaram, Bouquets and pieces
+                currentWeightValue = Math.max(1, currentWeightValue + delta);
+            }
+            updateWeightInputUI();
+            renderChips();
+            updateCalculatedTotal();
+        }
+
+        function updateWeightInputUI() {
+            const input = document.getElementById("weightInput");
+            const unitTag = document.getElementById("currentUnitTag");
+
+            if (input) {
+                input.value = currentWeightValue;
+                if (isWeightBasedProduct(activeProduct)) {
+                    if (currentWeightMode === 'kg') {
+                        input.step = "0.05";
+                        input.min = "0.05";
+                    } else {
+                        input.step = "10";
+                        input.min = "10";
+                    }
+                } else {
+                    input.step = "1";
+                    input.min = "1";
+                }
+            }
+
+            if (unitTag) {
+                if (isWeightBasedProduct(activeProduct)) {
+                    unitTag.innerText = currentWeightMode === 'kg' ? 'kg' : 'grams';
+                } else {
+                    const cat = (activeProduct.category || "").toUpperCase();
+                    const unit = (activeProduct.unit || "").toLowerCase();
+                    if (cat.includes("BOUQUET") || unit.includes("bouquet")) {
+                        unitTag.innerText = currentWeightValue > 1 ? 'bouquets' : 'bouquet';
+                    } else if (cat.includes("AARAM") || unit.includes("aaram")) {
+                        unitTag.innerText = currentWeightValue > 1 ? 'aaram' : 'aaram';
+                    } else {
+                        unitTag.innerText = currentWeightValue > 1 ? 'pieces' : 'piece';
+                    }
+                }
+            }
+        }
+
+        function getFormattedWeightLabel() {
+            if (isWeightBasedProduct(activeProduct)) {
+                if (currentWeightMode === 'g') {
+                    if (currentWeightValue >= 1000 && currentWeightValue % 1000 === 0) {
+                        return `${currentWeightValue / 1000} kg (${currentWeightValue}g)`;
+                    }
+                    return `${currentWeightValue}g`;
+                } else if (currentWeightMode === 'kg') {
+                    return `${currentWeightValue} kg`;
+                }
+            } else {
+                const cat = (activeProduct.category || "").toUpperCase();
+                const unit = (activeProduct.unit || "").toLowerCase();
+                if (cat.includes("BOUQUET") || unit.includes("bouquet")) {
+                    const suffix = currentWeightValue > 1 ? 'Bouquets' : 'Bouquet';
+                    return `${currentWeightValue} ${suffix}`;
+                } else if (cat.includes("AARAM") || unit.includes("aaram")) {
+                    const suffix = currentWeightValue > 1 ? 'Aaram' : 'Aaram';
+                    return `${currentWeightValue} ${suffix}`;
+                } else {
+                    const suffix = currentWeightValue > 1 ? 'Pieces' : 'Piece';
+                    return `${currentWeightValue} ${suffix}`;
+                }
+            }
+        }
+
+        function calculateCurrentPrice() {
+            if (!activeProduct) return 0;
+            const basePrice = Number(activeProduct.price) || 0;
+
+            if (isWeightBasedProduct(activeProduct)) {
+                if (currentWeightMode === 'g') {
+                    return (currentWeightValue * (basePrice / 100));
+                } else if (currentWeightMode === 'kg') {
+                    return (currentWeightValue * basePrice * 10);
+                }
+            }
+            // Count based
+            return currentWeightValue * basePrice;
+        }
+
+        function updateCalculatedTotal() {
+            const totalEl = document.getElementById("calculatedTotal");
+            const summaryEl = document.getElementById("calculatedSummary");
+            const totalAmount = calculateCurrentPrice();
+            const weightLabel = getFormattedWeightLabel();
+
+            if (totalEl) {
+                totalEl.innerText = "₹" + totalAmount.toFixed(2);
+            }
+
+            if (summaryEl) {
+                if (isWeightBasedProduct(activeProduct)) {
+                    const pricePerGram = (Number(activeProduct.price) / 100).toFixed(2);
+                    summaryEl.innerText = `${weightLabel} • ₹${pricePerGram}/g (Base: ₹${Number(activeProduct.price).toFixed(2)} / 100g)`;
+                } else {
+                    summaryEl.innerText = `${weightLabel} @ ₹${Number(activeProduct.price).toFixed(2)} each`;
+                }
+            }
+        }
+
+        // Add to cart with working persistent storage and visual feedback
+        function addToCart(showNotification = true) {
+            try {
+                let cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+                const totalCalculated = calculateCurrentPrice();
+                const weightLabel = getFormattedWeightLabel();
+                const itemKey = `${activeProduct.id}_${weightLabel}`.toLowerCase();
+
+                const existing = cart.find(item =>
+                    (item.itemKey && item.itemKey === itemKey) ||
+                    (item.id === activeProduct.id && (item.weight === weightLabel || (!item.weight && weightLabel === '100g')))
+                );
+
+                if (existing) {
+                    existing.quantity = (existing.quantity || 1) + 1;
+                    existing.itemTotal = Number(existing.price) * existing.quantity;
+                } else {
+                    cart.push({
+                        id: activeProduct.id,
+                        productId: activeProduct.id,
+                        itemKey: itemKey,
+                        name: activeProduct.name,
+                        price: Number(totalCalculated),
+                        unitPrice: Number(activeProduct.price),
+                        image: activeProduct.image,
+                        unit: isWeightBasedProduct(activeProduct) ? (currentWeightMode === 'kg' ? 'kg' : 'g') : activeProduct.unit,
+                        weight: weightLabel,
+                        quantity: 1,
+                        itemTotal: Number(totalCalculated)
+                    });
+                }
+
+                localStorage.setItem("bloomflow_cart", JSON.stringify(cart));
+                updateCartCount();
+
+                if (showNotification) {
+                    const icon = activeProduct.emoji || '🛍️';
+                    showToastNotification(`${icon} ${weightLabel} ${activeProduct.name} added to your cart! (₹${totalCalculated.toFixed(2)})`);
+                }
+            } catch (err) {
+                console.error("Add to cart error:", err);
+            }
+        }
+
+        // Buy Now requires user login first; if not logged in redirects to login page with callback
+        function buyNow() {
+            addToCart(false);
+
+            const activeUser = JSON.parse(localStorage.getItem('bloomflow_active_user'));
+            if (!activeUser) {
+                showToastNotification("✨ Please log in first to proceed with your order!");
+                setTimeout(() => {
+                    window.location.href = "login.html?redirect=checkout.html";
+                }, 700);
+                return;
+            }
+
+            setTimeout(() => {
+                window.location.href = "checkout.html";
+            }, 300);
+        }
+
+        function updateCartCount() {
+            try {
+                const cart = JSON.parse(localStorage.getItem("bloomflow_cart")) || [];
+                const count = cart.reduce((total, item) => total + (Number(item.quantity) || 1), 0);
+                const badge = document.getElementById("cartCount");
+                if (badge) badge.innerText = count;
+            } catch (e) { }
+        }
+
+        function toggleWishlist() {
+            const icon = document.getElementById("wishlistIcon");
+            let wishlist = [];
+            try {
+                wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+                if (!Array.isArray(wishlist)) wishlist = [];
+            } catch (e) {
+                wishlist = [];
+            }
+
+            const key = activeProduct.name.toLowerCase();
+            const existingIndex = wishlist.findIndex(item =>
+                (typeof item === 'string' && item.toLowerCase() === key) ||
+                (typeof item === 'object' && item.name && item.name.toLowerCase() === key)
+            );
+
+            if (existingIndex === -1) {
+                wishlist.push({
+                    id: activeProduct.id,
+                    name: activeProduct.name,
+                    price: Number(activeProduct.price),
+                    unit: activeProduct.unit || '100g',
+                    image: activeProduct.image,
+                    category: activeProduct.category || 'FRESH FLOWERS'
+                });
+                if (icon) {
+                    icon.classList.remove("fa-regular");
+                    icon.classList.add("fa-solid");
+                    icon.style.color = "#e91e63";
+                }
+                showToastNotification(`❤️ ${activeProduct.name} saved to Wishlist!`);
+            } else {
+                wishlist.splice(existingIndex, 1);
+                if (icon) {
+                    icon.classList.remove("fa-solid");
+                    icon.classList.add("fa-regular");
+                    icon.style.color = "";
+                }
+                showToastNotification(`🌸 ${activeProduct.name} removed from Wishlist.`);
+            }
+
+            localStorage.setItem("bloomflow_wishlist", JSON.stringify(wishlist));
+        }
+
+        function updateWishlistNavBadge() {
+            try {
+                const wishlist = JSON.parse(localStorage.getItem("bloomflow_wishlist")) || [];
+                const icon = document.getElementById("wishlistIcon");
+                if (icon && activeProduct) {
+                    const isSaved = wishlist.some(item =>
+                        (typeof item === 'string' && item.toLowerCase() === activeProduct.name.toLowerCase()) ||
+                        (typeof item === 'object' && item.name && item.name.toLowerCase() === activeProduct.name.toLowerCase())
+                    );
+                    if (isSaved) {
+                        icon.classList.remove("fa-regular");
+                        icon.classList.add("fa-solid");
+                        icon.style.color = "#e91e63";
+                    } else {
+                        icon.classList.remove("fa-solid");
+                        icon.classList.add("fa-regular");
+                        icon.style.color = "";
+                    }
+                }
+            } catch (e) { }
+        }
+
+        function showToastNotification(msg) {
+            let toast = document.getElementById("custom-toast");
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.id = "custom-toast";
+                toast.style.cssText = `
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #8e4585;
+            color: #fff;
+            padding: 13px 20px;
+            border-radius: 12px;
+            font-size: 13.5px;
+            font-weight: 500;
+            z-index: 999999;
+            box-shadow: 0 8px 25px rgba(142,69,133,0.35);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        `;
+                document.body.appendChild(toast);
+            }
+
+            toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${msg}</span>`;
+            setTimeout(() => {
+                toast.style.transform = "translateY(0)";
+                toast.style.opacity = "1";
+            }, 10);
+
+            setTimeout(() => {
+                toast.style.transform = "translateY(20px)";
+                toast.style.opacity = "0";
+            }, 3000);
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            loadProductDetails();
+            updateCartCount();
+        });
+    </script>
+
+    <!-- Bootstrap 5 JS Bundle & API Bridge -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/api.js"></script>
+
+</body>
+
+</html>
